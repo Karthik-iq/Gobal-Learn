@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage University Applications | GlobalPath Admin</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="admin-menu-title">Main Dashboard</div>
+        <a href="index.html" class="admin-nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="students.html" class="admin-nav-item"><i class="bi bi-people"></i> Students</a>
+        <a href="universities.html" class="admin-nav-item"><i class="bi bi-bank"></i> Universities</a>
+        <a href="services.html" class="admin-nav-item"><i class="bi bi-grid-fill"></i> Services</a>
+        <a href="applications.html" class="admin-nav-item active"><i class="bi bi-file-earmark-text"></i> Applications</a>
+        <a href="orders.html" class="admin-nav-item"><i class="bi bi-credit-card"></i> Orders & Invoices</a>
+        <a href="messages.html" class="admin-nav-item"><i class="bi bi-envelope"></i> Messages</a>
+
+        <div class="admin-menu-title mt-3">Content Management</div>
+        <a href="blog.html" class="admin-nav-item"><i class="bi bi-newspaper"></i> Blog Posts</a>
+        <a href="testimonials.html" class="admin-nav-item"><i class="bi bi-star"></i> Testimonials</a>
+        <a href="gallery.html" class="admin-nav-item"><i class="bi bi-images"></i> Media Gallery</a>
+        <a href="pricing.html" class="admin-nav-item"><i class="bi bi-tag"></i> Pricing Tiers</a>
+
+        <div class="admin-menu-title mt-3">Configuration</div>
+        <a href="settings.html" class="admin-nav-item"><i class="bi bi-gear"></i> Settings</a>
+        <a href="../index.html" class="admin-nav-item"><i class="bi bi-box-arrow-up-right"></i> View Public Site</a>
+        <a href="../login.html" class="admin-nav-item text-danger"><i class="bi bi-power"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggleBtn"><i class="bi bi-list fs-5"></i></button>
+          <h5 class="mb-0 fw-bold">Student Applications Tracker</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <button class="btn btn-primary btn-sm" onclick="openAddAppModal()">
+            <i class="bi bi-plus-lg me-1"></i> Log Application
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <div class="admin-table-card">
+          <div class="admin-table-header">
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <input type="text" id="crudSearchInput" class="form-control form-control-sm" placeholder="Search student, university, course..." style="width: 260px;">
+              <select id="crudStatusFilter" class="form-select form-select-sm" style="width: 180px;">
+                <option value="all">All Stages</option>
+                <option value="Visa Processing">Visa Processing</option>
+                <option value="Offer Received">Offer Received</option>
+                <option value="Visa Approved">Visa Approved</option>
+                <option value="University Applied">University Applied</option>
+                <option value="Documents Submitted">Documents Submitted</option>
+                <option value="Profile Created">Profile Created</option>
+              </select>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="AdminCRUD.exportCSV()"><i class="bi bi-download me-1"></i> Export CSV</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>University & Country</th>
+                  <th>Course & Intake</th>
+                  <th>Counselor</th>
+                  <th>Current Milestone</th>
+                  <th>Updated</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="crudTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="p-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <small class="text-muted" id="crudTableInfo">Showing 0 to 0 entries</small>
+            <ul class="pagination pagination-sm mb-0" id="crudPagination"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD / EDIT APPLICATION MODAL -->
+  <div class="modal fade" id="appModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="appModalTitle">Log Application Milestone</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="appForm">
+            <input type="hidden" id="appId">
+            <div class="mb-3">
+              <label class="form-label">Student Name *</label>
+              <input type="text" class="form-control" id="formAppName" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Target University *</label>
+                <input type="text" class="form-control" id="formAppUni" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Country</label>
+                <input type="text" class="form-control" id="formAppCountry" placeholder="e.g. UK" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Course *</label>
+                <input type="text" class="form-control" id="formAppCourse" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Intake</label>
+                <input type="text" class="form-control" id="formAppIntake" value="September 2026" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-4">
+              <div class="col-md-6">
+                <label class="form-label">Assigned Counselor</label>
+                <select class="form-select" id="formAppCounselor">
+                  <option value="Marcus Thorne">Marcus Thorne</option>
+                  <option value="Dr. Evelyn Vance">Dr. Evelyn Vance</option>
+                  <option value="Sarah Jenkins">Sarah Jenkins</option>
+                  <option value="Liam O'Connor">Liam O'Connor</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Milestone Status</label>
+                <select class="form-select" id="formAppStatus">
+                  <option value="Profile Created">Profile Created</option>
+                  <option value="Documents Submitted">Documents Submitted</option>
+                  <option value="University Applied">University Applied</option>
+                  <option value="Offer Received">Offer Received</option>
+                  <option value="Visa Processing">Visa Processing</option>
+                  <option value="Visa Approved">Visa Approved</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Save Application</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    function renderAppRow(app) {
+      const statusClass = app.status === 'Visa Approved' ? 'approved' :
+                          app.status === 'Offer Received' ? 'offer' :
+                          app.status === 'Visa Processing' ? 'processing' : 'applied';
+      return `
+        <tr>
+          <td>
+            <div class="fw-bold">${app.studentName}</div>
+            <small class="text-muted">${app.id}</small>
+          </td>
+          <td>
+            <div class="fw-semibold">${app.university}</div>
+            <span class="badge bg-secondary-subtle text-secondary">${app.country}</span>
+          </td>
+          <td>
+            <div class="small">${app.course}</div>
+            <small class="text-muted">${app.intake}</small>
+          </td>
+          <td><small class="text-muted">${app.counselor}</small></td>
+          <td><span class="badge-status ${statusClass}">${app.status}</span></td>
+          <td><small class="text-muted">${app.lastUpdate || '2026-02-22'}</small></td>
+          <td class="text-end">
+            <button class="table-action-btn" title="Edit Status" onclick="editApp('${app.id}')"><i class="bi bi-pencil"></i></button>
+            <button class="table-action-btn delete" title="Delete" onclick="AdminCRUD.deleteItem('${app.id}', 'application for ${app.studentName}')"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+    }
+
+    let appModalInstance;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      appModalInstance = new bootstrap.Modal(document.getElementById('appModal'));
+      AdminCRUD.init('applications', renderAppRow);
+
+      document.getElementById('appForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('appId').value;
+        const studentName = document.getElementById('formAppName').value;
+        const university = document.getElementById('formAppUni').value;
+        const country = document.getElementById('formAppCountry').value;
+        const course = document.getElementById('formAppCourse').value;
+        const intake = document.getElementById('formAppIntake').value;
+        const counselor = document.getElementById('formAppCounselor').value;
+        const status = document.getElementById('formAppStatus').value;
+        const lastUpdate = new Date().toISOString().split('T')[0];
+
+        if (id) {
+          GlobalData.update('applications', id, { studentName, university, country, course, intake, counselor, status, lastUpdate });
+          window.showToast(`Updated application for ${studentName}`, 'success', 'Application Updated');
+        } else {
+          GlobalData.add('applications', { studentName, university, country, course, intake, counselor, status, lastUpdate });
+          window.showToast(`Logged application for ${studentName}`, 'success', 'Application Logged');
+        }
+
+        appModalInstance.hide();
+        AdminCRUD.render();
+      });
+    });
+
+    function openAddAppModal() {
+      document.getElementById('appForm').reset();
+      document.getElementById('appId').value = '';
+      document.getElementById('appModalTitle').textContent = 'Log New Application';
+      appModalInstance.show();
+    }
+
+    function editApp(id) {
+      const a = GlobalData.getById('applications', id);
+      if (!a) return;
+      document.getElementById('appId').value = a.id;
+      document.getElementById('formAppName').value = a.studentName;
+      document.getElementById('formAppUni').value = a.university;
+      document.getElementById('formAppCountry').value = a.country;
+      document.getElementById('formAppCourse').value = a.course;
+      document.getElementById('formAppIntake').value = a.intake;
+      document.getElementById('formAppCounselor').value = a.counselor;
+      document.getElementById('formAppStatus').value = a.status;
+      document.getElementById('appModalTitle').textContent = `Milestone: ${a.studentName}`;
+      appModalInstance.show();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Office Locations | GlobalPath Education</title>
+  <meta name="description" content="Get in touch with GlobalPath Education. Book a physical or virtual counseling session across our New York, London, Melbourne, and Singapore offices.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container">
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+        <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavMenu">
+          <i class="bi bi-list fs-2"></i>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between align-items-center">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Home</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door-fill text-primary"></i> Home 1 – General Services</a></li>
+              <li><a class="dropdown-item" href="home-2.html"><i class="bi bi-airplane-engines-fill text-info"></i> Home 2 – Study Abroad</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="student-dashboard.html">Dashboard</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <a href="login.html" class="btn btn-outline-primary btn-sm px-3"><i class="bi bi-person-fill"></i> Login</a>
+          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#consultationModal"><i class="bi bi-calendar2-check-fill"></i> Book Consultation</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- OFFCANVAS MOBILE DRAWER -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNavMenu" aria-labelledby="mobileNavMenuLabel">
+    <div class="offcanvas-header border-bottom">
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-globe-americas"></i>
+        </div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+      <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex gap-2 mb-4">
+        <button class="btn btn-outline-secondary w-50 theme-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleTheme()">
+          <i class="bi bi-moon-stars-fill"></i> Theme
+        </button>
+        <button class="btn btn-outline-secondary w-50 rtl-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleRTL()">
+          <span class="rtl-label">⇄ RTL</span>
+        </button>
+      </div>
+
+      <ul class="nav flex-column mb-4">
+        <li class="nav-item mb-2">
+          <a class="nav-link fw-bold d-flex justify-content-between" data-bs-toggle="collapse" href="#mobileHomeSub">
+            <span>Home</span> <i class="bi bi-chevron-down"></i>
+          </a>
+          <div class="collapse ps-3" id="mobileHomeSub">
+            <a class="nav-link py-2" href="index.html">Home 1 – General Services</a>
+            <a class="nav-link py-2" href="home-2.html">Home 2 – Study Abroad</a>
+          </div>
+        </li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="about.html">About Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="services.html">Services</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="gallery.html">Gallery</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="pricing.html">Pricing Plans</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="blog.html">Blog</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="contact.html">Contact Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="student-dashboard.html">Dashboard</a></li>
+      </ul>
+
+      <div class="d-grid gap-2">
+        <a href="login.html" class="btn btn-outline-primary"><i class="bi bi-person-fill"></i> Student Login</a>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultationModal"><i class="bi bi-calendar2-check-fill"></i> Book Consultation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container position-relative z-1">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-2">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol>
+      </nav>
+      <h1 class="display-5 fw-bold mb-2">Get in Touch With Our Advisors</h1>
+      <p class="lead opacity-80 mb-0">We operate physical advisory branches and virtual consultancies across 4 continents.</p>
+    </div>
+  </header>
+
+  <!-- OFFICE LOCATIONS CARDS -->
+  <section class="py-6 bg-surface border-bottom">
+    <div class="container">
+      <div class="row g-4">
+        <!-- New York HQ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-4 h-100">
+            <div class="service-icon-box mb-3">
+              <i class="bi bi-building"></i>
+            </div>
+            <h5 class="fw-bold mb-1">New York HQ</h5>
+            <p class="small text-muted mb-3">Global Headquarters</p>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> 452 Fifth Avenue, 14th Fl, New York, NY 10018</p>
+            <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 592-7489</p>
+            <p class="small text-muted mb-0"><i class="bi bi-clock-fill text-primary me-2"></i> 9:00 AM - 6:00 PM EST</p>
+          </div>
+        </div>
+
+        <!-- London Office -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-4 h-100">
+            <div class="service-icon-box mb-3" style="background: rgba(16, 185, 129, 0.1); color: var(--gp-success);">
+              <i class="bi bi-building"></i>
+            </div>
+            <h5 class="fw-bold mb-1">London Branch</h5>
+            <p class="small text-muted mb-3">UK & European Desk</p>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-success me-2"></i> 100 Bishopsgate, London EC2N 4AG</p>
+            <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-success me-2"></i> +44 20 7946 0912</p>
+            <p class="small text-muted mb-0"><i class="bi bi-clock-fill text-success me-2"></i> 9:00 AM - 5:30 PM GMT</p>
+          </div>
+        </div>
+
+        <!-- Melbourne Office -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-4 h-100">
+            <div class="service-icon-box mb-3" style="background: rgba(245, 158, 11, 0.1); color: var(--gp-warning);">
+              <i class="bi bi-building"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Melbourne Branch</h5>
+            <p class="small text-muted mb-3">Australia & NZ Desk</p>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-warning me-2"></i> Level 28, 385 Bourke St, Melbourne VIC</p>
+            <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-warning me-2"></i> +61 3 9900 1234</p>
+            <p class="small text-muted mb-0"><i class="bi bi-clock-fill text-warning me-2"></i> 9:00 AM - 6:00 PM AEST</p>
+          </div>
+        </div>
+
+        <!-- Singapore Office -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-4 h-100">
+            <div class="service-icon-box mb-3" style="background: rgba(6, 182, 212, 0.1); color: var(--gp-accent);">
+              <i class="bi bi-building"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Singapore Branch</h5>
+            <p class="small text-muted mb-3">Asia Pacific Hub</p>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-info me-2"></i> 1 Raffles Place, #20-01, Singapore</p>
+            <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-info me-2"></i> +65 6789 0123</p>
+            <p class="small text-muted mb-0"><i class="bi bi-clock-fill text-info me-2"></i> 9:30 AM - 6:30 PM SGT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM & MAP SECTION -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Contact Form (Left) -->
+        <div class="col-lg-7">
+          <div class="gp-card p-4 p-md-5">
+            <h3 class="fw-bold mb-2">Send Us an Enquiry</h3>
+            <p class="text-muted small mb-4">
+              Have questions about eligibility, upcoming intakes, or tuition fees? Fill in the form and an advisor will respond within 24 hours.
+            </p>
+
+            <form id="contactForm">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">Your Full Name *</label>
+                  <input type="text" class="form-control" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" class="form-control" name="email" placeholder="john@example.com" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">Phone / WhatsApp *</label>
+                  <input type="tel" class="form-control" name="phone" oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')" pattern="[0-9+\s\-()]{7,20}" title="Please enter numbers only (min 7 digits)" placeholder="+1 (555) 123-4567" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Subject / Purpose</label>
+                  <input type="text" class="form-control" name="subject" placeholder="e.g. Master's in UK" required>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Your Message *</label>
+                <textarea class="form-control" name="message" rows="4" placeholder="Tell us about your background, current scores, and preferred universities..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary px-4 py-2">
+                <i class="bi bi-send-fill me-2"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Google Maps & Consultation CTA (Right) -->
+        <div class="col-lg-5">
+          <!-- Interactive Map Card -->
+          <div class="gp-card p-0 overflow-hidden mb-4" style="height: 280px;">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.457876127393!2d-73.98396822346764!3d40.75199693506977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25901cb00908d%3A0xe4a242c75a4dc372!2s452%205th%20Ave%2C%20New%20York%2C%20NY%2010018%2C%20USA!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="GlobalPath Education New York Office">
+            </iframe>
+          </div>
+
+          <!-- Direct Consultation Booking Box -->
+          <div class="gp-card p-4 border-primary">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="stat-icon primary">
+                <i class="bi bi-calendar2-check-fill"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-0">Book Instant Consultation</h5>
+                <small class="text-muted">1-on-1 virtual or in-person session</small>
+              </div>
+            </div>
+            <p class="small text-muted mb-4">
+              Skip email back-and-forth and select a convenient 45-minute video call slot directly on our advisors' calendar.
+            </p>
+            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+              Schedule Free Session
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a class="brand-logo text-white mb-3" href="index.html">
+            <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+            <span>GlobalPath<span class="text-primary">.</span></span>
+          </a>
+          <p class="small text-muted mb-4 pe-lg-4">
+            GlobalPath Education is an internationally accredited study abroad consultancy helping ambitious students gain admission to top universities across the UK, USA, Canada, Australia, and Europe.
+          </p>
+          <div class="d-flex">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h5>Services</h5>
+          <ul class="footer-links">
+            <li><a href="service-details.html?id=university-selection">University Selection</a></li>
+            <li><a href="service-details.html?id=visa-assistance">Student Visa Guidance</a></li>
+            <li><a href="service-details.html?id=scholarship-guidance">Scholarship Search</a></li>
+            <li><a href="service-details.html?id=application-assistance">Application Lodgement</a></li>
+            <li><a href="service-details.html?id=ielts-language-prep">IELTS Coaching</a></li>
+            <li><a href="service-details.html?id=career-counseling">Career Roadmapping</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5>Global Headquarters</h5>
+          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> 452 Fifth Avenue, New York, NY 10018</p>
+          <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 592-7489</p>
+          <p class="small text-muted mb-2"><i class="bi bi-envelope-fill text-primary me-2"></i> admissions@globalpathedu.com</p>
+          <p class="small text-muted mb-4"><i class="bi bi-clock-fill text-primary me-2"></i> Mon - Sat: 9:00 AM - 6:00 PM EST</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center text-muted">
+        <p class="mb-0">&copy; 2026 GlobalPath Education Consultancy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONSULTATION MODAL -->
+  <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="consultationModalLabel">
+            <i class="bi bi-calendar2-check-fill text-primary me-2"></i> Book Free Consultation
+          </h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form class="consultation-form">
+            <div class="mb-3">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" name="name" placeholder="e.g. Liam Chen" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" name="email" placeholder="liam@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" name="phone" oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')" pattern="[0-9+\s\-()]{7,20}" title="Please enter numbers only (min 7 digits)" placeholder="+1 (555) 000-0000" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Preferred Destination *</label>
+                <select class="form-select" name="country" required>
+                  <option value="" selected disabled>Select Country</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="New Zealand">New Zealand</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Study Level</label>
+                <select class="form-select" name="studyLevel">
+                  <option value="Master's Degree">Master's Degree</option>
+                  <option value="Bachelor's Degree">Bachelor's Degree</option>
+                  <option value="Post-Graduate Diploma">Post-Graduate Diploma</option>
+                  <option value="PhD / Doctorate">PhD / Doctorate</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Required Service</label>
+              <select class="form-select" name="service">
+                <option value="University Selection">University & Course Selection</option>
+                <option value="Visa Assistance">Student Visa Assistance</option>
+                <option value="Scholarship Guidance">Scholarship Search</option>
+                <option value="Application Processing">Full Application Lodgement</option>
+                <option value="IELTS Prep">IELTS / Language Coaching</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Additional Message / Question</label>
+              <textarea class="form-control" name="message" rows="2" placeholder="Tell us about your target intake or previous GPA..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              <i class="bi bi-send-fill me-1"></i> Submit Consultation Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

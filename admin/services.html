@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Services | GlobalPath Admin</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="admin-menu-title">Main Dashboard</div>
+        <a href="index.html" class="admin-nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="students.html" class="admin-nav-item"><i class="bi bi-people"></i> Students</a>
+        <a href="universities.html" class="admin-nav-item"><i class="bi bi-bank"></i> Universities</a>
+        <a href="services.html" class="admin-nav-item active"><i class="bi bi-grid-fill"></i> Services</a>
+        <a href="applications.html" class="admin-nav-item"><i class="bi bi-file-earmark-text"></i> Applications</a>
+        <a href="orders.html" class="admin-nav-item"><i class="bi bi-credit-card"></i> Orders & Invoices</a>
+        <a href="messages.html" class="admin-nav-item"><i class="bi bi-envelope"></i> Messages</a>
+
+        <div class="admin-menu-title mt-3">Content Management</div>
+        <a href="blog.html" class="admin-nav-item"><i class="bi bi-newspaper"></i> Blog Posts</a>
+        <a href="testimonials.html" class="admin-nav-item"><i class="bi bi-star"></i> Testimonials</a>
+        <a href="gallery.html" class="admin-nav-item"><i class="bi bi-images"></i> Media Gallery</a>
+        <a href="pricing.html" class="admin-nav-item"><i class="bi bi-tag"></i> Pricing Tiers</a>
+
+        <div class="admin-menu-title mt-3">Configuration</div>
+        <a href="settings.html" class="admin-nav-item"><i class="bi bi-gear"></i> Settings</a>
+        <a href="../index.html" class="admin-nav-item"><i class="bi bi-box-arrow-up-right"></i> View Public Site</a>
+        <a href="../login.html" class="admin-nav-item text-danger"><i class="bi bi-power"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggleBtn"><i class="bi bi-list fs-5"></i></button>
+          <h5 class="mb-0 fw-bold">Consulting Services Catalog</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <button class="btn btn-primary btn-sm" onclick="openAddServiceModal()">
+            <i class="bi bi-plus-lg me-1"></i> Add Service
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <div class="admin-table-card">
+          <div class="admin-table-header">
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <input type="text" id="crudSearchInput" class="form-control form-control-sm" placeholder="Search service name, category..." style="width: 260px;">
+              <select id="crudStatusFilter" class="form-select form-select-sm" style="width: 180px;">
+                <option value="all">All Categories</option>
+                <option value="Admissions">Admissions</option>
+                <option value="Visa & Immigration">Visa & Immigration</option>
+                <option value="Funding">Funding</option>
+                <option value="Test Prep">Test Prep</option>
+                <option value="Writing">Writing</option>
+                <option value="Relocation">Relocation</option>
+              </select>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="AdminCRUD.exportCSV()"><i class="bi bi-download me-1"></i> Export CSV</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Service Offering</th>
+                  <th>Category</th>
+                  <th>Starting Price</th>
+                  <th>Rating</th>
+                  <th>Reviews</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="crudTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="p-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <small class="text-muted" id="crudTableInfo">Showing 0 to 0 entries</small>
+            <ul class="pagination pagination-sm mb-0" id="crudPagination"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD / EDIT SERVICE MODAL -->
+  <div class="modal fade" id="serviceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="serviceModalTitle">Add Service Offering</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="serviceForm">
+            <input type="hidden" id="serviceEditId">
+            <div class="mb-3">
+              <label class="form-label">Service Title *</label>
+              <input type="text" class="form-control" id="formServiceTitle" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Category *</label>
+                <select class="form-select" id="formServiceCategory" required>
+                  <option value="Admissions">Admissions</option>
+                  <option value="Visa & Immigration">Visa & Immigration</option>
+                  <option value="Funding">Funding</option>
+                  <option value="Test Prep">Test Prep</option>
+                  <option value="Writing">Writing</option>
+                  <option value="Relocation">Relocation</option>
+                  <option value="Career">Career</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Price / Fee *</label>
+                <input type="text" class="form-control" id="formServicePrice" placeholder="e.g. $299" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Short Description</label>
+              <textarea class="form-control" id="formServiceDesc" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Image URL</label>
+              <input type="url" class="form-control" id="formServiceImage" value="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Save Service</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    function renderServiceRow(service) {
+      return `
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <div class="service-icon-box mb-0" style="width: 40px; height: 40px; font-size: 1.25rem;">
+                <i class="bi ${service.icon}"></i>
+              </div>
+              <div>
+                <div class="fw-bold">${service.title}</div>
+                <small class="text-muted text-truncate d-inline-block" style="max-width: 250px;">${service.shortDesc}</small>
+              </div>
+            </div>
+          </td>
+          <td><span class="badge bg-primary-subtle text-primary">${service.category}</span></td>
+          <td><span class="fw-bold text-primary">${service.price}</span></td>
+          <td><i class="bi bi-star-fill text-warning me-1"></i>${service.rating || '4.9'}</td>
+          <td>${service.reviewsCount || 0} reviews</td>
+          <td class="text-end">
+            <a href="../service-details.html?id=${service.id}" target="_blank" class="table-action-btn" title="View on Site"><i class="bi bi-box-arrow-up-right"></i></a>
+            <button class="table-action-btn" title="Edit" onclick="editService('${service.id}')"><i class="bi bi-pencil"></i></button>
+            <button class="table-action-btn delete" title="Delete" onclick="AdminCRUD.deleteItem('${service.id}', '${service.title}')"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+    }
+
+    let serviceModalInstance;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      serviceModalInstance = new bootstrap.Modal(document.getElementById('serviceModal'));
+      AdminCRUD.init('services', renderServiceRow);
+
+      document.getElementById('serviceForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('serviceEditId').value;
+        const title = document.getElementById('formServiceTitle').value;
+        const category = document.getElementById('formServiceCategory').value;
+        const price = document.getElementById('formServicePrice').value;
+        const shortDesc = document.getElementById('formServiceDesc').value;
+        const image = document.getElementById('formServiceImage').value;
+
+        if (id) {
+          GlobalData.update('services', id, { title, category, price, shortDesc, image });
+          window.showToast(`Updated service: ${title}`, 'success', 'Service Updated');
+        } else {
+          const generatedId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          GlobalData.add('services', {
+            id: generatedId,
+            title,
+            category,
+            price,
+            shortDesc,
+            image,
+            icon: 'bi-check2-circle',
+            rating: 5.0,
+            reviewsCount: 1,
+            overview: shortDesc,
+            deliverables: ['Custom consultation analysis', 'Advising report'],
+            process: [{ step: 1, title: 'Inception', desc: 'Initial intake call' }],
+            faqs: [{ q: 'What is included?', a: 'All listed deliverables.' }]
+          });
+          window.showToast(`Created new service: ${title}`, 'success', 'Service Created');
+        }
+
+        serviceModalInstance.hide();
+        AdminCRUD.render();
+      });
+    });
+
+    function openAddServiceModal() {
+      document.getElementById('serviceForm').reset();
+      document.getElementById('serviceEditId').value = '';
+      document.getElementById('serviceModalTitle').textContent = 'Add Service Offering';
+      serviceModalInstance.show();
+    }
+
+    function editService(id) {
+      const s = GlobalData.getById('services', id);
+      if (!s) return;
+      document.getElementById('serviceEditId').value = s.id;
+      document.getElementById('formServiceTitle').value = s.title;
+      document.getElementById('formServiceCategory').value = s.category;
+      document.getElementById('formServicePrice').value = s.price;
+      document.getElementById('formServiceDesc').value = s.shortDesc;
+      document.getElementById('formServiceImage').value = s.image;
+      document.getElementById('serviceModalTitle').textContent = `Edit: ${s.title}`;
+      serviceModalInstance.show();
+    }
+  </script>
+</body>
+</html>

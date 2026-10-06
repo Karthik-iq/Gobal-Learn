@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Abroad Blog & Guides | GlobalPath Education</title>
+  <meta name="description" content="In-depth international education guides, student visa changes, university rankings, scholarship application deadlines, and test prep tactics.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container">
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+        <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavMenu">
+          <i class="bi bi-list fs-2"></i>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between align-items-center">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Home</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door-fill text-primary"></i> Home 1 – General Services</a></li>
+              <li><a class="dropdown-item" href="home-2.html"><i class="bi bi-airplane-engines-fill text-info"></i> Home 2 – Study Abroad</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="student-dashboard.html">Dashboard</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <a href="login.html" class="btn btn-outline-primary btn-sm px-3"><i class="bi bi-person-fill"></i> Login</a>
+          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#consultationModal"><i class="bi bi-calendar2-check-fill"></i> Book Consultation</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- OFFCANVAS MOBILE DRAWER -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNavMenu" aria-labelledby="mobileNavMenuLabel">
+    <div class="offcanvas-header border-bottom">
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-globe-americas"></i>
+        </div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+      <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex gap-2 mb-4">
+        <button class="btn btn-outline-secondary w-50 theme-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleTheme()">
+          <i class="bi bi-moon-stars-fill"></i> Theme
+        </button>
+        <button class="btn btn-outline-secondary w-50 rtl-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleRTL()">
+          <span class="rtl-label">⇄ RTL</span>
+        </button>
+      </div>
+
+      <ul class="nav flex-column mb-4">
+        <li class="nav-item mb-2">
+          <a class="nav-link fw-bold d-flex justify-content-between" data-bs-toggle="collapse" href="#mobileHomeSub">
+            <span>Home</span> <i class="bi bi-chevron-down"></i>
+          </a>
+          <div class="collapse ps-3" id="mobileHomeSub">
+            <a class="nav-link py-2" href="index.html">Home 1 – General Services</a>
+            <a class="nav-link py-2" href="home-2.html">Home 2 – Study Abroad</a>
+          </div>
+        </li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="about.html">About Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="services.html">Services</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="gallery.html">Gallery</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="pricing.html">Pricing Plans</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="blog.html">Blog</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="contact.html">Contact Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="student-dashboard.html">Dashboard</a></li>
+      </ul>
+
+      <div class="d-grid gap-2">
+        <a href="login.html" class="btn btn-outline-primary"><i class="bi bi-person-fill"></i> Student Login</a>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultationModal"><i class="bi bi-calendar2-check-fill"></i> Book Consultation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container position-relative z-1">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-2">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Blog & Articles</li>
+        </ol>
+      </nav>
+      <h1 class="display-5 fw-bold mb-2">Global Education Insights</h1>
+      <p class="lead opacity-80 mb-0">Expert admissions strategies, visa policy breakdowns, and scholarship opportunities.</p>
+    </div>
+  </header>
+
+  <!-- BLOG CONTAINER -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <!-- Search & Filters Toolbar -->
+      <div class="row g-3 align-items-center mb-5">
+        <div class="col-md-6 col-lg-5">
+          <div class="input-group">
+            <span class="input-group-text bg-surface border-end-0"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" id="blogSearchInput" class="form-control border-start-0" placeholder="Search guides, countries, scholarships...">
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-7">
+          <div class="d-flex flex-wrap gap-2 justify-content-md-end" id="blogCategoryPills">
+            <button class="btn btn-primary btn-sm filter-btn active" data-cat="all">All (12)</button>
+            <button class="btn btn-outline-primary btn-sm filter-btn" data-cat="Study Abroad">Study Abroad</button>
+            <button class="btn btn-outline-primary btn-sm filter-btn" data-cat="Visa">Visa</button>
+            <button class="btn btn-outline-primary btn-sm filter-btn" data-cat="Scholarships">Scholarships</button>
+            <button class="btn btn-outline-primary btn-sm filter-btn" data-cat="Universities">Universities</button>
+            <button class="btn btn-outline-primary btn-sm filter-btn" data-cat="IELTS">IELTS</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Grid (Dynamic from data.js) -->
+      <div class="row g-4" id="blogGridContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a class="brand-logo text-white mb-3" href="index.html">
+            <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+            <span>GlobalPath<span class="text-primary">.</span></span>
+          </a>
+          <p class="small text-muted mb-4 pe-lg-4">
+            GlobalPath Education is an internationally accredited study abroad consultancy helping ambitious students gain admission to top universities across the UK, USA, Canada, Australia, and Europe.
+          </p>
+          <div class="d-flex">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h5>Services</h5>
+          <ul class="footer-links">
+            <li><a href="service-details.html?id=university-selection">University Selection</a></li>
+            <li><a href="service-details.html?id=visa-assistance">Student Visa Guidance</a></li>
+            <li><a href="service-details.html?id=scholarship-guidance">Scholarship Search</a></li>
+            <li><a href="service-details.html?id=application-assistance">Application Lodgement</a></li>
+            <li><a href="service-details.html?id=ielts-language-prep">IELTS Coaching</a></li>
+            <li><a href="service-details.html?id=career-counseling">Career Roadmapping</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5>Global Headquarters</h5>
+          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> 452 Fifth Avenue, New York, NY 10018</p>
+          <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 592-7489</p>
+          <p class="small text-muted mb-2"><i class="bi bi-envelope-fill text-primary me-2"></i> admissions@globalpathedu.com</p>
+          <p class="small text-muted mb-4"><i class="bi bi-clock-fill text-primary me-2"></i> Mon - Sat: 9:00 AM - 6:00 PM EST</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center text-muted">
+        <p class="mb-0">&copy; 2026 GlobalPath Education Consultancy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONSULTATION MODAL -->
+  <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="consultationModalLabel">
+            <i class="bi bi-calendar2-check-fill text-primary me-2"></i> Book Free Consultation
+          </h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form class="consultation-form">
+            <div class="mb-3">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" name="name" placeholder="e.g. Liam Chen" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" name="email" placeholder="liam@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" name="phone" oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')" pattern="[0-9+\s\-()]{7,20}" title="Please enter numbers only (min 7 digits)" placeholder="+1 (555) 000-0000" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Preferred Destination *</label>
+                <select class="form-select" name="country" required>
+                  <option value="" selected disabled>Select Country</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="New Zealand">New Zealand</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Study Level</label>
+                <select class="form-select" name="studyLevel">
+                  <option value="Master's Degree">Master's Degree</option>
+                  <option value="Bachelor's Degree">Bachelor's Degree</option>
+                  <option value="Post-Graduate Diploma">Post-Graduate Diploma</option>
+                  <option value="PhD / Doctorate">PhD / Doctorate</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Required Service</label>
+              <select class="form-select" name="service">
+                <option value="University Selection">University & Course Selection</option>
+                <option value="Visa Assistance">Student Visa Assistance</option>
+                <option value="Scholarship Guidance">Scholarship Search</option>
+                <option value="Application Processing">Full Application Lodgement</option>
+                <option value="IELTS Prep">IELTS / Language Coaching</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Additional Message / Question</label>
+              <textarea class="form-control" name="message" rows="2" placeholder="Tell us about your target intake or previous GPA..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              <i class="bi bi-send-fill me-1"></i> Submit Consultation Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('blogGridContainer');
+      const searchInput = document.getElementById('blogSearchInput');
+      const filterPills = document.querySelectorAll('#blogCategoryPills .filter-btn');
+      const articles = GlobalData.get('blog');
+
+      let currentCategory = 'all';
+      let searchQuery = '';
+
+      function render() {
+        let list = articles;
+
+        if (currentCategory !== 'all') {
+          list = list.filter(a => a.category.toLowerCase().includes(currentCategory.toLowerCase()));
+        }
+
+        if (searchQuery.trim() !== '') {
+          const q = searchQuery.toLowerCase().trim();
+          list = list.filter(a => a.title.toLowerCase().includes(q) || a.summary.toLowerCase().includes(q));
+        }
+
+        if (list.length === 0) {
+          container.innerHTML = `
+            <div class="col-12 text-center py-5">
+              <i class="bi bi-search fs-1 text-muted d-block mb-3"></i>
+              <h5>No articles match your search</h5>
+              <p class="text-muted small">Try searching for "Visa", "Scholarships", "Canada" or "IELTS".</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = list.map(a => `
+          <div class="col-md-6 col-lg-4">
+            <div class="gp-card p-0 overflow-hidden h-100 d-flex flex-column">
+              <div style="height: 200px; overflow: hidden;">
+                <img src="${a.image}" alt="${a.title}" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="p-4 flex-grow-1 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge bg-primary-subtle text-primary">${a.category}</span>
+                  <span class="text-muted small"><i class="bi bi-clock me-1"></i>${a.readTime}</span>
+                </div>
+                <h5 class="fw-bold mb-2">
+                  <a href="blog-details.html?id=${a.id}" class="text-main hover-primary">${a.title}</a>
+                </h5>
+                <p class="text-muted small mb-4 flex-grow-1">${a.summary}</p>
+                <div class="d-flex align-items-center justify-content-between pt-3 border-top">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="${a.authorImg}" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;" alt="${a.author}">
+                    <span class="small fw-semibold">${a.author}</span>
+                  </div>
+                  <a href="blog-details.html?id=${a.id}" class="fw-bold small text-primary">Read <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      render();
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        render();
+      });
+
+      filterPills.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterPills.forEach(b => {
+            b.classList.remove('btn-primary', 'active');
+            b.classList.add('btn-outline-primary');
+          });
+          btn.classList.add('btn-primary', 'active');
+          btn.classList.remove('btn-outline-primary');
+          currentCategory = btn.dataset.cat;
+          render();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
