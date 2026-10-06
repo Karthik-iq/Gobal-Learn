@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Abroad 2026 | GlobalPath Overseas Education Consultancy</title>
+  <meta name="description" content="Discover top study destinations, find world-ranked universities, secure international scholarships, and obtain student visas with GlobalPath.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Study Abroad | GlobalPath Education">
+  <meta property="og:description" content="Study Abroad. Dream Bigger. Go Further. Compare UK, USA, Canada, Australia, Germany and more.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- MAIN NAVBAR -->
+  <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container">
+      <!-- Brand Logo -->
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-globe-americas"></i>
+        </div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+
+      <!-- Mobile Toggle Buttons -->
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button class="btn-control theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
+        <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()" aria-label="Toggle Direction">
+          <span class="rtl-label">⇄ RTL</span>
+        </button>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavMenu" aria-controls="mobileNavMenu" aria-label="Toggle Navigation">
+          <i class="bi bi-list fs-2"></i>
+        </button>
+      </div>
+
+      <!-- Desktop Nav Menu -->
+      <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between align-items-center">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door-fill text-primary"></i> Home 1 – General Services</a></li>
+              <li><a class="dropdown-item active" href="home-2.html"><i class="bi bi-airplane-engines-fill text-info"></i> Home 2 – Study Abroad</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="student-dashboard.html">Dashboard</a></li>
+        </ul>
+
+        <!-- Right Side Nav Actions -->
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()" title="Switch text direction LTR / RTL" aria-label="Toggle Direction">
+            <span class="rtl-label">⇄ RTL</span>
+          </button>
+
+          <a href="login.html" class="btn btn-outline-primary btn-sm px-3">
+            <i class="bi bi-person-fill"></i> Login
+          </a>
+
+          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#consultationModal">
+            <i class="bi bi-calendar2-check-fill"></i> Book Consultation
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- OFFCANVAS MOBILE DRAWER -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNavMenu" aria-labelledby="mobileNavMenuLabel">
+    <div class="offcanvas-header border-bottom">
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-globe-americas"></i>
+        </div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+      <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex gap-2 mb-4">
+        <button class="btn btn-outline-secondary w-50 theme-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleTheme()">
+          <i class="bi bi-moon-stars-fill"></i> Theme
+        </button>
+        <button class="btn btn-outline-secondary w-50 rtl-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleRTL()">
+          <span class="rtl-label">⇄ RTL</span>
+        </button>
+      </div>
+
+      <ul class="nav flex-column mb-4">
+        <li class="nav-item mb-2">
+          <a class="nav-link fw-bold d-flex justify-content-between" data-bs-toggle="collapse" href="#mobileHomeSub">
+            <span>Home</span> <i class="bi bi-chevron-down"></i>
+          </a>
+          <div class="collapse show ps-3" id="mobileHomeSub">
+            <a class="nav-link py-2" href="index.html">Home 1 – General Services</a>
+            <a class="nav-link py-2 text-primary" href="home-2.html">Home 2 – Study Abroad</a>
+          </div>
+        </li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="about.html">About Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="services.html">Services</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="gallery.html">Gallery</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="pricing.html">Pricing Plans</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="blog.html">Blog</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="contact.html">Contact Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="student-dashboard.html">Dashboard</a></li>
+      </ul>
+
+      <div class="d-grid gap-2">
+        <a href="login.html" class="btn btn-outline-primary"><i class="bi bi-person-fill"></i> Student Login</a>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultationModal"><i class="bi bi-calendar2-check-fill"></i> Book Consultation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION: STUDY ABROAD SPECIALIZED -->
+  <section class="hero-section position-relative">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="hero-badge">
+            <i class="bi bi-compass-fill text-primary"></i> Gateway to 800+ Top International Universities
+          </div>
+          <h1 class="display-3 fw-bold lh-sm mb-4">
+            Study Abroad.<br>
+            Dream Bigger.<br>
+            <span class="text-primary">Go Further.</span>
+          </h1>
+          <p class="lead text-muted mb-4">
+            Discover your dream global campus. We provide official admissions assistance, scholarship search, and student visa filing for the UK, USA, Canada, Australia, Germany, Ireland, and New Zealand.
+          </p>
+
+          <!-- Interactive Destination & University Finder Box -->
+          <div class="card p-3 p-md-4 shadow-xl border-0 rounded-4 bg-surface mb-4">
+            <form action="services.html" method="GET" class="row g-2 align-items-center">
+              <div class="col-md-4">
+                <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-geo-alt text-primary me-2"></i> Target Country</label>
+                <select class="form-select border-subtle" name="country">
+                  <option value="all">All Destinations</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="USA">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ireland">Ireland</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-mortarboard text-success me-2"></i> Degree Level</label>
+                <select class="form-select border-subtle" name="degree">
+                  <option value="masters">Master's / Postgraduate</option>
+                  <option value="bachelors">Bachelor's / Undergraduate</option>
+                  <option value="phd">PhD / Research</option>
+                  <option value="diploma">Diploma / Co-op</option>
+                </select>
+              </div>
+              <div class="col-md-4 pt-md-4">
+                <button type="button" class="btn btn-primary w-100 py-2" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                  <i class="bi bi-search me-1"></i> Find Universities
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="d-flex flex-wrap gap-4 text-muted small">
+            <span><i class="bi bi-check-circle-fill text-success me-1"></i> No application processing fee for partner universities</span>
+            <span><i class="bi bi-check-circle-fill text-success me-1"></i> 99.2% Visa success rate</span>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students walking on global campus" class="rounded-4 shadow-xl w-100" style="height: 480px; object-fit: cover;">
+            
+            <!-- Floating Visa Badge -->
+            <div class="hero-stats-card">
+              <div class="stat-icon success">
+                <i class="bi bi-passport-fill"></i>
+              </div>
+              <div>
+                <h6 class="mb-0 fw-bold">Fast-Track Visas</h6>
+                <small class="text-muted">UK, US F-1 & Canada permits</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR STUDY DESTINATIONS -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end mb-5">
+        <div>
+          <span class="text-primary fw-bold text-uppercase small letter-spacing-1">Explore Opportunities</span>
+          <h2 class="display-6 fw-bold mt-2 mb-0">Top Study Destinations</h2>
+        </div>
+        <p class="text-muted max-w-500 mb-0 mt-3 mt-md-0">
+          Compare international tuition, post-study work permits (PSW), and leading university campuses.
+        </p>
+      </div>
+
+      <div class="row g-4" id="countryCardsContainer">
+        <!-- UK -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?auto=format&fit=crop&w=600&q=80" alt="Study in United Kingdom">
+              <div class="country-flag-badge">
+                <span>🇬🇧</span> United Kingdom
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 130+ Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> 2-Yr PSW</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: £14k - £28k / yr</h6>
+              <p class="small text-muted mb-3">Russell Group, 1-year master's degrees, London financial hub.</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore UK Admissions</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- USA -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80" alt="Study in USA">
+              <div class="country-flag-badge">
+                <span>🇺🇸</span> United States
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 400+ Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> 3-Yr STEM OPT</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: $25k - $55k / yr</h6>
+              <p class="small text-muted mb-3">Ivy League, Silicon Valley tech hubs, generous research grants.</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore USA Admissions</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canada -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=600&q=80" alt="Study in Canada">
+              <div class="country-flag-badge">
+                <span>🇨🇦</span> Canada
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 95+ Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> Up to 3-Yr PGWP</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: CAD $20k - $40k / yr</h6>
+              <p class="small text-muted mb-3">Multicultural safety, high living standards, Toronto & Vancouver.</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore Canada Admissions</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Australia -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=600&q=80" alt="Study in Australia">
+              <div class="country-flag-badge">
+                <span>🇦🇺</span> Australia
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 43 Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> 2-4 Yr Post-Study</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: AUD $28k - $45k / yr</h6>
+              <p class="small text-muted mb-3">Group of Eight (Go8), highest student minimum wage, high sunshine.</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore Australia Admissions</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Germany -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=600&q=80" alt="Study in Germany">
+              <div class="country-flag-badge">
+                <span>🇩🇪</span> Germany
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 80+ Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> 18-Mo Job Seek</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: Zero to €3,000 / yr</h6>
+              <p class="small text-muted mb-3">Tuition-free public universities, world-renowned STEM & automotive.</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore Germany Admissions</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ireland -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=600&q=80" alt="Study in Ireland">
+              <div class="country-flag-badge">
+                <span>🇮🇪</span> Ireland
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 25+ Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> 2-Yr Third Level</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: €14k - €25k / yr</h6>
+              <p class="small text-muted mb-3">Silicon Docks European tech headquarters (Google, Meta, Apple).</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore Ireland Admissions</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Zealand -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=600&q=80" alt="Study in New Zealand">
+              <div class="country-flag-badge">
+                <span>🇳🇿</span> New Zealand
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 8 Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> 3-Yr Open Work</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: NZD $26k - $38k / yr</h6>
+              <p class="small text-muted mb-3">High safety index, pristine nature, agriculture & tech sectors.</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore New Zealand</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Singapore -->
+        <div class="col-md-6 col-lg-3">
+          <div class="country-card">
+            <div class="country-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=600&q=80" alt="Study in Singapore">
+              <div class="country-flag-badge">
+                <span>🇸🇬</span> Singapore
+              </div>
+            </div>
+            <div class="p-3 d-flex flex-column">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-mortarboard text-primary"></i> 6 Unis</span>
+                <span><i class="bi bi-briefcase text-success"></i> LTVP Pass</span>
+              </div>
+              <h6 class="fw-bold mb-1">Tuition: SGD $28k - $42k / yr</h6>
+              <p class="small text-muted mb-3">Asia's premier financial hub with NUS and NTU ranking in global top 15.</p>
+              <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">Explore Singapore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: POPULAR STUDY PROGRAMS & DISCIPLINES -->
+  <section class="py-6 py-lg-7 bg-surface">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="text-primary fw-bold text-uppercase small letter-spacing-1">Trending Degrees</span>
+        <h2 class="display-6 fw-bold mt-2 mb-3">Popular Study Programs & Disciplines</h2>
+        <p class="text-muted">Explore high-demand international academic degrees with global industry accreditation, competitive starting salaries, and post-study work visa rights.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1. Computer Science & AI -->
+        <div class="col-md-6 col-lg-4">
+          <div class="gp-card p-4 h-100 d-flex flex-column border">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="service-icon-box bg-primary-subtle text-primary">
+                <i class="bi bi-cpu-fill fs-4"></i>
+              </div>
+              <span class="badge bg-success-subtle text-success border border-success fw-semibold">High Demand</span>
+            </div>
+            <h5 class="fw-bold mb-2">Computer Science & AI</h5>
+            <p class="text-muted small mb-3">Specializations in machine learning, cloud architectures, cybersecurity, and intelligent software engineering.</p>
+            <div class="bg-subtle p-3 rounded-3 mb-3 small">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Program Duration:</span>
+                <strong class="text-main">1 – 2 Years</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Avg Starting Salary:</span>
+                <strong class="text-primary">$95k – $125k / yr</strong>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Top Destinations:</span>
+                <span>🇺🇸 USA, 🇬🇧 UK, 🇩🇪 Germany</span>
+              </div>
+            </div>
+            <a href="service-details.html?id=university-selection" class="btn btn-outline-primary btn-sm w-100 mt-auto">
+              Explore CS Programs <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Business Analytics & MBA -->
+        <div class="col-md-6 col-lg-4">
+          <div class="gp-card p-4 h-100 d-flex flex-column border">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="service-icon-box bg-success-subtle text-success">
+                <i class="bi bi-graph-up-arrow fs-4"></i>
+              </div>
+              <span class="badge bg-primary-subtle text-primary border border-primary fw-semibold">Top ROI</span>
+            </div>
+            <h5 class="fw-bold mb-2">Business Analytics & MBA</h5>
+            <p class="text-muted small mb-3">AACSB & AMBA accredited executive management, fintech analytics, and global strategic leadership.</p>
+            <div class="bg-subtle p-3 rounded-3 mb-3 small">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Program Duration:</span>
+                <strong class="text-main">1 – 2 Years</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Avg Starting Salary:</span>
+                <strong class="text-primary">$85k – $115k / yr</strong>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Top Destinations:</span>
+                <span>🇬🇧 UK, 🇺🇸 USA, 🇮🇪 Ireland</span>
+              </div>
+            </div>
+            <a href="service-details.html?id=university-selection" class="btn btn-outline-primary btn-sm w-100 mt-auto">
+              Explore MBA Programs <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Engineering & Robotics -->
+        <div class="col-md-6 col-lg-4">
+          <div class="gp-card p-4 h-100 d-flex flex-column border">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="service-icon-box bg-warning-subtle text-warning">
+                <i class="bi bi-gear-wide-connected fs-4"></i>
+              </div>
+              <span class="badge bg-warning-subtle text-warning border border-warning fw-semibold">STEM 3-Yr OPT</span>
+            </div>
+            <h5 class="fw-bold mb-2">Engineering & Robotics</h5>
+            <p class="text-muted small mb-3">Mechatronics, sustainable renewable energy, advanced automotive, and aerospace engineering systems.</p>
+            <div class="bg-subtle p-3 rounded-3 mb-3 small">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Program Duration:</span>
+                <strong class="text-main">2 – 4 Years</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Avg Starting Salary:</span>
+                <strong class="text-primary">$88k – $118k / yr</strong>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Top Destinations:</span>
+                <span>🇩🇪 Germany, 🇺🇸 USA, 🇨🇦 Canada</span>
+              </div>
+            </div>
+            <a href="service-details.html?id=university-selection" class="btn btn-outline-primary btn-sm w-100 mt-auto">
+              Explore Engineering <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Biomedical & Public Health -->
+        <div class="col-md-6 col-lg-4">
+          <div class="gp-card p-4 h-100 d-flex flex-column border">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="service-icon-box bg-danger-subtle text-danger">
+                <i class="bi bi-heart-pulse-fill fs-4"></i>
+              </div>
+              <span class="badge bg-danger-subtle text-danger border border-danger fw-semibold">High PR Demand</span>
+            </div>
+            <h5 class="fw-bold mb-2">Biomedical & Healthcare</h5>
+            <p class="text-muted small mb-3">Clinical pharmacology, molecular genetics, epidemiology, healthcare management, and nursing informatics.</p>
+            <div class="bg-subtle p-3 rounded-3 mb-3 small">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Program Duration:</span>
+                <strong class="text-main">2 – 4 Years</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Avg Starting Salary:</span>
+                <strong class="text-primary">$80k – $110k / yr</strong>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Top Destinations:</span>
+                <span>🇦🇺 Australia, 🇨🇦 Canada, 🇬🇧 UK</span>
+              </div>
+            </div>
+            <a href="service-details.html?id=university-selection" class="btn btn-outline-primary btn-sm w-100 mt-auto">
+              Explore Healthcare <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Data Science & Big Data -->
+        <div class="col-md-6 col-lg-4">
+          <div class="gp-card p-4 h-100 d-flex flex-column border">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="service-icon-box bg-info-subtle text-info">
+                <i class="bi bi-database-fill-check fs-4"></i>
+              </div>
+              <span class="badge bg-info-subtle text-info border border-info fw-semibold">Fastest Growing</span>
+            </div>
+            <h5 class="fw-bold mb-2">Data Science & Big Data</h5>
+            <p class="text-muted small mb-3">Quantitative predictive modeling, neural algorithms, distributed big data pipelines, and quantitative analytics.</p>
+            <div class="bg-subtle p-3 rounded-3 mb-3 small">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Program Duration:</span>
+                <strong class="text-main">1 – 2 Years</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Avg Starting Salary:</span>
+                <strong class="text-primary">$92k – $120k / yr</strong>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Top Destinations:</span>
+                <span>🇬🇧 UK, 🇺🇸 USA, 🇦🇺 Australia</span>
+              </div>
+            </div>
+            <a href="service-details.html?id=university-selection" class="btn btn-outline-primary btn-sm w-100 mt-auto">
+              Explore Data Science <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Digital Media, UX & Design -->
+        <div class="col-md-6 col-lg-4">
+          <div class="gp-card p-4 h-100 d-flex flex-column border">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="service-icon-box bg-primary-subtle text-primary">
+                <i class="bi bi-palette-fill fs-4"></i>
+              </div>
+              <span class="badge bg-secondary-subtle text-secondary border border-secondary fw-semibold">Creative Tech</span>
+            </div>
+            <h5 class="fw-bold mb-2">Digital Media, UX & Creative Arts</h5>
+            <p class="text-muted small mb-3">Human-centered UI/UX design, interactive gaming systems, virtual reality, and 3D visual communication.</p>
+            <div class="bg-subtle p-3 rounded-3 mb-3 small">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Program Duration:</span>
+                <strong class="text-main">1 – 3 Years</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Avg Starting Salary:</span>
+                <strong class="text-primary">$75k – $102k / yr</strong>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Top Destinations:</span>
+                <span>🇬🇧 UK, 🇨🇦 Canada, 🇦🇺 Australia</span>
+              </div>
+            </div>
+            <a href="service-details.html?id=university-selection" class="btn btn-outline-primary btn-sm w-100 mt-auto">
+              Explore Media Arts <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PARTNER UNIVERSITIES DIRECTORY -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="text-primary fw-bold text-uppercase small letter-spacing-1">Direct Partnerships</span>
+        <h2 class="display-6 fw-bold mt-2 mb-3">World-Ranked Partner Universities</h2>
+        <p class="text-muted">Direct institutional applications with priority offer letter processing and application fee waivers.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Oxford -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-3 h-100">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=400&q=80" class="rounded-3 w-100 mb-3" style="height: 160px; object-fit: cover;" alt="Oxford">
+            <span class="badge bg-primary-subtle text-primary mb-2">#1 QS World</span>
+            <h6 class="fw-bold mb-1">University of Oxford</h6>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt"></i> Oxford, United Kingdom</p>
+            <div class="d-flex justify-content-between small border-top pt-2 mt-auto">
+              <span class="text-muted">Acceptance: 14%</span>
+              <a href="service-details.html?id=university-selection" class="fw-bold text-primary">Apply <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Harvard -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-3 h-100">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=400&q=80" class="rounded-3 w-100 mb-3" style="height: 160px; object-fit: cover;" alt="Harvard">
+            <span class="badge bg-primary-subtle text-primary mb-2">#4 QS World</span>
+            <h6 class="fw-bold mb-1">Harvard University</h6>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt"></i> Cambridge, MA, USA</p>
+            <div class="d-flex justify-content-between small border-top pt-2 mt-auto">
+              <span class="text-muted">Acceptance: 4%</span>
+              <a href="service-details.html?id=university-selection" class="fw-bold text-primary">Apply <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toronto -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-3 h-100">
+            <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=400&q=80" class="rounded-3 w-100 mb-3" style="height: 160px; object-fit: cover;" alt="Toronto">
+            <span class="badge bg-primary-subtle text-primary mb-2">#21 QS World</span>
+            <h6 class="fw-bold mb-1">University of Toronto</h6>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt"></i> Toronto, Canada</p>
+            <div class="d-flex justify-content-between small border-top pt-2 mt-auto">
+              <span class="text-muted">Acceptance: 43%</span>
+              <a href="service-details.html?id=university-selection" class="fw-bold text-primary">Apply <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Melbourne -->
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card p-3 h-100">
+            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=400&q=80" class="rounded-3 w-100 mb-3" style="height: 160px; object-fit: cover;" alt="Melbourne">
+            <span class="badge bg-primary-subtle text-primary mb-2">#13 QS World</span>
+            <h6 class="fw-bold mb-1">University of Melbourne</h6>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt"></i> Melbourne, Australia</p>
+            <div class="d-flex justify-content-between small border-top pt-2 mt-auto">
+              <span class="text-muted">Acceptance: 70%</span>
+              <a href="service-details.html?id=university-selection" class="fw-bold text-primary">Apply <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: 5-STEP APPLICATION & VISA ROADMAP -->
+  <section class="py-6 py-lg-7 bg-surface">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="text-primary fw-bold text-uppercase small letter-spacing-1">How It Works</span>
+        <h2 class="display-6 fw-bold mt-2 mb-3">Your 5-Step Overseas Admission Roadmap</h2>
+        <p class="text-muted">A clear, transparent, and structured process designed to maximize admission offers and eliminate visa rejections.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Step 1 -->
+        <div class="col-md-6 col-lg">
+          <div class="gp-card p-4 h-100 border text-center position-relative">
+            <div class="badge bg-primary rounded-pill mb-3 px-3 py-2 fs-6">Step 01</div>
+            <div class="service-icon-box mx-auto mb-3 bg-primary-subtle text-primary">
+              <i class="bi bi-file-earmark-person-fill fs-4"></i>
+            </div>
+            <h6 class="fw-bold mb-2">Profile Evaluation</h6>
+            <p class="text-muted small mb-0">Detailed analysis of grades, test scores, and budget to shortlist 8–12 ideal universities.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-6 col-lg">
+          <div class="gp-card p-4 h-100 border text-center position-relative">
+            <div class="badge bg-success rounded-pill mb-3 px-3 py-2 fs-6">Step 02</div>
+            <div class="service-icon-box mx-auto mb-3 bg-success-subtle text-success">
+              <i class="bi bi-journal-check fs-4"></i>
+            </div>
+            <h6 class="fw-bold mb-2">Application & SOP</h6>
+            <p class="text-muted small mb-0">Expert SOP/LOR drafting, credential verification, and direct submission with fee waivers.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-6 col-lg">
+          <div class="gp-card p-4 h-100 border text-center position-relative">
+            <div class="badge bg-warning text-dark rounded-pill mb-3 px-3 py-2 fs-6">Step 03</div>
+            <div class="service-icon-box mx-auto mb-3 bg-warning-subtle text-warning">
+              <i class="bi bi-award-fill fs-4"></i>
+            </div>
+            <h6 class="fw-bold mb-2">Offers & Grants</h6>
+            <p class="text-muted small mb-0">Securing unconditional offer letters, CAS/I-20 issuance, and scholarship negotiation.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="col-md-6 col-lg">
+          <div class="gp-card p-4 h-100 border text-center position-relative">
+            <div class="badge bg-danger rounded-pill mb-3 px-3 py-2 fs-6">Step 04</div>
+            <div class="service-icon-box mx-auto mb-3 bg-danger-subtle text-danger">
+              <i class="bi bi-passport-fill fs-4"></i>
+            </div>
+            <h6 class="fw-bold mb-2">Visa Processing</h6>
+            <p class="text-muted small mb-0">Financial proof vetting, visa file lodging, and one-on-one mock consular interview sessions.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="col-md-6 col-lg">
+          <div class="gp-card p-4 h-100 border text-center position-relative">
+            <div class="badge bg-info text-dark rounded-pill mb-3 px-3 py-2 fs-6">Step 05</div>
+            <div class="service-icon-box mx-auto mb-3 bg-info-subtle text-info">
+              <i class="bi bi-airplane-engines-fill fs-4"></i>
+            </div>
+            <h6 class="fw-bold mb-2">Pre-Departure</h6>
+            <p class="text-muted small mb-0">Forex exchange, verified student dorm housing, flight booking, and local airport pickup.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHOLARSHIP HIGHLIGHTS SECTION -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <span class="text-warning fw-bold text-uppercase small letter-spacing-1">Financial Aid</span>
+          <h2 class="display-6 fw-bold mt-2 mb-4">We Uncover Scholarships That Most Students Never Find</h2>
+          <p class="text-muted mb-4">
+            Over $4.2M in tuition fee discounts, graduate assistantships, and full fellowships were claimed by our students in the 2024-2025 academic season.
+          </p>
+          <div class="row g-3 mb-4">
+            <div class="col-sm-6">
+              <div class="p-3 border rounded-3 bg-surface">
+                <h4 class="fw-bold text-primary mb-1">82%</h4>
+                <p class="small text-muted mb-0">Of our coached applicants received partial or full tuition waivers.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="p-3 border rounded-3 bg-surface">
+                <h4 class="fw-bold text-success mb-1">100% Free</h4>
+                <p class="small text-muted mb-0">Direct eligibility screening during your diagnostic counseling call.</p>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">
+            Check My Scholarship Eligibility <i class="bi bi-arrow-right ms-1"></i>
+          </button>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="p-4 border rounded-4 bg-surface shadow-md">
+            <h5 class="fw-bold mb-3"><i class="bi bi-award-fill text-warning me-2"></i> High-Value Scholarship Programs</h5>
+            <div class="list-group list-group-flush">
+              <div class="list-group-item px-0 py-3 bg-transparent">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <h6 class="mb-0 fw-bold">Chevening Scholarships (UK)</h6>
+                  <span class="badge bg-success">100% Fully Funded</span>
+                </div>
+                <p class="small text-muted mb-0">Covers flights, full tuition fees, and monthly living stipend for master's programs.</p>
+              </div>
+              <div class="list-group-item px-0 py-3 bg-transparent">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <h6 class="mb-0 fw-bold">Fulbright Foreign Student Program (USA)</h6>
+                  <span class="badge bg-primary">Full Ride</span>
+                </div>
+                <p class="small text-muted mb-0">Covers tuition, health insurance, and academic research allowance across USA institutions.</p>
+              </div>
+              <div class="list-group-item px-0 py-3 bg-transparent">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <h6 class="mb-0 fw-bold">DAAD Study Scholarships (Germany)</h6>
+                  <span class="badge bg-info text-dark">€934 / Month</span>
+                </div>
+                <p class="small text-muted mb-0">Monthly allowance plus travel and health insurance for postgraduate courses.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: STUDY & LIVING COST COMPARISON -->
+  <section class="py-6 py-lg-7 bg-surface">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 rounded-pill text-uppercase">Budgeting & Finances</span>
+        <h2 class="display-6 fw-bold mt-3 mb-3">Estimated Study & Living Costs By Country</h2>
+        <p class="text-muted">
+          Plan your overseas educational journey with complete transparency. Compare average annual tuition fees, monthly living budgets, and post-study work visa rights across top study destinations.
+        </p>
+      </div>
+
+      <div class="table-responsive shadow-sm rounded-4 border bg-surface">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light border-bottom">
+            <tr>
+              <th scope="col" class="py-3 px-4">Study Destination</th>
+              <th scope="col" class="py-3 px-3">Avg. Tuition / Year</th>
+              <th scope="col" class="py-3 px-3">Est. Living / Month</th>
+              <th scope="col" class="py-3 px-3">Part-Time Work Rights</th>
+              <th scope="col" class="py-3 px-3">Post-Study Work Visa</th>
+              <th scope="col" class="py-3 px-4 text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-3 px-4">
+                <div class="d-flex align-items-center">
+                  <span class="fs-4 me-3">🇬🇧</span>
+                  <div>
+                    <h6 class="mb-0 fw-bold">United Kingdom</h6>
+                    <small class="text-muted">London & Regional</small>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3 fw-semibold">£13,000 – £28,000</td>
+              <td class="py-3 px-3">£1,000 – £1,400</td>
+              <td class="py-3 px-3"><span class="badge bg-success-subtle text-success">20 hrs / week</span></td>
+              <td class="py-3 px-3"><span class="badge bg-primary-subtle text-primary">2 Years Graduate Route</span></td>
+              <td class="py-3 px-4 text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">Plan Budget</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4">
+                <div class="d-flex align-items-center">
+                  <span class="fs-4 me-3">🇺🇸</span>
+                  <div>
+                    <h6 class="mb-0 fw-bold">United States</h6>
+                    <small class="text-muted">Public & Private Universities</small>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3 fw-semibold">$22,000 – $45,000</td>
+              <td class="py-3 px-3">$1,200 – $1,800</td>
+              <td class="py-3 px-3"><span class="badge bg-success-subtle text-success">20 hrs / week (On-campus)</span></td>
+              <td class="py-3 px-3"><span class="badge bg-primary-subtle text-primary">1 – 3 Years OPT (STEM)</span></td>
+              <td class="py-3 px-4 text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">Plan Budget</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4">
+                <div class="d-flex align-items-center">
+                  <span class="fs-4 me-3">🇨🇦</span>
+                  <div>
+                    <h6 class="mb-0 fw-bold">Canada</h6>
+                    <small class="text-muted">Colleges & Universities</small>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3 fw-semibold">CAD 18,000 – 35,000</td>
+              <td class="py-3 px-3">CAD 1,100 – 1,600</td>
+              <td class="py-3 px-3"><span class="badge bg-success-subtle text-success">20–24 hrs / week</span></td>
+              <td class="py-3 px-3"><span class="badge bg-primary-subtle text-primary">Up to 3 Years PGWP</span></td>
+              <td class="py-3 px-4 text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">Plan Budget</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4">
+                <div class="d-flex align-items-center">
+                  <span class="fs-4 me-3">🇦🇺</span>
+                  <div>
+                    <h6 class="mb-0 fw-bold">Australia</h6>
+                    <small class="text-muted">Group of Eight & Tech Networks</small>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3 fw-semibold">AUD 24,000 – 42,000</td>
+              <td class="py-3 px-3">AUD 1,400 – 1,900</td>
+              <td class="py-3 px-3"><span class="badge bg-success-subtle text-success">48 hrs / fortnight</span></td>
+              <td class="py-3 px-3"><span class="badge bg-primary-subtle text-primary">2 – 4 Years PSW</span></td>
+              <td class="py-3 px-4 text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">Plan Budget</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4">
+                <div class="d-flex align-items-center">
+                  <span class="fs-4 me-3">🇩🇪</span>
+                  <div>
+                    <h6 class="mb-0 fw-bold">Germany</h6>
+                    <small class="text-muted">Public Universities (TU9)</small>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3 fw-semibold text-success">€0 – €3,000 (Tuition-Free)</td>
+              <td class="py-3 px-3">€850 – €1,100</td>
+              <td class="py-3 px-3"><span class="badge bg-success-subtle text-success">140 full / 280 half days</span></td>
+              <td class="py-3 px-3"><span class="badge bg-primary-subtle text-primary">18 Months Jobseeker</span></td>
+              <td class="py-3 px-4 text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">Plan Budget</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4">
+                <div class="d-flex align-items-center">
+                  <span class="fs-4 me-3">🇮🇪</span>
+                  <div>
+                    <h6 class="mb-0 fw-bold">Ireland</h6>
+                    <small class="text-muted">European Tech Hub</small>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3 fw-semibold">€12,000 – €25,000</td>
+              <td class="py-3 px-3">€900 – €1,300</td>
+              <td class="py-3 px-3"><span class="badge bg-success-subtle text-success">20 hrs / week</span></td>
+              <td class="py-3 px-3"><span class="badge bg-primary-subtle text-primary">2 Years Third Level Scheme</span></td>
+              <td class="py-3 px-4 text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">Plan Budget</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 p-3 bg-subtle border rounded-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-info-circle-fill text-primary fs-4 me-3"></i>
+          <span class="small text-muted">Figures are representative estimates for international students. Currency exchange rates and living costs may vary depending on city and lifestyle.</span>
+        </div>
+        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#consultationModal">
+          <i class="bi bi-calculator me-1"></i> Calculate My Exact Budget
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: STUDENT SUCCESS STORIES & VISA APPROVALS -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge bg-success-subtle text-success fw-semibold px-3 py-2 rounded-pill text-uppercase">Proven Track Record</span>
+        <h2 class="display-6 fw-bold mt-3 mb-3">Real Students, Approved Visas & Dream Universities</h2>
+        <p class="text-muted">
+          Read genuine stories from applicants who trusted GlobalPath to guide them through admission hurdles, scholarships, and consulate interviews.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border rounded-4 bg-surface shadow-sm overflow-hidden">
+            <div class="position-relative">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Sarah Lin" class="w-100" style="height: 200px; object-fit: cover;">
+              <span class="badge bg-success position-absolute top-0 end-0 m-3 shadow-sm"><i class="bi bi-check-circle-fill me-1"></i> Visa Approved</span>
+            </div>
+            <div class="card-body p-4 d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge bg-primary-subtle text-primary">🇬🇧 United Kingdom</span>
+                <span class="small text-muted fw-semibold">Sep 2025</span>
+              </div>
+              <h5 class="fw-bold mb-1">Sarah Lin</h5>
+              <p class="small text-primary fw-semibold mb-2">MSc Data Science, Univ. of Manchester</p>
+              <p class="small text-muted flex-grow-1 mb-3">
+                "GlobalPath helped me polish my personal statement and secure a £6,000 scholarship. The visa turnaround was just 11 days!"
+              </p>
+              <div class="pt-3 border-top d-flex align-items-center justify-content-between">
+                <span class="small text-success fw-bold"><i class="bi bi-award-fill me-1"></i> £6,000 Grant</span>
+                <div class="text-warning small">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border rounded-4 bg-surface shadow-sm overflow-hidden">
+            <div class="position-relative">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=500&q=80" alt="Arjun Mehta" class="w-100" style="height: 200px; object-fit: cover;">
+              <span class="badge bg-success position-absolute top-0 end-0 m-3 shadow-sm"><i class="bi bi-check-circle-fill me-1"></i> F-1 Visa Granted</span>
+            </div>
+            <div class="card-body p-4 d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge bg-primary-subtle text-primary">🇺🇸 United States</span>
+                <span class="small text-muted fw-semibold">Jan 2026</span>
+              </div>
+              <h5 class="fw-bold mb-1">Arjun Mehta</h5>
+              <p class="small text-primary fw-semibold mb-2">MS Computer Science, Arizona State</p>
+              <p class="small text-muted flex-grow-1 mb-3">
+                "The mock consular interviews conducted by former visa officers eliminated all my anxieties. I cleared my interview with ease."
+              </p>
+              <div class="pt-3 border-top d-flex align-items-center justify-content-between">
+                <span class="small text-success fw-bold"><i class="bi bi-award-fill me-1"></i> $14,000 Award</span>
+                <div class="text-warning small">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border rounded-4 bg-surface shadow-sm overflow-hidden">
+            <div class="position-relative">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Chloe Tremblay" class="w-100" style="height: 200px; object-fit: cover;">
+              <span class="badge bg-success position-absolute top-0 end-0 m-3 shadow-sm"><i class="bi bi-check-circle-fill me-1"></i> Study Permit Ok</span>
+            </div>
+            <div class="card-body p-4 d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge bg-primary-subtle text-primary">🇨🇦 Canada</span>
+                <span class="small text-muted fw-semibold">Fall 2025</span>
+              </div>
+              <h5 class="fw-bold mb-1">Chloe Tremblay</h5>
+              <p class="small text-primary fw-semibold mb-2">MBA, University of British Columbia</p>
+              <p class="small text-muted flex-grow-1 mb-3">
+                "They navigated the provincial PAL attestation letters seamlessly and filed my study permit with flawless documentation."
+              </p>
+              <div class="pt-3 border-top d-flex align-items-center justify-content-between">
+                <span class="small text-success fw-bold"><i class="bi bi-award-fill me-1"></i> CAD 10,000 Grant</span>
+                <div class="text-warning small">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border rounded-4 bg-surface shadow-sm overflow-hidden">
+            <div class="position-relative">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Liam Henderson" class="w-100" style="height: 200px; object-fit: cover;">
+              <span class="badge bg-success position-absolute top-0 end-0 m-3 shadow-sm"><i class="bi bi-check-circle-fill me-1"></i> Visa Granted</span>
+            </div>
+            <div class="card-body p-4 d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge bg-primary-subtle text-primary">🇦🇺 Australia</span>
+                <span class="small text-muted fw-semibold">Feb 2026</span>
+              </div>
+              <h5 class="fw-bold mb-1">Liam Henderson</h5>
+              <p class="small text-primary fw-semibold mb-2">BEng Mechatronics, Univ. of Sydney</p>
+              <p class="small text-muted flex-grow-1 mb-3">
+                "From IELTS preparation to getting my confirmation of enrolment and OSHC health coverage, everything went smoothly."
+              </p>
+              <div class="pt-3 border-top d-flex align-items-center justify-content-between">
+                <span class="small text-success fw-bold"><i class="bi bi-award-fill me-1"></i> 20% Fee Waiver</span>
+                <div class="text-warning small">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: UPCOMING INTAKES & DEADLINES -->
+  <section class="py-6 py-lg-7 bg-surface">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge bg-warning-subtle text-warning-emphasis fw-semibold px-3 py-2 rounded-pill text-uppercase">Application Windows</span>
+        <h2 class="display-6 fw-bold mt-3 mb-3">Upcoming Global Intakes & Deadlines</h2>
+        <p class="text-muted">
+          Universities review applications on rolling schedules. Submitting 6 to 9 months in advance maximizes scholarship funding and campus housing availability.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="card h-100 border rounded-4 bg-surface p-4 shadow-sm position-relative">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="badge bg-danger text-white px-3 py-2 rounded-pill"><i class="bi bi-clock-history me-1"></i> Priority Intake</span>
+              <span class="small fw-semibold text-muted">Major Season</span>
+            </div>
+            <h4 class="fw-bold mb-2">Fall Intake 2026</h4>
+            <p class="small text-muted mb-4">Classes start: August – October 2026. Largest course selection and highest scholarship allocations.</p>
+            
+            <div class="border-top pt-3 mb-4">
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Target Countries:</span>
+                <span class="fw-bold">UK, USA, Canada, Germany</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Application Deadline:</span>
+                <span class="fw-bold text-danger">April – June 2026</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Visa Filing Window:</span>
+                <span class="fw-bold">May – July 2026</span>
+              </div>
+            </div>
+
+            <div class="mt-auto">
+              <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                Apply for Fall 2026 <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card h-100 border rounded-4 bg-surface p-4 shadow-sm position-relative">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="badge bg-success text-white px-3 py-2 rounded-pill"><i class="bi bi-calendar-event me-1"></i> Open for Admissions</span>
+              <span class="small fw-semibold text-muted">Winter Season</span>
+            </div>
+            <h4 class="fw-bold mb-2">Spring Intake 2027</h4>
+            <p class="small text-muted mb-4">Classes start: January – February 2027. Ideal for students graduating mid-year or wanting extra preparation.</p>
+            
+            <div class="border-top pt-3 mb-4">
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Target Countries:</span>
+                <span class="fw-bold">USA, UK, Australia, Ireland</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Application Deadline:</span>
+                <span class="fw-bold text-success">September – October 2026</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Visa Filing Window:</span>
+                <span class="fw-bold">October – December 2026</span>
+              </div>
+            </div>
+
+            <div class="mt-auto">
+              <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                Apply for Spring 2027 <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card h-100 border rounded-4 bg-surface p-4 shadow-sm position-relative">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="badge bg-info text-dark px-3 py-2 rounded-pill"><i class="bi bi-stars me-1"></i> Early Shortlisting</span>
+              <span class="small fw-semibold text-muted">Mid-Year Season</span>
+            </div>
+            <h4 class="fw-bold mb-2">Summer / July Intake 2027</h4>
+            <p class="small text-muted mb-4">Classes start: May – July 2027. Major primary intake for Australia and New Zealand universities.</p>
+            
+            <div class="border-top pt-3 mb-4">
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Target Countries:</span>
+                <span class="fw-bold">Australia, NZ, Germany</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Application Deadline:</span>
+                <span class="fw-bold">February – March 2027</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2">
+                <span class="text-muted"><i class="bi bi-check2 text-primary me-2"></i>Visa Filing Window:</span>
+                <span class="fw-bold">April – May 2027</span>
+              </div>
+            </div>
+
+            <div class="mt-auto">
+              <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                Shortlist Summer 2027 <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: FREQUENTLY ASKED QUESTIONS (FAQ) -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge bg-secondary-subtle text-secondary-emphasis fw-semibold px-3 py-2 rounded-pill text-uppercase">Got Questions?</span>
+        <h2 class="display-6 fw-bold mt-3 mb-3">Frequently Asked Questions</h2>
+        <p class="text-muted">
+          Everything you need to know about global admissions, eligibility, financial planning, and the visa process.
+        </p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion border-0" id="studyAbroadFaqAccordion">
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden bg-surface">
+              <h2 class="accordion-header" id="faqHeadingOne">
+                <button class="accordion-button fw-bold py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                  <i class="bi bi-question-circle text-primary me-2"></i> When should I begin my study abroad preparation?
+                </button>
+              </h2>
+              <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#studyAbroadFaqAccordion">
+                <div class="accordion-body px-4 pb-4 pt-1 text-muted">
+                  We strongly advise beginning 8 to 12 months ahead of your target intake semester. This allows sufficient time for standardized tests (IELTS/PTE/TOEFL/GRE), preparing Statement of Purpose (SOP) drafts, acquiring university recommendation letters, securing financial documents, and processing visa approvals without last-minute delays.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden bg-surface">
+              <h2 class="accordion-header" id="faqHeadingTwo">
+                <button class="accordion-button collapsed fw-bold py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                  <i class="bi bi-question-circle text-primary me-2"></i> Can I study abroad without IELTS or TOEFL?
+                </button>
+              </h2>
+              <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#studyAbroadFaqAccordion">
+                <div class="accordion-body px-4 pb-4 pt-1 text-muted">
+                  Yes, several institutions in the UK, USA, and Germany accept alternative proof of proficiency such as Medium of Instruction (MOI) certificates if your prior education was conducted entirely in English, or online tests such as the Duolingo English Test (DET) and PTE Academic. Our counselors evaluate your academic background to identify waiver-friendly universities.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden bg-surface">
+              <h2 class="accordion-header" id="faqHeadingThree">
+                <button class="accordion-button collapsed fw-bold py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                  <i class="bi bi-question-circle text-primary me-2"></i> Are international students allowed to work part-time while studying?
+                </button>
+              </h2>
+              <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#studyAbroadFaqAccordion">
+                <div class="accordion-body px-4 pb-4 pt-1 text-muted">
+                  Yes! In the UK, Canada, and Ireland, international students can work up to 20 hours per week during academic terms and full-time during vacations. In Australia, students can work up to 48 hours per fortnight. In the US, students on F-1 visas can work up to 20 hours per week on-campus during school sessions.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden bg-surface">
+              <h2 class="accordion-header" id="faqHeadingFour">
+                <button class="accordion-button collapsed fw-bold py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+                  <i class="bi bi-question-circle text-primary me-2"></i> What are my chances of securing a scholarship?
+                </button>
+              </h2>
+              <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#studyAbroadFaqAccordion">
+                <div class="accordion-body px-4 pb-4 pt-1 text-muted">
+                  Over 82% of students mentored by GlobalPath obtain partial or substantial merit-based scholarships. Scholarships range from automatic fee discounts (£2,000 to £8,000 / $5,000 to $15,000) to full government-backed awards like Chevening, DAAD, and Fulbright. We match you with programs where your GPA and extracurricular profile stand out.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden bg-surface">
+              <h2 class="accordion-header" id="faqHeadingFive">
+                <button class="accordion-button collapsed fw-bold py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFive" aria-expanded="false" aria-controls="faqCollapseFive">
+                  <i class="bi bi-question-circle text-primary me-2"></i> What does GlobalPath charge for consultation and application filing?
+                </button>
+              </h2>
+              <div id="faqCollapseFive" class="accordion-collapse collapse" aria-labelledby="faqHeadingFive" data-bs-parent="#studyAbroadFaqAccordion">
+                <div class="accordion-body px-4 pb-4 pt-1 text-muted">
+                  Your initial diagnostic profile assessment and university discovery session are 100% free! Because GlobalPath is an official representative for over 350+ partner universities, our core admission processing for partner institutions is completely sponsored by institutional partnerships. We also offer specialized premium bundles for Ivy League / elite tier applications and dedicated 1-on-1 visa mock interview coaching.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden bg-surface">
+              <h2 class="accordion-header" id="faqHeadingSix">
+                <button class="accordion-button collapsed fw-bold py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseSix" aria-expanded="false" aria-controls="faqCollapseSix">
+                  <i class="bi bi-question-circle text-primary me-2"></i> What happens if I have a study gap or previous visa refusal?
+                </button>
+              </h2>
+              <div id="faqCollapseSix" class="accordion-collapse collapse" aria-labelledby="faqHeadingSix" data-bs-parent="#studyAbroadFaqAccordion">
+                <div class="accordion-body px-4 pb-4 pt-1 text-muted">
+                  Study gaps are standard when backed by legitimate work experience, certifications, or justifiable personal milestones. For applicants with prior visa refusals, our senior immigration specialists conduct a forensic review of previous CAIPS/GCMS notes or rejection letters, rectify the discrepancy, and re-file with ironclad documentation.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <p class="text-muted small mb-2">Have a question not listed here?</p>
+            <a href="contact.html" class="btn btn-outline-primary btn-sm px-4">
+              <i class="bi bi-chat-dots me-1"></i> Speak With an Admissions Advisor
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="py-6 bg-primary text-white position-relative overflow-hidden">
+    <div class="container text-center position-relative z-1">
+      <h2 class="display-5 fw-bold mb-3">Start Your Overseas Application Today</h2>
+      <p class="lead max-w-700 mx-auto opacity-90 mb-4">
+        Don't miss upcoming university deadlines. Get matched with certified admissions mentors and begin your journey.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <button class="btn btn-white btn-lg" data-bs-toggle="modal" data-bs-target="#consultationModal">
+          <i class="bi bi-calendar2-check-fill text-primary"></i> Book Free Consultation
+        </button>
+        <a href="services.html" class="btn btn-outline-light btn-lg">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MULTI-COLUMN FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a class="brand-logo text-white mb-3" href="index.html">
+            <div class="brand-icon">
+              <i class="bi bi-globe-americas"></i>
+            </div>
+            <span>GlobalPath<span class="text-primary">.</span></span>
+          </a>
+          <p class="small text-muted mb-4 pe-lg-4">
+            GlobalPath Education is an internationally accredited study abroad consultancy helping ambitious students gain admission to top universities across the UK, USA, Canada, Australia, and Europe.
+          </p>
+          <div class="d-flex">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h5>Services</h5>
+          <ul class="footer-links">
+            <li><a href="service-details.html?id=university-selection">University Selection</a></li>
+            <li><a href="service-details.html?id=visa-assistance">Student Visa Guidance</a></li>
+            <li><a href="service-details.html?id=scholarship-guidance">Scholarship Search</a></li>
+            <li><a href="service-details.html?id=application-assistance">Application Lodgement</a></li>
+            <li><a href="service-details.html?id=ielts-language-prep">IELTS Coaching</a></li>
+            <li><a href="service-details.html?id=career-counseling">Career Roadmapping</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5>Global Headquarters</h5>
+          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> 452 Fifth Avenue, New York, NY 10018</p>
+          <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 592-7489</p>
+          <p class="small text-muted mb-2"><i class="bi bi-envelope-fill text-primary me-2"></i> admissions@globalpathedu.com</p>
+          <p class="small text-muted mb-4"><i class="bi bi-clock-fill text-primary me-2"></i> Mon - Sat: 9:00 AM - 6:00 PM EST</p>
+
+          <h6 class="text-white small fw-bold mb-2">Newsletter</h6>
+          <form class="newsletter-form">
+            <div class="input-group">
+              <input type="email" class="form-control form-control-sm" placeholder="Your email address" required>
+              <button class="btn btn-primary btn-sm" type="submit">Join</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center text-muted">
+        <p class="mb-0">&copy; 2026 GlobalPath Education Consultancy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOOK CONSULTATION MODAL -->
+  <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="consultationModalLabel">
+            <i class="bi bi-calendar2-check-fill text-primary me-2"></i> Book Free Consultation
+          </h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form class="consultation-form">
+            <div class="mb-3">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" name="name" placeholder="e.g. Liam Chen" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" name="email" placeholder="liam@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" name="phone" oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')" pattern="[0-9+\s\-()]{7,20}" title="Please enter numbers only (min 7 digits)" placeholder="+1 (555) 000-0000" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Preferred Destination *</label>
+                <select class="form-select" name="country" required>
+                  <option value="" selected disabled>Select Country</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="New Zealand">New Zealand</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Study Level</label>
+                <select class="form-select" name="studyLevel">
+                  <option value="Master's Degree">Master's Degree</option>
+                  <option value="Bachelor's Degree">Bachelor's Degree</option>
+                  <option value="Post-Graduate Diploma">Post-Graduate Diploma</option>
+                  <option value="PhD / Doctorate">PhD / Doctorate</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Required Service</label>
+              <select class="form-select" name="service">
+                <option value="University Selection">University & Course Selection</option>
+                <option value="Visa Assistance">Student Visa Assistance</option>
+                <option value="Scholarship Guidance">Scholarship Search</option>
+                <option value="Application Processing">Full Application Lodgement</option>
+                <option value="IELTS Prep">IELTS / Language Coaching</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Additional Message / Question</label>
+              <textarea class="form-control" name="message" rows="2" placeholder="Tell us about your target intake or previous GPA..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              <i class="bi bi-send-fill me-1"></i> Submit Consultation Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

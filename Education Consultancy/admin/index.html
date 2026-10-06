@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | GlobalPath Education Consultancy</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <!-- ADMIN SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="admin-menu-title">Main Dashboard</div>
+        <a href="index.html" class="admin-nav-item active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="students.html" class="admin-nav-item"><i class="bi bi-people"></i> Students <span class="badge bg-primary">10</span></a>
+        <a href="universities.html" class="admin-nav-item"><i class="bi bi-bank"></i> Universities <span class="badge bg-info text-dark">8</span></a>
+        <a href="services.html" class="admin-nav-item"><i class="bi bi-grid-fill"></i> Services <span class="badge bg-secondary">10</span></a>
+        <a href="applications.html" class="admin-nav-item"><i class="bi bi-file-earmark-text"></i> Applications <span class="badge bg-warning text-dark">10</span></a>
+        <a href="orders.html" class="admin-nav-item"><i class="bi bi-credit-card"></i> Orders & Invoices <span class="badge bg-success">10</span></a>
+        <a href="messages.html" class="admin-nav-item"><i class="bi bi-envelope"></i> Messages <span class="badge bg-danger">10</span></a>
+
+        <div class="admin-menu-title mt-3">Content Management</div>
+        <a href="blog.html" class="admin-nav-item"><i class="bi bi-newspaper"></i> Blog Posts <span class="badge bg-secondary">12</span></a>
+        <a href="testimonials.html" class="admin-nav-item"><i class="bi bi-star"></i> Testimonials</a>
+        <a href="gallery.html" class="admin-nav-item"><i class="bi bi-images"></i> Media Gallery</a>
+        <a href="pricing.html" class="admin-nav-item"><i class="bi bi-tag"></i> Pricing Tiers</a>
+
+        <div class="admin-menu-title mt-3">Configuration</div>
+        <a href="settings.html" class="admin-nav-item"><i class="bi bi-gear"></i> Settings</a>
+        <a href="../index.html" class="admin-nav-item"><i class="bi bi-box-arrow-up-right"></i> View Public Site</a>
+        <a href="../login.html" class="admin-nav-item text-danger"><i class="bi bi-power"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN ADMIN VIEW -->
+    <main class="admin-main">
+      <!-- TOPBAR -->
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggleBtn" aria-label="Toggle Menu">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <div class="admin-topbar-search d-none d-md-block">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text bg-surface border-end-0"><i class="bi bi-search text-muted"></i></span>
+              <input type="text" class="form-control border-start-0" placeholder="Search students, admissions, visas...">
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()" title="Switch RTL">
+            <span class="rtl-label">⇄ RTL</span>
+          </button>
+
+          <!-- Notifications -->
+          <div class="dropdown">
+            <button class="btn-control position-relative" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-bell-fill"></i>
+              <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="width: 280px;">
+              <li class="p-2 border-bottom fw-bold small">Admissions Alerts</li>
+              <li><a class="dropdown-item small" href="messages.html">New consultation: Tanya Kapoor (Germany)</a></li>
+              <li><a class="dropdown-item small" href="applications.html">CAS issued for Aarav Sharma</a></li>
+              <li><a class="dropdown-item small" href="orders.html">Payment received: $899 (Mateo H.)</a></li>
+            </ul>
+          </div>
+
+          <!-- Admin Profile -->
+          <div class="d-flex align-items-center gap-2">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" class="rounded-circle" style="width: 36px; height: 36px; object-fit: cover;" alt="Dr. Evelyn Vance">
+            <div class="d-none d-sm-block">
+              <span class="fw-bold small d-block lh-1">Dr. Evelyn Vance</span>
+              <span class="text-muted fs-xs">Admissions Director</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- BODY -->
+      <div class="admin-body">
+        <!-- KPI METRIC STAT CARDS -->
+        <div class="row g-4 mb-4">
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small text-uppercase fw-bold">Total Students</span>
+                <h3 class="fw-bold mb-1 mt-1">15,240</h3>
+                <small class="text-success fw-bold"><i class="bi bi-arrow-up-right"></i> +14.2%</small> <small class="text-muted">vs last month</small>
+              </div>
+              <div class="stat-icon primary"><i class="bi bi-people-fill"></i></div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small text-uppercase fw-bold">Active Applications</span>
+                <h3 class="fw-bold mb-1 mt-1">482</h3>
+                <small class="text-success fw-bold"><i class="bi bi-arrow-up-right"></i> +8.5%</small> <small class="text-muted">current cycle</small>
+              </div>
+              <div class="stat-icon info"><i class="bi bi-file-earmark-text-fill"></i></div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small text-uppercase fw-bold">Monthly Revenue</span>
+                <h3 class="fw-bold mb-1 mt-1">$84,300</h3>
+                <small class="text-success fw-bold"><i class="bi bi-arrow-up-right"></i> +22.4%</small> <small class="text-muted">package billing</small>
+              </div>
+              <div class="stat-icon success"><i class="bi bi-currency-dollar"></i></div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small text-uppercase fw-bold">Visa Approvals</span>
+                <h3 class="fw-bold mb-1 mt-1">99.2%</h3>
+                <small class="text-primary fw-bold"><i class="bi bi-shield-check"></i> 1,420 grants</small> <small class="text-muted">in 2025</small>
+              </div>
+              <div class="stat-icon warning"><i class="bi bi-passport-fill"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHARTS SECTION -->
+        <div class="row g-4 mb-4">
+          <!-- Student Registration Trends (Line Chart) -->
+          <div class="col-lg-8">
+            <div class="gp-card p-4 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0">Student Enrollments & Intake Trends (2025/2026)</h5>
+                <span class="badge bg-primary-subtle text-primary">Monthly Cohort</span>
+              </div>
+              <div style="height: 280px;">
+                <canvas id="chartStudentTrends"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Country Distribution (Doughnut Chart) -->
+          <div class="col-lg-4">
+            <div class="gp-card p-4 h-100">
+              <h5 class="fw-bold mb-3">Target Country Distribution</h5>
+              <div style="height: 280px;">
+                <canvas id="chartCountryDistribution"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+          <!-- Offers vs Visa Grants by Country (Bar Chart) -->
+          <div class="col-lg-6">
+            <div class="gp-card p-4 h-100">
+              <h5 class="fw-bold mb-3">Admissions vs Visa Grants by Country</h5>
+              <div style="height: 250px;">
+                <canvas id="chartApplicationsByCountry"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Revenue Growth -->
+          <div class="col-lg-6">
+            <div class="gp-card p-4 h-100">
+              <h5 class="fw-bold mb-3">Consulting Revenue Growth ($)</h5>
+              <div style="height: 250px;">
+                <canvas id="chartRevenueTrend"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT STUDENT APPLICATIONS TABLE -->
+        <div class="admin-table-card">
+          <div class="admin-table-header">
+            <h5 class="fw-bold mb-0">Recent University Applications</h5>
+            <a href="applications.html" class="btn btn-outline-primary btn-sm">View All Applications</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Target University</th>
+                  <th>Course</th>
+                  <th>Intake</th>
+                  <th>Status</th>
+                  <th>Counselor</th>
+                </tr>
+              </thead>
+              <tbody id="recentAppsTbody">
+                <!-- Dynamically populated from GlobalData -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/charts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const apps = GlobalData.get('applications').slice(0, 5);
+      const tbody = document.getElementById('recentAppsTbody');
+      tbody.innerHTML = apps.map(a => `
+        <tr>
+          <td>
+            <div class="fw-bold">${a.studentName}</div>
+            <small class="text-muted">${a.studentId}</small>
+          </td>
+          <td>${a.university} (${a.country})</td>
+          <td>${a.course}</td>
+          <td><span class="badge bg-secondary-subtle text-secondary">${a.intake}</span></td>
+          <td>
+            <span class="badge-status ${a.status === 'Visa Approved' ? 'approved' : a.status === 'Offer Received' ? 'offer' : 'processing'}">
+              ${a.status}
+            </span>
+          </td>
+          <td><small class="text-muted">${a.counselor}</small></td>
+        </tr>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

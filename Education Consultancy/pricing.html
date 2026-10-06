@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing & Application Packages | GlobalPath Education</title>
+  <meta name="description" content="Transparent, flat-rate overseas education consultancy pricing. No hidden fees or surprise commissions.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container">
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+        <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavMenu">
+          <i class="bi bi-list fs-2"></i>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between align-items-center">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Home</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door-fill text-primary"></i> Home 1 – General Services</a></li>
+              <li><a class="dropdown-item" href="home-2.html"><i class="bi bi-airplane-engines-fill text-info"></i> Home 2 – Study Abroad</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="student-dashboard.html">Dashboard</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <a href="login.html" class="btn btn-outline-primary btn-sm px-3"><i class="bi bi-person-fill"></i> Login</a>
+          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#consultationModal"><i class="bi bi-calendar2-check-fill"></i> Book Consultation</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- OFFCANVAS MOBILE DRAWER -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNavMenu" aria-labelledby="mobileNavMenuLabel">
+    <div class="offcanvas-header border-bottom">
+      <a class="brand-logo" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-globe-americas"></i>
+        </div>
+        <span>GlobalPath<span class="text-primary">.</span></span>
+      </a>
+      <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex gap-2 mb-4">
+        <button class="btn btn-outline-secondary w-50 theme-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleTheme()">
+          <i class="bi bi-moon-stars-fill"></i> Theme
+        </button>
+        <button class="btn btn-outline-secondary w-50 rtl-toggle-btn d-flex align-items-center justify-content-center gap-2" onclick="toggleRTL()">
+          <span class="rtl-label">⇄ RTL</span>
+        </button>
+      </div>
+
+      <ul class="nav flex-column mb-4">
+        <li class="nav-item mb-2">
+          <a class="nav-link fw-bold d-flex justify-content-between" data-bs-toggle="collapse" href="#mobileHomeSub">
+            <span>Home</span> <i class="bi bi-chevron-down"></i>
+          </a>
+          <div class="collapse ps-3" id="mobileHomeSub">
+            <a class="nav-link py-2" href="index.html">Home 1 – General Services</a>
+            <a class="nav-link py-2" href="home-2.html">Home 2 – Study Abroad</a>
+          </div>
+        </li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="about.html">About Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="services.html">Services</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="gallery.html">Gallery</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="pricing.html">Pricing Plans</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="blog.html">Blog</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="contact.html">Contact Us</a></li>
+        <li class="nav-item mb-2"><a class="nav-link fw-bold" href="student-dashboard.html">Dashboard</a></li>
+      </ul>
+
+      <div class="d-grid gap-2">
+        <a href="login.html" class="btn btn-outline-primary"><i class="bi bi-person-fill"></i> Student Login</a>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultationModal"><i class="bi bi-calendar2-check-fill"></i> Book Consultation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container position-relative z-1">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-2">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Pricing</li>
+        </ol>
+      </nav>
+      <h1 class="display-5 fw-bold mb-2">Transparent Consulting Packages</h1>
+      <p class="lead opacity-80 mb-0">Honest pricing with zero hidden commissions. Choose the support tier tailored to your ambition.</p>
+    </div>
+  </header>
+
+  <!-- PRICING CARDS SECTION -->
+  <section class="py-6 py-lg-7 bg-subtle">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="text-primary fw-bold text-uppercase small letter-spacing-1">Investment in Your Future</span>
+        <h2 class="display-6 fw-bold mt-2 mb-3">Simple, Predictable Packages</h2>
+        <p class="text-muted">All packages include dedicated counselor contact and admission guarantee safeguards.</p>
+      </div>
+
+      <div class="row g-4 align-items-center mb-5 pb-lg-5">
+        <!-- Basic Plan -->
+        <div class="col-lg-4">
+          <div class="pricing-card">
+            <h5 class="fw-bold mb-1">Basic Guidance</h5>
+            <p class="small text-muted mb-4">For self-directed candidates seeking expert validation.</p>
+            <div class="d-flex align-items-baseline gap-1 mb-4">
+              <h2 class="display-5 fw-bold text-primary mb-0">$299</h2>
+              <span class="text-muted small">/ one-time</span>
+            </div>
+            <ul class="list-unstyled mb-5 flex-grow-1">
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> 1-on-1 Profile Assessment (60 mins)
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Shortlist of 5 Universities (Dream/Safe)
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Standard Entry Benchmark Check
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Tuition & Cost Breakdown Sheet
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small text-muted">
+                <i class="bi bi-x-circle text-subtle"></i> Direct Visa Mock Interviews
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small text-muted">
+                <i class="bi bi-x-circle text-subtle"></i> SOP Line-by-Line Editorial
+              </li>
+            </ul>
+            <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+              Choose Basic Plan
+            </button>
+          </div>
+        </div>
+
+        <!-- Premium Plan (Featured) -->
+        <div class="col-lg-4">
+          <div class="pricing-card featured">
+            <span class="pricing-badge">Most Popular</span>
+            <h5 class="fw-bold mb-1">Premium Concierge</h5>
+            <p class="small text-muted mb-4">End-to-end full admission & guaranteed visa guidance.</p>
+            <div class="d-flex align-items-baseline gap-1 mb-4">
+              <h2 class="display-5 fw-bold text-primary mb-0">$899</h2>
+              <span class="text-muted small">/ one-time</span>
+            </div>
+            <ul class="list-unstyled mb-5 flex-grow-1">
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> <strong>Unlimited University Applications (Up to 10)</strong>
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> <strong>Unlimited SOP & LOR Polish by Oxford Alumni</strong>
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> <strong>Full Visa Audit & 2 Mock Interviews (99.2%)</strong>
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Direct University Application Fee Waivers
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Free Forex Card & Pre-Departure Pack
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> 24/7 Priority WhatsApp Hotline Access
+              </li>
+            </ul>
+            <button class="btn btn-primary w-100 py-2 shadow-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">
+              Choose Premium Concierge
+            </button>
+          </div>
+        </div>
+
+        <!-- Standard Plan -->
+        <div class="col-lg-4">
+          <div class="pricing-card">
+            <h5 class="fw-bold mb-1">Standard Support</h5>
+            <p class="small text-muted mb-4">Comprehensive university application assistance.</p>
+            <div class="d-flex align-items-baseline gap-1 mb-4">
+              <h2 class="display-5 fw-bold text-primary mb-0">$599</h2>
+              <span class="text-muted small">/ one-time</span>
+            </div>
+            <ul class="list-unstyled mb-5 flex-grow-1">
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Shortlist up to 8 Global Universities
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Application Lodgement in 3 Countries
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> 2 Rounds of SOP & CV Line Editing
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Scholarship Search Screening
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small">
+                <i class="bi bi-check-circle-fill text-success"></i> Dedicated Senior Advisor Contact
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-2 small text-muted">
+                <i class="bi bi-x-circle text-subtle"></i> Consular Mock Visa Interviews
+              </li>
+            </ul>
+            <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+              Choose Standard Plan
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARISON MATRIX TABLE -->
+      <div class="gp-card p-4 p-lg-5 mt-5 shadow-sm">
+        <h4 class="fw-bold mb-4 text-center">Detailed Feature Comparison</h4>
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead>
+              <tr>
+                <th style="width: 40%;">Feature Deliverables</th>
+                <th class="text-center" style="width: 20%;">Basic ($299)</th>
+                <th class="text-center" style="width: 20%;">Standard ($599)</th>
+                <th class="text-center bg-primary-subtle text-primary" style="width: 20%;">Premium ($899)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>University Shortlisting</td>
+                <td class="text-center">5 Institutions</td>
+                <td class="text-center">8 Institutions</td>
+                <td class="text-center fw-bold bg-primary-subtle text-primary">10+ Institutions</td>
+              </tr>
+              <tr>
+                <td>Portal Lodgement</td>
+                <td class="text-center text-muted"><i class="bi bi-x-lg text-danger"></i></td>
+                <td class="text-center"><i class="bi bi-check-lg text-success fs-5"></i></td>
+                <td class="text-center bg-primary-subtle text-primary"><i class="bi bi-check-lg text-success fs-5"></i></td>
+              </tr>
+              <tr>
+                <td>SOP & Essay Proofing</td>
+                <td class="text-center">Template only</td>
+                <td class="text-center">2 Rounds Editing</td>
+                <td class="text-center fw-bold bg-primary-subtle text-primary">Unlimited Line Editing</td>
+              </tr>
+              <tr>
+                <td>Student Visa Preparation</td>
+                <td class="text-center">Checklist only</td>
+                <td class="text-center">Basic Review</td>
+                <td class="text-center fw-bold bg-primary-subtle text-primary">Full Filing + 2 Mocks</td>
+              </tr>
+              <tr>
+                <td>Accommodation Placement</td>
+                <td class="text-center text-muted"><i class="bi bi-x-lg text-danger"></i></td>
+                <td class="text-center text-muted"><i class="bi bi-x-lg text-danger"></i></td>
+                <td class="text-center bg-primary-subtle text-primary"><i class="bi bi-check-lg text-success fs-5"></i></td>
+              </tr>
+              <tr>
+                <td>Direct WhatsApp Advisor</td>
+                <td class="text-center text-muted"><i class="bi bi-x-lg text-danger"></i></td>
+                <td class="text-center text-muted"><i class="bi bi-x-lg text-danger"></i></td>
+                <td class="text-center fw-bold bg-primary-subtle text-primary">24/7 Priority Access</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À LA CARTE ADD-ON SERVICES -->
+  <section class="py-6 bg-surface border-top">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="text-primary fw-bold text-uppercase small letter-spacing-1">Flexible Options</span>
+        <h2 class="display-6 fw-bold mt-2 mb-3">À La Carte Modular Services</h2>
+        <p class="text-muted">Need focused support on a specific application milestone? Add individual modules without committing to a full package.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card h-100 p-4 border rounded-3 text-center d-flex flex-column">
+            <div class="stat-icon bg-primary-subtle text-primary mx-auto mb-3" style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              <i class="bi bi-file-earmark-plus"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Extra Uni Filing</h5>
+            <span class="fs-4 fw-bold text-primary mb-2">$99 <small class="text-muted fs-6 fw-normal">/ uni</small></span>
+            <p class="small text-muted mb-4 flex-grow-1">Official portal submission, document formatting, and direct liaison for an additional dream university.</p>
+            <button class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#consultationModal">Add to Plan</button>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card h-100 p-4 border rounded-3 text-center d-flex flex-column">
+            <div class="stat-icon bg-success-subtle text-success mx-auto mb-3" style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              <i class="bi bi-person-video3"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Express Visa Mock</h5>
+            <span class="fs-4 fw-bold text-primary mb-2">$149 <small class="text-muted fs-6 fw-normal">/ session</small></span>
+            <p class="small text-muted mb-4 flex-grow-1">45-minute intense mock interview simulating US/UK consular grilling with detailed rubric score and recording.</p>
+            <button class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#consultationModal">Add to Plan</button>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card h-100 p-4 border rounded-3 text-center d-flex flex-column">
+            <div class="stat-icon bg-warning-subtle text-warning mx-auto mb-3" style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              <i class="bi bi-pen"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Elite SOP Polish</h5>
+            <span class="fs-4 fw-bold text-primary mb-2">$199 <small class="text-muted fs-6 fw-normal">/ essay</small></span>
+            <p class="small text-muted mb-4 flex-grow-1">Comprehensive structural and narrative overhaul by alumni from Ivy League and Oxbridge institutions.</p>
+            <button class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#consultationModal">Add to Plan</button>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="gp-card h-100 p-4 border rounded-3 text-center d-flex flex-column">
+            <div class="stat-icon bg-info-subtle text-info mx-auto mb-3" style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              <i class="bi bi-house-door"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Housing & Arrival</h5>
+            <span class="fs-4 fw-bold text-primary mb-2">$249 <small class="text-muted fs-6 fw-normal">/ city</small></span>
+            <p class="small text-muted mb-4 flex-grow-1">Verified student apartment matching, tenancy contract review, airport reception, and local SIM setup.</p>
+            <button class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#consultationModal">Add to Plan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING FAQS SECTION -->
+  <section class="py-6 bg-subtle">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="text-primary fw-bold text-uppercase small letter-spacing-1">Clear Answers</span>
+        <h2 class="display-6 fw-bold mt-2 mb-3">Pricing & Safeguard FAQs</h2>
+        <p class="text-muted">Everything you need to know about our payments, guarantees, and service protections.</p>
+      </div>
+
+      <div class="max-w-800 mx-auto">
+        <div class="accordion" id="pricingFaqAccordion">
+          <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="priceFaqH1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#priceFaqC1">
+                Are there any hidden costs, application taxes, or surprise surcharges?
+              </button>
+            </h2>
+            <div id="priceFaqC1" class="accordion-collapse collapse show" data-bs-parent="#pricingFaqAccordion">
+              <div class="accordion-body text-muted">
+                Absolutely none. All fees listed above are fixed and transparent. Any mandatory third-party fees (such as embassy visa stamping charges or official test registration fees paid directly to ETS/British Council) are disclosed up front in your personalized roadmap.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="priceFaqH2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#priceFaqC2">
+                Can I split my package payment into installments?
+              </button>
+            </h2>
+            <div id="priceFaqC2" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+              <div class="accordion-body text-muted">
+                Yes. For our Standard Support and Premium Concierge packages, we offer a 50/50 installment plan. 50% is due upon enrollment and diagnostic profiling, and the remaining 50% is payable once your university admission offer letters are secured.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="priceFaqH3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#priceFaqC3">
+                What is your visa refusal refund safeguard?
+              </button>
+            </h2>
+            <div id="priceFaqC3" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+              <div class="accordion-body text-muted">
+                In the rare event (under 0.8% across our history) that a student visa is refused due to administrative error, our team handles your visa appeal or re-lodgement with revised documentation completely free of charge.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="priceFaqH4">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#priceFaqC4">
+                How do institutional application fee waivers work?
+              </button>
+            </h2>
+            <div id="priceFaqC4" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+              <div class="accordion-body text-muted">
+                As certified global agency partners with 800+ universities worldwide, GlobalPath receives authorized fee waiver authorization codes. When we submit your applications through these channels, standard $75–$150 application fees are directly waived for eligible candidates.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHOLARSHIP ROI CALLOUT -->
+  <section class="py-6 bg-primary text-white text-center">
+    <div class="container">
+      <div class="max-w-700 mx-auto">
+        <span class="badge bg-white text-primary px-3 py-1 rounded-pill fw-bold text-uppercase mb-3">Guaranteed Value</span>
+        <h2 class="display-5 fw-bold mb-3">Average Scholarship Award: $8,500+</h2>
+        <p class="lead opacity-90 mb-4">Over 92% of our Premium Concierge candidates secure merit-based tuition reductions or institutional scholarships, recouping their investment tenfold.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <button class="btn btn-white btn-lg" data-bs-toggle="modal" data-bs-target="#consultationModal">
+            <i class="bi bi-calendar2-check-fill text-primary me-1"></i> Book Diagnostic Consultation
+          </button>
+          <a href="services.html" class="btn btn-outline-light btn-lg">Explore Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a class="brand-logo text-white mb-3" href="index.html">
+            <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+            <span>GlobalPath<span class="text-primary">.</span></span>
+          </a>
+          <p class="small text-muted mb-4 pe-lg-4">
+            GlobalPath Education is an internationally accredited study abroad consultancy helping ambitious students gain admission to top universities across the UK, USA, Canada, Australia, and Europe.
+          </p>
+          <div class="d-flex">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h5>Services</h5>
+          <ul class="footer-links">
+            <li><a href="service-details.html?id=university-selection">University Selection</a></li>
+            <li><a href="service-details.html?id=visa-assistance">Student Visa Guidance</a></li>
+            <li><a href="service-details.html?id=scholarship-guidance">Scholarship Search</a></li>
+            <li><a href="service-details.html?id=application-assistance">Application Lodgement</a></li>
+            <li><a href="service-details.html?id=ielts-language-prep">IELTS Coaching</a></li>
+            <li><a href="service-details.html?id=career-counseling">Career Roadmapping</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5>Global Headquarters</h5>
+          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> 452 Fifth Avenue, New York, NY 10018</p>
+          <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 592-7489</p>
+          <p class="small text-muted mb-2"><i class="bi bi-envelope-fill text-primary me-2"></i> admissions@globalpathedu.com</p>
+          <p class="small text-muted mb-4"><i class="bi bi-clock-fill text-primary me-2"></i> Mon - Sat: 9:00 AM - 6:00 PM EST</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center text-muted">
+        <p class="mb-0">&copy; 2026 GlobalPath Education Consultancy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONSULTATION MODAL -->
+  <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="consultationModalLabel">
+            <i class="bi bi-calendar2-check-fill text-primary me-2"></i> Book Consultation / Select Plan
+          </h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form class="consultation-form">
+            <div class="mb-3">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" name="name" placeholder="e.g. Liam Chen" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" name="email" placeholder="liam@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" name="phone" oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')" pattern="[0-9+\s\-()]{7,20}" title="Please enter numbers only (min 7 digits)" placeholder="+1 (555) 000-0000" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Preferred Destination *</label>
+                <select class="form-select" name="country" required>
+                  <option value="" selected disabled>Select Country</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="New Zealand">New Zealand</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Select Plan Tier *</label>
+                <select class="form-select" name="service" required>
+                  <option value="Premium Concierge ($899)" selected>Premium Concierge ($899)</option>
+                  <option value="Standard Support ($599)">Standard Support ($599)</option>
+                  <option value="Basic Guidance ($299)">Basic Guidance ($299)</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Any specific questions?</label>
+              <textarea class="form-control" name="message" rows="2" placeholder="Describe your dream university or intake..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              <i class="bi bi-send-fill me-1"></i> Proceed With This Plan
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

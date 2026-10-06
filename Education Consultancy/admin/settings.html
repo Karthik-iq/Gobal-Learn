@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Settings | GlobalPath Admin</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="admin-menu-title">Main Dashboard</div>
+        <a href="index.html" class="admin-nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="students.html" class="admin-nav-item"><i class="bi bi-people"></i> Students</a>
+        <a href="universities.html" class="admin-nav-item"><i class="bi bi-bank"></i> Universities</a>
+        <a href="services.html" class="admin-nav-item"><i class="bi bi-grid-fill"></i> Services</a>
+        <a href="applications.html" class="admin-nav-item"><i class="bi bi-file-earmark-text"></i> Applications</a>
+        <a href="orders.html" class="admin-nav-item"><i class="bi bi-credit-card"></i> Orders & Invoices</a>
+        <a href="messages.html" class="admin-nav-item"><i class="bi bi-envelope"></i> Messages</a>
+
+        <div class="admin-menu-title mt-3">Content Management</div>
+        <a href="blog.html" class="admin-nav-item"><i class="bi bi-newspaper"></i> Blog Posts</a>
+        <a href="testimonials.html" class="admin-nav-item"><i class="bi bi-star"></i> Testimonials</a>
+        <a href="gallery.html" class="admin-nav-item"><i class="bi bi-images"></i> Media Gallery</a>
+        <a href="pricing.html" class="admin-nav-item"><i class="bi bi-tag"></i> Pricing Tiers</a>
+
+        <div class="admin-menu-title mt-3">Configuration</div>
+        <a href="settings.html" class="admin-nav-item active"><i class="bi bi-gear"></i> Settings</a>
+        <a href="../index.html" class="admin-nav-item"><i class="bi bi-box-arrow-up-right"></i> View Public Site</a>
+        <a href="../login.html" class="admin-nav-item text-danger"><i class="bi bi-power"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggleBtn"><i class="bi bi-list fs-5"></i></button>
+          <h5 class="mb-0 fw-bold">Consultancy System Settings</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <div class="row g-4">
+          <!-- Navigation Tabs Column -->
+          <div class="col-md-3">
+            <div class="list-group shadow-sm rounded-4 overflow-hidden" id="settingsTabs" role="tablist">
+              <a class="list-group-item list-group-item-action active p-3" data-bs-toggle="list" href="#tabBranding" role="tab">
+                <i class="bi bi-building me-2"></i> Agency Identity
+              </a>
+              <a class="list-group-item list-group-item-action p-3" data-bs-toggle="list" href="#tabLocalization" role="tab">
+                <i class="bi bi-translate me-2"></i> Localization & Currencies
+              </a>
+              <a class="list-group-item list-group-item-action p-3" data-bs-toggle="list" href="#tabNotifications" role="tab">
+                <i class="bi bi-bell me-2"></i> Notifications & Alerts
+              </a>
+              <a class="list-group-item list-group-item-action p-3 text-danger" data-bs-toggle="list" href="#tabDatabase" role="tab">
+                <i class="bi bi-database me-2"></i> Demo Data & Reset
+              </a>
+            </div>
+          </div>
+
+          <!-- Tabs Content Column -->
+          <div class="col-md-9">
+            <div class="tab-content">
+              <!-- Tab 1: Agency Branding -->
+              <div class="tab-pane fade show active" id="tabBranding" role="tabpanel">
+                <div class="gp-card p-4 p-md-5">
+                  <h4 class="fw-bold mb-4">Agency Identity & Contact Details</h4>
+                  <form id="brandingForm">
+                    <div class="row g-3 mb-3">
+                      <div class="col-md-6">
+                        <label class="form-label">Agency Name *</label>
+                        <input type="text" class="form-control" id="cfgAgencyName" value="GlobalPath Education" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Tagline *</label>
+                        <input type="text" class="form-control" id="cfgTagline" value="Your Journey. Your Future. Our Guidance." required>
+                      </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                      <div class="col-md-6">
+                        <label class="form-label">Admissions Email *</label>
+                        <input type="email" class="form-control" id="cfgEmail" value="admissions@globalpathedu.com" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Support Phone Number *</label>
+                        <input type="text" class="form-control" id="cfgPhone" value="+1 (800) 592-7489" required>
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <label class="form-label">Headquarters Address</label>
+                      <input type="text" class="form-control" id="cfgAddress" value="452 Fifth Avenue, 14th Floor, New York, NY 10018, USA" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary px-4">Save Identity Settings</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Tab 2: Localization -->
+              <div class="tab-pane fade" id="tabLocalization" role="tabpanel">
+                <div class="gp-card p-4 p-md-5">
+                  <h4 class="fw-bold mb-4">Localization & Currency Preferences</h4>
+                  <form id="localizationForm">
+                    <div class="row g-3 mb-3">
+                      <div class="col-md-6">
+                        <label class="form-label">Default Display Currency</label>
+                        <select class="form-select" id="cfgCurrency">
+                          <option value="USD ($)" selected>USD ($) - US Dollar</option>
+                          <option value="GBP (£)">GBP (£) - British Pound</option>
+                          <option value="EUR (€)">EUR (€) - Euro</option>
+                          <option value="AUD ($)">AUD ($) - Australian Dollar</option>
+                          <option value="CAD ($)">CAD ($) - Canadian Dollar</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Portal Language</label>
+                        <select class="form-select" id="cfgLanguage">
+                          <option value="en" selected>English (United States)</option>
+                          <option value="en-gb">English (United Kingdom)</option>
+                          <option value="ar">Arabic (العربية)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <label class="form-label">Timezone</label>
+                      <select class="form-select">
+                        <option selected>UTC-5 (Eastern Time - US & Canada)</option>
+                        <option>UTC+0 (Greenwich Mean Time - London)</option>
+                        <option>UTC+10 (Australian Eastern Time - Melbourne)</option>
+                        <option>UTC+8 (Singapore Time)</option>
+                      </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary px-4">Update Localization</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Tab 3: Notifications -->
+              <div class="tab-pane fade" id="tabNotifications" role="tabpanel">
+                <div class="gp-card p-4 p-md-5">
+                  <h4 class="fw-bold mb-4">Automated Notification Alerts</h4>
+                  <form id="notifForm">
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" id="swEmailAlerts" checked>
+                      <label class="form-check-label" for="swEmailAlerts">Email alerts when a student requests a consultation</label>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" id="swVisaAlerts" checked>
+                      <label class="form-check-label" for="swVisaAlerts">Instant push notifications on student visa milestone updates</label>
+                    </div>
+                    <div class="form-check form-switch mb-4">
+                      <input class="form-check-input" type="checkbox" id="swAutoApprove">
+                      <label class="form-check-label" for="swAutoApprove">Automatically publish student testimonials without moderation</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary px-4">Save Notification Rules</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Tab 4: Database & Demo Reset -->
+              <div class="tab-pane fade" id="tabDatabase" role="tabpanel">
+                <div class="gp-card p-4 p-md-5 border-danger">
+                  <h4 class="fw-bold text-danger mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i> Demo Data Controls</h4>
+                  <p class="text-muted small mb-4">
+                    As a ThemeForest template buyer or evaluator, you can modify, add, or delete test records freely. Use these controls to export your custom datasets or restore factory presets.
+                  </p>
+
+                  <div class="d-flex flex-wrap gap-3 mb-4">
+                    <button type="button" class="btn btn-outline-primary" onclick="exportFullDatabase()">
+                      <i class="bi bi-filetype-json me-1"></i> Download Database Backup (JSON)
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="resetToFactoryDefaults()">
+                      <i class="bi bi-arrow-counterclockwise me-1"></i> Reset All Data to Factory Default
+                    </button>
+                  </div>
+
+                  <div class="p-3 bg-subtle rounded-3 small text-muted">
+                    <i class="bi bi-info-circle text-primary me-1"></i> Factory reset reloads 10+ services, 12 blog posts, 8 partner universities, 10 student dossiers, 10 applications, and 10 orders into browser LocalStorage.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    document.getElementById('brandingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.showToast('Agency identity & branding settings updated!', 'success', 'Saved');
+    });
+
+    document.getElementById('localizationForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.showToast('Currency and localization settings updated!', 'success', 'Saved');
+    });
+
+    document.getElementById('notifForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.showToast('Notification rules successfully updated!', 'success', 'Saved');
+    });
+
+    function exportFullDatabase() {
+      const db = {
+        services: GlobalData.get('services'),
+        blog: GlobalData.get('blog'),
+        universities: GlobalData.get('universities'),
+        students: GlobalData.get('students'),
+        applications: GlobalData.get('applications'),
+        orders: GlobalData.get('orders'),
+        messages: GlobalData.get('messages'),
+        testimonials: GlobalData.get('testimonials'),
+        gallery: GlobalData.get('gallery'),
+        pricing: GlobalData.get('pricing')
+      };
+
+      const jsonStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(db, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", jsonStr);
+      downloadAnchor.setAttribute("download", "globalpath_database_backup.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      window.showToast('Exported complete database backup to JSON.', 'success', 'Backup Generated');
+    }
+
+    function resetToFactoryDefaults() {
+      if (confirm("Are you sure you want to reset all data? Any custom records added during the demo will be restored to factory presets.")) {
+        GlobalData.reset();
+        window.showToast('All demo datasets have been restored to initial factory state!', 'success', 'Database Reset');
+        setTimeout(() => window.location.reload(), 1200);
+      }
+    }
+  </script>
+</body>
+</html>

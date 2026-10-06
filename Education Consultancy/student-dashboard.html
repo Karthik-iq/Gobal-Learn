@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Application Portal | GlobalPath Education</title>
+  <meta name="description" content="Track your university applications, student visa filing milestones, and document submissions.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <!-- STUDENT SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header d-flex justify-content-between align-items-center">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+        <button type="button" class="btn-close d-lg-none shadow-none" id="sidebarCloseBtn" aria-label="Close"></button>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="p-3 mb-3 border rounded-3 bg-subtle d-flex align-items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=100&q=80" class="rounded-circle" style="width: 44px; height: 44px; object-fit: cover;" alt="Aarav Sharma">
+          <div class="overflow-hidden">
+            <h6 class="mb-0 fw-bold text-truncate">Aarav Sharma</h6>
+            <small class="text-muted d-block text-truncate">Target: UK (Fall 2026)</small>
+          </div>
+        </div>
+
+        <div class="admin-menu-title">Student Portal</div>
+        <a href="#overview" class="admin-nav-item active"><i class="bi bi-speedometer2"></i> Overview</a>
+        <a href="#applications" class="admin-nav-item"><i class="bi bi-mortarboard"></i> My Applications <span class="badge bg-primary">3</span></a>
+        <a href="#documents" class="admin-nav-item"><i class="bi bi-folder-check"></i> Document Locker</a>
+        <a href="#visa" class="admin-nav-item"><i class="bi bi-passport"></i> Visa Status <span class="badge bg-warning text-dark">Stage 5</span></a>
+        <a href="#counselor" class="admin-nav-item"><i class="bi bi-chat-heart"></i> My Counselor</a>
+        <a href="#payments" class="admin-nav-item"><i class="bi bi-credit-card"></i> Invoices & Receipts</a>
+
+        <div class="admin-menu-title mt-4">Account</div>
+        <a href="index.html" class="admin-nav-item"><i class="bi bi-house"></i> Public Website</a>
+        <a href="login.html" class="admin-nav-item text-danger"><i class="bi bi-box-arrow-right"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="admin-main">
+      <!-- TOPBAR -->
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn-control d-lg-none" id="sidebarToggleBtn" aria-label="Toggle Menu">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <h5 class="mb-0 fw-bold d-none d-sm-block">Applicant Dashboard</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()" title="Switch RTL">
+            <span class="rtl-label">⇄ RTL</span>
+          </button>
+
+          <!-- Notification Bell -->
+          <div class="dropdown">
+            <button class="btn-control" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-bell-fill"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="width: 280px;">
+              <li class="p-2 border-bottom fw-bold small">Recent Updates</li>
+              <li><a class="dropdown-item small" href="#">CAS issued by U of Manchester</a></li>
+              <li><a class="dropdown-item small" href="#">SOP draft revised by Marcus Thorne</a></li>
+              <li><a class="dropdown-item small" href="#">Visa biometric appointment reminder</a></li>
+            </ul>
+          </div>
+
+          <a href="login.html" class="btn btn-outline-danger btn-sm text-nowrap">Log Out</a>
+        </div>
+      </header>
+
+      <!-- BODY -->
+      <div class="admin-body">
+        <!-- WELCOME BANNER -->
+        <div class="p-4 rounded-4 bg-primary text-white mb-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
+          <div>
+            <span class="badge bg-white text-primary mb-2">Student ID: STU-1001</span>
+            <h3 class="fw-bold mb-1">Hello, Aarav!</h3>
+            <p class="mb-0 opacity-90 small">
+              Your application for <strong>MSc Data Science</strong> at <strong>University of Manchester</strong> is moving rapidly.
+            </p>
+          </div>
+          <button class="btn btn-white text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#uploadDocModal">
+            <i class="bi bi-cloud-arrow-up-fill me-1"></i> Upload Missing Documents
+          </button>
+        </div>
+
+        <!-- 6-STAGE PROGRESSION TRACKER -->
+        <div class="gp-card mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Application & Visa Progress Tracker</h5>
+            <span class="badge bg-success px-3 py-1">Overall 80% Complete</span>
+          </div>
+
+          <div class="progress mb-4" style="height: 10px;">
+            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%"></div>
+          </div>
+
+          <div class="row text-center g-2">
+            <div class="col-6 col-sm-4 col-md-2">
+              <div class="p-2 border rounded-3 bg-success-subtle border-success h-100 d-flex flex-column justify-content-center">
+                <i class="bi bi-check-circle-fill text-success fs-5 d-block mb-1"></i>
+                <small class="fw-bold d-block text-truncate">1. Profile</small>
+                <span class="text-success small fs-xs d-block">Completed</span>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2">
+              <div class="p-2 border rounded-3 bg-success-subtle border-success h-100 d-flex flex-column justify-content-center">
+                <i class="bi bi-check-circle-fill text-success fs-5 d-block mb-1"></i>
+                <small class="fw-bold d-block text-truncate">2. Documents</small>
+                <span class="text-success small fs-xs d-block">Verified</span>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2">
+              <div class="p-2 border rounded-3 bg-success-subtle border-success h-100 d-flex flex-column justify-content-center">
+                <i class="bi bi-check-circle-fill text-success fs-5 d-block mb-1"></i>
+                <small class="fw-bold d-block text-truncate">3. Applied</small>
+                <span class="text-success small fs-xs d-block">Lodged</span>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2">
+              <div class="p-2 border rounded-3 bg-success-subtle border-success h-100 d-flex flex-column justify-content-center">
+                <i class="bi bi-check-circle-fill text-success fs-5 d-block mb-1"></i>
+                <small class="fw-bold d-block text-truncate">4. Offer Letter</small>
+                <span class="text-success small fs-xs d-block">Received</span>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2">
+              <div class="p-2 border rounded-3 bg-warning-subtle border-warning h-100 d-flex flex-column justify-content-center">
+                <i class="bi bi-hourglass-split text-warning fs-5 d-block mb-1"></i>
+                <small class="fw-bold d-block text-truncate">5. Visa Filing</small>
+                <span class="text-warning small fs-xs fw-bold d-block">In Progress</span>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2">
+              <div class="p-2 border rounded-3 bg-body h-100 d-flex flex-column justify-content-center">
+                <i class="bi bi-circle text-muted fs-5 d-block mb-1"></i>
+                <small class="fw-bold d-block text-muted text-truncate">6. Departure</small>
+                <span class="text-muted small fs-xs d-block">Pending</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATS OVERVIEW CARDS -->
+        <div class="row g-4 mb-4">
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card">
+              <div>
+                <h3 class="fw-bold mb-1">3</h3>
+                <span class="text-muted small">Applications Lodged</span>
+              </div>
+              <div class="stat-icon primary"><i class="bi bi-mortarboard-fill"></i></div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card">
+              <div>
+                <h3 class="fw-bold mb-1">8 / 10</h3>
+                <span class="text-muted small">Documents Verified</span>
+              </div>
+              <div class="stat-icon success"><i class="bi bi-folder-check"></i></div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card">
+              <div>
+                <h3 class="fw-bold mb-1">£8,000</h3>
+                <span class="text-muted small">Scholarship Awarded</span>
+              </div>
+              <div class="stat-icon warning"><i class="bi bi-award-fill"></i></div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card">
+              <div>
+                <h3 class="fw-bold mb-1">$0.00</h3>
+                <span class="text-muted small">Pending Payments</span>
+              </div>
+              <div class="stat-icon info"><i class="bi bi-check2-circle"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+          <!-- ACTIVE APPLICATIONS TABLE -->
+          <div class="col-lg-8">
+            <div class="admin-table-card mb-4" id="applications">
+              <div class="admin-table-header">
+                <h5 class="fw-bold mb-0">Active University Applications</h5>
+                <span class="text-muted small">Fall 2026 Intake</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>University</th>
+                      <th>Program</th>
+                      <th>Country</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="fw-bold">University of Manchester</div>
+                        <small class="text-muted">App ID: UOM-9281</small>
+                      </td>
+                      <td>MSc Data Science</td>
+                      <td><span class="badge bg-secondary-subtle text-secondary">🇬🇧 UK</span></td>
+                      <td><span class="badge-status processing">Visa Processing</span></td>
+                      <td><button class="btn btn-sm btn-outline-primary py-1 px-2" onclick="viewOfferLetter('cas')"><i class="bi bi-file-earmark-text me-1"></i>View CAS</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="fw-bold">University of Edinburgh</div>
+                        <small class="text-muted">App ID: EDN-4412</small>
+                      </td>
+                      <td>MSc Artificial Intelligence</td>
+                      <td><span class="badge bg-secondary-subtle text-secondary">🇬🇧 UK</span></td>
+                      <td><span class="badge-status offer">Conditional Offer</span></td>
+                      <td><button class="btn btn-sm btn-outline-primary py-1 px-2" onclick="viewOfferLetter('offer')"><i class="bi bi-file-earmark-pdf me-1"></i>Offer PDF</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="fw-bold">King's College London</div>
+                        <small class="text-muted">App ID: KCL-7782</small>
+                      </td>
+                      <td>MSc Computing & Finance</td>
+                      <td><span class="badge bg-secondary-subtle text-secondary">🇬🇧 UK</span></td>
+                      <td><span class="badge-status applied">Under Review</span></td>
+                      <td><button class="btn btn-sm btn-outline-secondary py-1 px-2" disabled>Pending</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- DOCUMENT CHECKLIST -->
+            <div class="admin-table-card" id="documents">
+              <div class="admin-table-header">
+                <h5 class="fw-bold mb-0">Document Verification Checklist</h5>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#uploadDocModal">
+                  <i class="bi bi-upload me-1"></i> Add File
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Document</th>
+                      <th>File Name</th>
+                      <th>Verification Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Undergraduate Transcripts</td>
+                      <td><small class="text-muted">aarav_btech_transcripts.pdf</small></td>
+                      <td><span class="badge-status approved">Approved by Counselor</span></td>
+                      <td><a href="#" class="text-primary small" onclick="window.showToast('Downloading verified document...', 'info')">Download</a></td>
+                    </tr>
+                    <tr>
+                      <td>IELTS Academic Score Card (8.0)</td>
+                      <td><small class="text-muted">ielts_trf_aarav.pdf</small></td>
+                      <td><span class="badge-status approved">Verified with IDP</span></td>
+                      <td><a href="#" class="text-primary small" onclick="window.showToast('Downloading verified document...', 'info')">Download</a></td>
+                    </tr>
+                    <tr>
+                      <td>Statement of Purpose (SOP)</td>
+                      <td><small class="text-muted">manchester_sop_v3_final.docx</small></td>
+                      <td><span class="badge-status approved">Editor Approved</span></td>
+                      <td><a href="#" class="text-primary small" onclick="window.showToast('Downloading verified document...', 'info')">Download</a></td>
+                    </tr>
+                    <tr>
+                      <td>Bank Seasoning Statement</td>
+                      <td><small class="text-muted">sponsor_affidavit_28days.pdf</small></td>
+                      <td><span class="badge-status processing">Under Audit</span></td>
+                      <td><a href="#" class="text-warning small" onclick="window.showToast('Auditing bank balance timestamps...', 'warning')">In Audit</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDEBAR: COUNSELOR & DEADLINES -->
+          <div class="col-lg-4">
+            <!-- Dedicated Counselor Card -->
+            <div class="gp-card p-4 mb-4" id="counselor">
+              <h5 class="fw-bold mb-3">Your Assigned Advisor</h5>
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;" alt="Marcus Thorne">
+                <div>
+                  <h6 class="fw-bold mb-0">Marcus Thorne</h6>
+                  <small class="text-muted">Senior Academic Advisor</small>
+                  <span class="badge bg-success-subtle text-success d-block mt-1">Online Now</span>
+                </div>
+              </div>
+              <p class="small text-muted mb-3">
+                "Hi Aarav, your CAS statement from Manchester has arrived. Let's schedule our mock visa interview for this Thursday."
+              </p>
+              <button class="btn btn-primary btn-sm w-100 mb-2" data-bs-toggle="modal" data-bs-target="#messageCounselorModal">
+                <i class="bi bi-chat-text-fill me-1"></i> Send Direct Message
+              </button>
+              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm w-100">
+                <i class="bi bi-whatsapp me-1"></i> WhatsApp Counselor
+              </a>
+            </div>
+
+            <!-- Deadlines Calendar Card -->
+            <div class="gp-card p-4 mb-4">
+              <h5 class="fw-bold mb-3">Upcoming Deadlines</h5>
+              <div class="d-flex gap-3 mb-3 pb-3 border-bottom">
+                <div class="text-center p-2 rounded-3 bg-primary-subtle text-primary" style="width: 50px;">
+                  <span class="fw-bold d-block">15</span>
+                  <small class="fs-xs text-uppercase">Mar</small>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0 small">Tuition Deposit Deadline</h6>
+                  <small class="text-muted">Manchester unconditional lock</small>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-3 pb-3 border-bottom">
+                <div class="text-center p-2 rounded-3 bg-danger-subtle text-danger" style="width: 50px;">
+                  <span class="fw-bold d-block">22</span>
+                  <small class="fs-xs text-uppercase">Mar</small>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0 small">Visa Mock Interview #1</h6>
+                  <small class="text-muted">Consular scenario simulation</small>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3">
+                <div class="text-center p-2 rounded-3 bg-warning-subtle text-warning" style="width: 50px;">
+                  <span class="fw-bold d-block">05</span>
+                  <small class="fs-xs text-uppercase">Apr</small>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0 small">Dorm Accommodation Lock</h6>
+                  <small class="text-muted">Amber Student London</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- UPLOAD DOCUMENT MODAL -->
+  <div class="modal fade" id="uploadDocModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold"><i class="bi bi-cloud-arrow-up-fill text-primary me-2"></i> Upload Document</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="uploadDocForm">
+            <div class="mb-3">
+              <label class="form-label">Document Category</label>
+              <select class="form-select" required>
+                <option value="Academic">Degree Transcripts</option>
+                <option value="Identity">Passport Copy</option>
+                <option value="English">IELTS / TOEFL Score</option>
+                <option value="Financial">Bank Solvency Certificate</option>
+                <option value="SOP">Updated SOP / Essay</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Select File (PDF, DOCX, JPG)</label>
+              <input type="file" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Upload to Locker</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MESSAGE COUNSELOR MODAL -->
+  <div class="modal fade" id="messageCounselorModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold">Message Marcus Thorne</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="counselorMsgForm">
+            <div class="mb-3">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" value="Question about CAS Deposit" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="3" placeholder="Type your inquiry here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCUMENT / CAS / OFFER LETTER PREVIEW MODAL -->
+  <div class="modal fade" id="documentPreviewModal" tabindex="-1" aria-labelledby="docModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-xl rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white border-0 px-4 py-3">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-shield-check text-success fs-5"></i>
+            <div>
+              <h6 class="modal-title fw-bold mb-0 text-white" id="docModalTitle">Official Document Preview</h6>
+              <small class="text-white-50" id="docModalSubtitle">UK Visas and Immigration Compliance Statement</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <button type="button" class="btn btn-sm btn-light py-1 px-3 fw-semibold" onclick="window.print()">
+              <i class="bi bi-printer-fill me-1"></i> Print / PDF
+            </button>
+            <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="modal-body p-4 p-md-5" id="docPrintableArea" style="background: #ffffff; color: #1e293b;">
+          <!-- Dynamic Document Content injected via JS -->
+          <div id="docContentContainer"></div>
+        </div>
+        <div class="modal-footer bg-light border-top px-4 py-3 d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center text-muted small">
+            <i class="bi bi-patch-check-fill text-primary me-1"></i> Verified & Authenticated by GlobalPath Registry
+          </div>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-secondary btn-sm px-3" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary btn-sm px-3" onclick="downloadDocumentCopy()">
+              <i class="bi bi-download me-1"></i> Download Copy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function viewOfferLetter(type = 'cas') {
+      const container = document.getElementById('docContentContainer');
+      const title = document.getElementById('docModalTitle');
+      const subtitle = document.getElementById('docModalSubtitle');
+
+      if (type === 'cas') {
+        title.textContent = 'CAS Statement (Tier 4 / Student Visa)';
+        subtitle.textContent = 'Confirmation of Acceptance for Studies — Reference: E4G8D90281UKVI';
+        container.innerHTML = `
+          <div class="border-bottom pb-4 mb-4">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-3">
+                <div class="bg-primary text-white rounded-3 p-3 d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                  <i class="bi bi-mortarboard-fill fs-3"></i>
+                </div>
+                <div>
+                  <h4 class="fw-bold mb-0 text-dark">THE UNIVERSITY OF MANCHESTER</h4>
+                  <p class="text-muted small mb-0">Oxford Rd, Manchester M13 9PL, United Kingdom</p>
+                </div>
+              </div>
+              <div class="text-end">
+                <span class="badge bg-success-subtle text-success border border-success px-3 py-2 fw-semibold">
+                  <i class="bi bi-check2-circle me-1"></i> STATUS: ASSIGNED
+                </span>
+                <p class="text-muted small mt-1 mb-0">Date of Issue: <strong>14 Aug 2026</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-light p-3 rounded-3 mb-4 border">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <small class="text-muted d-block text-uppercase fw-semibold">CAS Reference Number</small>
+                <strong class="text-primary font-monospace fs-6">E4G8D90281UKVI</strong>
+              </div>
+              <div class="col-sm-6">
+                <small class="text-muted d-block text-uppercase fw-semibold">UKVI Sponsor Licence Number</small>
+                <strong class="text-dark font-monospace fs-6">4CB8H11Y0</strong>
+              </div>
+            </div>
+          </div>
+
+          <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">1. Student Information</h6>
+          <div class="table-responsive mb-4">
+            <table class="table table-sm table-borderless small mb-0">
+              <tbody>
+                <tr>
+                  <td class="text-muted" style="width: 38%;">Family Name / Given Name:</td>
+                  <td><strong>Sharma, Aarav</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Student ID (Manchester):</td>
+                  <td><strong>10984521</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">GlobalPath Application ID:</td>
+                  <td><strong>UOM-9281</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Date of Birth & Gender:</td>
+                  <td><strong>14 Oct 2002 | Male</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Nationality & Country of Birth:</td>
+                  <td><strong>Indian | India</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Passport Number:</td>
+                  <td><strong class="font-monospace">Z9841203</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">2. Course Details</h6>
+          <div class="table-responsive mb-4">
+            <table class="table table-sm table-borderless small mb-0">
+              <tbody>
+                <tr>
+                  <td class="text-muted" style="width: 38%;">Course Title:</td>
+                  <td><strong>MSc Data Science (Computer Science Informatics)</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Academic Qualification Level:</td>
+                  <td><strong>RQF Level 7 / Master's Degree (Full-Time)</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Course Start Date:</td>
+                  <td><strong>21 September 2026</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Expected End Date:</td>
+                  <td><strong>20 September 2027</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Academic Technology Approval (ATAS):</td>
+                  <td><strong>Not Required</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">3. Financial Assessment & Evidence</h6>
+          <div class="table-responsive mb-4">
+            <table class="table table-sm table-bordered small mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Description</th>
+                  <th class="text-end">Amount (GBP)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total Tuition Fee (Year 1)</td>
+                  <td class="text-end fw-semibold">£31,500.00</td>
+                </tr>
+                <tr>
+                  <td>Course Tuition Fees Paid to Date (Deposit Confirmed)</td>
+                  <td class="text-end fw-bold text-success">- £5,000.00</td>
+                </tr>
+                <tr>
+                  <td>Accommodation Deposit Paid</td>
+                  <td class="text-end">£0.00</td>
+                </tr>
+                <tr class="table-active">
+                  <th>Remaining Outstanding Tuition Fee Payable</th>
+                  <th class="text-end text-primary">£26,500.00</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">4. English Language Proficiency</h6>
+          <p class="small text-muted mb-4">
+            Higher Education Provider (HEP) assessed English proficiency: <strong>IELTS Academic Overall 7.5</strong> (Listening 8.0, Reading 8.0, Writing 7.0, Speaking 7.0). Student meets all CEFR Level B2 UKVI requirements.
+          </p>
+
+          <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+              <small class="text-muted d-block">Authorised UKVI Signatory:</small>
+              <strong class="text-dark">Dr. Alistair Finch</strong>
+              <small class="text-muted d-block">Head of International Admissions, University of Manchester</small>
+            </div>
+            <div class="text-end">
+              <div class="border border-success text-success p-2 rounded-2 text-center" style="display: inline-block;">
+                <i class="bi bi-shield-fill-check fs-5 d-block"></i>
+                <small class="fw-bold">UKVI VERIFIED</small>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        title.textContent = 'Official Conditional Offer of Admission';
+        subtitle.textContent = 'University of Edinburgh — Application ID: EDN-4412';
+        container.innerHTML = `
+          <div class="border-bottom pb-4 mb-4">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-3">
+                <div class="bg-dark text-white rounded-3 p-3 d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                  <i class="bi bi-bank fs-3"></i>
+                </div>
+                <div>
+                  <h4 class="fw-bold mb-0 text-dark">THE UNIVERSITY OF EDINBURGH</h4>
+                  <p class="text-muted small mb-0">Old College, South Bridge, Edinburgh EH8 9YL, Scotland, UK</p>
+                </div>
+              </div>
+              <div class="text-end">
+                <span class="badge bg-primary-subtle text-primary border border-primary px-3 py-2 fw-semibold">
+                  <i class="bi bi-envelope-paper-fill me-1"></i> CONDITIONAL OFFER
+                </span>
+                <p class="text-muted small mt-1 mb-0">Issued: <strong>02 August 2026</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info py-2 px-3 small mb-4">
+            <i class="bi bi-info-circle-fill me-1"></i> 
+            Congratulations! We are delighted to formally offer you admission to the University of Edinburgh for the 2026/2027 academic session.
+          </div>
+
+          <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">1. Offer Summary</h6>
+          <div class="table-responsive mb-4">
+            <table class="table table-sm table-borderless small mb-0">
+              <tbody>
+                <tr>
+                  <td class="text-muted" style="width: 38%;">Applicant Name:</td>
+                  <td><strong>Aarav Sharma</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">University Student No (UUN):</td>
+                  <td><strong>s2489102</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Degree Programme:</td>
+                  <td><strong>MSc Artificial Intelligence (Full-Time, 1 Year)</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">School / College:</td>
+                  <td><strong>School of Informatics, College of Science & Engineering</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Programme Start Date:</td>
+                  <td><strong>14 September 2026</strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Annual Tuition Fee:</td>
+                  <td><strong class="text-primary">£34,800 GBP</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">2. Conditions of Admission</h6>
+          <p class="small text-muted mb-2">This offer is conditional upon satisfying the following requirements by <strong>15 July 2026</strong>:</p>
+          <ul class="small mb-4 ps-3">
+            <li class="mb-2">
+              <strong>Academic Requirement:</strong> Successful completion of your current Bachelor's degree with an aggregate final mark of not less than 70% or GPA 3.3/4.0.
+            </li>
+            <li class="mb-2">
+              <strong>Official Transcripts:</strong> Submission of official final academic degree certificates and complete grade transcripts.
+            </li>
+            <li class="mb-2">
+              <strong>Deposit Payment:</strong> Payment of a non-refundable tuition deposit of £4,000 to firmly secure your seat in the programme.
+            </li>
+          </ul>
+
+          <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">3. Next Steps</h6>
+          <p class="small text-muted mb-4">
+            To accept this offer, please log into your student portal or notify your GlobalPath Education advisor before the offer acceptance deadline of 30 June 2026.
+          </p>
+
+          <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+              <small class="text-muted d-block">For Admissions Directorate:</small>
+              <strong class="text-dark">Prof. Margaret MacIntyre</strong>
+              <small class="text-muted d-block">Dean of Postgraduate Admissions, University of Edinburgh</small>
+            </div>
+            <div class="text-end">
+              <div class="border border-primary text-primary p-2 rounded-2 text-center" style="display: inline-block;">
+                <i class="bi bi-patch-check fs-5 d-block"></i>
+                <small class="fw-bold">EDINBURGH OFFICIAL</small>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      const modalEl = document.getElementById('documentPreviewModal');
+      const bsModal = new bootstrap.Modal(modalEl);
+      bsModal.show();
+    }
+
+    function downloadDocumentCopy() {
+      window.showToast('Preparing PDF download for offline archival...', 'info', 'Downloading PDF');
+      setTimeout(() => {
+        window.showToast('Official admission document downloaded successfully!', 'success', 'Download Complete');
+      }, 1000);
+    }
+
+    document.getElementById('uploadDocForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      bootstrap.Modal.getInstance(document.getElementById('uploadDocModal')).hide();
+      window.showToast('Document uploaded successfully! Assigned to counselor for review.', 'success', 'Document Uploaded');
+    });
+
+    document.getElementById('counselorMsgForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      bootstrap.Modal.getInstance(document.getElementById('messageCounselorModal')).hide();
+      window.showToast('Message sent to Marcus Thorne. Expect a reply within 2 hours.', 'success', 'Message Sent');
+    });
+  </script>
+</body>
+</html>

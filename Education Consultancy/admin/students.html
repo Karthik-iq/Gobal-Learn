@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Students | GlobalPath Admin</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <!-- ADMIN SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="admin-menu-title">Main Dashboard</div>
+        <a href="index.html" class="admin-nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="students.html" class="admin-nav-item active"><i class="bi bi-people"></i> Students</a>
+        <a href="universities.html" class="admin-nav-item"><i class="bi bi-bank"></i> Universities</a>
+        <a href="services.html" class="admin-nav-item"><i class="bi bi-grid-fill"></i> Services</a>
+        <a href="applications.html" class="admin-nav-item"><i class="bi bi-file-earmark-text"></i> Applications</a>
+        <a href="orders.html" class="admin-nav-item"><i class="bi bi-credit-card"></i> Orders & Invoices</a>
+        <a href="messages.html" class="admin-nav-item"><i class="bi bi-envelope"></i> Messages</a>
+
+        <div class="admin-menu-title mt-3">Content Management</div>
+        <a href="blog.html" class="admin-nav-item"><i class="bi bi-newspaper"></i> Blog Posts</a>
+        <a href="testimonials.html" class="admin-nav-item"><i class="bi bi-star"></i> Testimonials</a>
+        <a href="gallery.html" class="admin-nav-item"><i class="bi bi-images"></i> Media Gallery</a>
+        <a href="pricing.html" class="admin-nav-item"><i class="bi bi-tag"></i> Pricing Tiers</a>
+
+        <div class="admin-menu-title mt-3">Configuration</div>
+        <a href="settings.html" class="admin-nav-item"><i class="bi bi-gear"></i> Settings</a>
+        <a href="../index.html" class="admin-nav-item"><i class="bi bi-box-arrow-up-right"></i> View Public Site</a>
+        <a href="../login.html" class="admin-nav-item text-danger"><i class="bi bi-power"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN VIEW -->
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggleBtn" aria-label="Toggle Menu">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <h5 class="mb-0 fw-bold">Students Directory</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <button class="btn btn-primary btn-sm" onclick="openAddStudentModal()">
+            <i class="bi bi-plus-lg me-1"></i> Add Student
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <!-- TOOLBAR & FILTERS -->
+        <div class="admin-table-card">
+          <div class="admin-table-header">
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <input type="text" id="crudSearchInput" class="form-control form-control-sm" placeholder="Search by name, email, country..." style="width: 260px;">
+              <select id="crudStatusFilter" class="form-select form-select-sm" style="width: 180px;">
+                <option value="all">All Statuses</option>
+                <option value="Visa Processing">Visa Processing</option>
+                <option value="Visa Approved">Visa Approved</option>
+                <option value="Offer Received">Offer Received</option>
+                <option value="University Applied">University Applied</option>
+                <option value="Documents Submitted">Documents Submitted</option>
+                <option value="Profile Created">Profile Created</option>
+              </select>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="AdminCRUD.exportCSV()">
+              <i class="bi bi-download me-1"></i> Export CSV
+            </button>
+          </div>
+
+          <!-- TABLE -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Contact Info</th>
+                  <th>Target Country</th>
+                  <th>Course & Level</th>
+                  <th>Application Status</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="crudTableBody">
+                <!-- Populated by AdminCRUD -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- TABLE FOOTER / PAGINATION -->
+          <div class="p-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <small class="text-muted" id="crudTableInfo">Showing 0 to 0 entries</small>
+            <ul class="pagination pagination-sm mb-0" id="crudPagination"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD / EDIT STUDENT MODAL -->
+  <div class="modal fade" id="studentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="studentModalTitle">Add New Student</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="studentForm">
+            <input type="hidden" id="studentId">
+            <div class="mb-3">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" id="formStudentName" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Email *</label>
+                <input type="email" class="form-control" id="formStudentEmail" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone *</label>
+                <input type="tel" class="form-control" id="formStudentPhone" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Target Country *</label>
+                <select class="form-select" id="formStudentCountry" required>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="New Zealand">New Zealand</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Study Level</label>
+                <select class="form-select" id="formStudentLevel" required>
+                  <option value="Master's (MSc)">Master's (MSc)</option>
+                  <option value="Bachelor's (BSc)">Bachelor's (BSc)</option>
+                  <option value="Master's (MBA)">Master's (MBA)</option>
+                  <option value="Doctorate (PhD)">Doctorate (PhD)</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Target Course / Major</label>
+              <input type="text" class="form-control" id="formStudentCourse" placeholder="e.g. MSc Data Science" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Application Status</label>
+              <select class="form-select" id="formStudentStatus">
+                <option value="Profile Created">Profile Created</option>
+                <option value="Documents Submitted">Documents Submitted</option>
+                <option value="University Applied">University Applied</option>
+                <option value="Offer Received">Offer Received</option>
+                <option value="Visa Processing">Visa Processing</option>
+                <option value="Visa Approved">Visa Approved</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Save Student Record</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW STUDENT DETAILS MODAL -->
+  <div class="modal fade" id="viewStudentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold">Student Dossier</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4" id="viewStudentModalBody">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    function renderStudentRow(student) {
+      const statusClass = student.applicationStatus === 'Visa Approved' ? 'approved' :
+                          student.applicationStatus === 'Offer Received' ? 'offer' :
+                          student.applicationStatus === 'Visa Processing' ? 'processing' : 'applied';
+      return `
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <img src="${student.avatar}" class="rounded-circle" style="width: 38px; height: 38px; object-fit: cover;" alt="${student.name}">
+              <div>
+                <div class="fw-bold">${student.name}</div>
+                <small class="text-muted">${student.id}</small>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="small">${student.email}</div>
+            <small class="text-muted">${student.phone}</small>
+          </td>
+          <td><span class="badge bg-secondary-subtle text-secondary">${student.targetCountry}</span></td>
+          <td>
+            <div class="small fw-semibold">${student.course || 'N/A'}</div>
+            <small class="text-muted">${student.studyLevel}</small>
+          </td>
+          <td>
+            <span class="badge-status ${statusClass}">${student.applicationStatus}</span>
+          </td>
+          <td class="text-end">
+            <button class="table-action-btn" title="View Dossier" onclick="viewStudent('${student.id}')"><i class="bi bi-eye"></i></button>
+            <button class="table-action-btn" title="Edit Student" onclick="editStudent('${student.id}')"><i class="bi bi-pencil"></i></button>
+            <button class="table-action-btn delete" title="Delete Student" onclick="AdminCRUD.deleteItem('${student.id}', '${student.name}')"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+    }
+
+    let studentModalInstance;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      studentModalInstance = new bootstrap.Modal(document.getElementById('studentModal'));
+      AdminCRUD.init('students', renderStudentRow);
+
+      // Form submission for Add / Edit
+      document.getElementById('studentForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('studentId').value;
+        const name = document.getElementById('formStudentName').value;
+        const email = document.getElementById('formStudentEmail').value;
+        const phone = document.getElementById('formStudentPhone').value;
+        const targetCountry = document.getElementById('formStudentCountry').value;
+        const studyLevel = document.getElementById('formStudentLevel').value;
+        const course = document.getElementById('formStudentCourse').value;
+        const applicationStatus = document.getElementById('formStudentStatus').value;
+
+        if (id) {
+          // Update
+          GlobalData.update('students', id, { name, email, phone, targetCountry, studyLevel, course, applicationStatus });
+          window.showToast(`Updated student profile for ${name}`, 'success', 'Student Updated');
+        } else {
+          // Create
+          GlobalData.add('students', {
+            name,
+            email,
+            phone,
+            targetCountry,
+            studyLevel,
+            course,
+            applicationStatus,
+            progress: 30,
+            avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+            enrolledDate: new Date().toISOString().split('T')[0]
+          });
+          window.showToast(`Added new student: ${name}`, 'success', 'Student Created');
+        }
+
+        studentModalInstance.hide();
+        AdminCRUD.render();
+      });
+    });
+
+    function openAddStudentModal() {
+      document.getElementById('studentForm').reset();
+      document.getElementById('studentId').value = '';
+      document.getElementById('studentModalTitle').textContent = 'Add New Student';
+      studentModalInstance.show();
+    }
+
+    function editStudent(id) {
+      const student = GlobalData.getById('students', id);
+      if (!student) return;
+      document.getElementById('studentId').value = student.id;
+      document.getElementById('formStudentName').value = student.name;
+      document.getElementById('formStudentEmail').value = student.email;
+      document.getElementById('formStudentPhone').value = student.phone;
+      document.getElementById('formStudentCountry').value = student.targetCountry;
+      document.getElementById('formStudentLevel').value = student.studyLevel;
+      document.getElementById('formStudentCourse').value = student.course || '';
+      document.getElementById('formStudentStatus').value = student.applicationStatus;
+      document.getElementById('studentModalTitle').textContent = `Edit: ${student.name}`;
+      studentModalInstance.show();
+    }
+
+    function viewStudent(id) {
+      const student = GlobalData.getById('students', id);
+      if (!student) return;
+      document.getElementById('viewStudentModalBody').innerHTML = `
+        <div class="text-center mb-4">
+          <img src="${student.avatar}" class="rounded-circle shadow-sm mb-2" style="width: 80px; height: 80px; object-fit: cover;" alt="${student.name}">
+          <h5 class="fw-bold mb-0">${student.name}</h5>
+          <span class="badge bg-primary-subtle text-primary">${student.id}</span>
+        </div>
+        <ul class="list-group list-group-flush mb-3">
+          <li class="list-group-item d-flex justify-content-between px-0"><strong>Email:</strong> <span>${student.email}</span></li>
+          <li class="list-group-item d-flex justify-content-between px-0"><strong>Phone:</strong> <span>${student.phone}</span></li>
+          <li class="list-group-item d-flex justify-content-between px-0"><strong>Target Country:</strong> <span>${student.targetCountry}</span></li>
+          <li class="list-group-item d-flex justify-content-between px-0"><strong>Study Level:</strong> <span>${student.studyLevel}</span></li>
+          <li class="list-group-item d-flex justify-content-between px-0"><strong>Program:</strong> <span>${student.course || 'Undecided'}</span></li>
+          <li class="list-group-item d-flex justify-content-between px-0"><strong>Application Status:</strong> <span class="fw-bold">${student.applicationStatus}</span></li>
+          <li class="list-group-item d-flex justify-content-between px-0"><strong>Enrolled Date:</strong> <span>${student.enrolledDate || 'N/A'}</span></li>
+        </ul>
+        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Close</button>
+      `;
+      new bootstrap.Modal(document.getElementById('viewStudentModal')).show();
+    }
+  </script>
+</body>
+</html>

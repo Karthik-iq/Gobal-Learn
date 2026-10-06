@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | GlobalPath Education</title>
+  <meta name="description" content="Log in to your GlobalPath Education student portal.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+</head>
+<body class="d-flex align-items-center min-vh-100 py-5 bg-subtle">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+        <!-- Logo & Header -->
+        <div class="text-center mb-4">
+          <a class="brand-logo justify-content-center mb-2" href="index.html">
+            <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+            <span>GlobalPath<span class="text-primary">.</span></span>
+          </a>
+          <h4 class="fw-bold mb-1">Welcome Back</h4>
+          <p class="text-muted small">Sign in to track your university applications.</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="gp-card p-4 p-md-5 mb-4">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label class="form-label">Email Address *</label>
+              <div class="input-group">
+                <span class="input-group-text bg-surface text-muted"><i class="bi bi-envelope"></i></span>
+                <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" value="aarav.sharma@example.com" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between">
+                <label class="form-label">Password *</label>
+                <a href="#" class="small text-primary" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text bg-surface text-muted"><i class="bi bi-lock"></i></span>
+                <input type="password" class="form-control" id="loginPassword" value="student123" required>
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('loginPassword')">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+              <label class="form-check-label small text-muted" for="rememberMe">
+                Remember my session for 30 days
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+              <i class="bi bi-box-arrow-in-right me-1"></i> Sign In to Portal
+            </button>
+
+            <!-- Social Login Providers -->
+            <div class="position-relative text-center my-4">
+              <hr class="text-muted">
+              <span class="position-absolute top-50 start-50 translate-middle bg-surface px-3 small text-muted">or continue with</span>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-outline-secondary btn-sm py-2 d-flex align-items-center justify-content-center gap-2" onclick="simulateSocialLogin('Google')">
+                <i class="bi bi-google text-danger"></i> Continue with Google
+              </button>
+              <button type="button" class="btn btn-outline-secondary btn-sm py-2 d-flex align-items-center justify-content-center gap-2" onclick="simulateSocialLogin('LinkedIn')">
+                <i class="bi bi-linkedin text-primary"></i> Continue with LinkedIn
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Register Link -->
+        <p class="text-center small text-muted mb-0">
+          Don't have an applicant account yet? <a href="register.html" class="fw-bold text-primary">Register Free</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD MODAL -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="forgotPasswordModalLabel">Reset Your Password</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="small text-muted mb-4">
+            Enter your registered email address and our automated admissions auth system will send password reset instructions.
+          </p>
+          <form id="forgotForm">
+            <div class="mb-3">
+              <label class="form-label">Registered Email</label>
+              <input type="email" class="form-control" placeholder="name@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Send Reset Link</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function togglePasswordVisibility(inputId) {
+      const input = document.getElementById(inputId);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    function simulateSocialLogin(provider) {
+      window.showToast(`Signed in with ${provider} (Demo Mode). Staying on current page.`, 'success', 'Social Auth');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.showToast('Login successful! (Demo Mode — Staying on current page)', 'success', 'Login Successful');
+    });
+
+    document.getElementById('forgotForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const modalEl = document.getElementById('forgotPasswordModal');
+      bootstrap.Modal.getInstance(modalEl).hide();
+      window.showToast('Password reset link has been dispatched to your email.', 'success', 'Email Dispatched');
+    });
+  </script>
+</body>
+</html>

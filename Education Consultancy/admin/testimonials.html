@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Testimonials | GlobalPath Admin</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="admin-menu-title">Main Dashboard</div>
+        <a href="index.html" class="admin-nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="students.html" class="admin-nav-item"><i class="bi bi-people"></i> Students</a>
+        <a href="universities.html" class="admin-nav-item"><i class="bi bi-bank"></i> Universities</a>
+        <a href="services.html" class="admin-nav-item"><i class="bi bi-grid-fill"></i> Services</a>
+        <a href="applications.html" class="admin-nav-item"><i class="bi bi-file-earmark-text"></i> Applications</a>
+        <a href="orders.html" class="admin-nav-item"><i class="bi bi-credit-card"></i> Orders & Invoices</a>
+        <a href="messages.html" class="admin-nav-item"><i class="bi bi-envelope"></i> Messages</a>
+
+        <div class="admin-menu-title mt-3">Content Management</div>
+        <a href="blog.html" class="admin-nav-item"><i class="bi bi-newspaper"></i> Blog Posts</a>
+        <a href="testimonials.html" class="admin-nav-item active"><i class="bi bi-star"></i> Testimonials</a>
+        <a href="gallery.html" class="admin-nav-item"><i class="bi bi-images"></i> Media Gallery</a>
+        <a href="pricing.html" class="admin-nav-item"><i class="bi bi-tag"></i> Pricing Tiers</a>
+
+        <div class="admin-menu-title mt-3">Configuration</div>
+        <a href="settings.html" class="admin-nav-item"><i class="bi bi-gear"></i> Settings</a>
+        <a href="../index.html" class="admin-nav-item"><i class="bi bi-box-arrow-up-right"></i> View Public Site</a>
+        <a href="../login.html" class="admin-nav-item text-danger"><i class="bi bi-power"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggleBtn"><i class="bi bi-list fs-5"></i></button>
+          <h5 class="mb-0 fw-bold">Student Testimonials & Reviews</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <button class="btn btn-primary btn-sm" onclick="openAddTestimonialModal()">
+            <i class="bi bi-plus-lg me-1"></i> Add Review
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <div class="admin-table-card">
+          <div class="admin-table-header">
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <input type="text" id="crudSearchInput" class="form-control form-control-sm" placeholder="Search student name, university..." style="width: 260px;">
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="AdminCRUD.exportCSV()"><i class="bi bi-download me-1"></i> Export CSV</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>University & Program</th>
+                  <th>Rating</th>
+                  <th>Review Snippet</th>
+                  <th>Intake</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="crudTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="p-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <small class="text-muted" id="crudTableInfo">Showing 0 to 0 entries</small>
+            <ul class="pagination pagination-sm mb-0" id="crudPagination"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD / EDIT MODAL -->
+  <div class="modal fade" id="testModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="testModalTitle">Add Student Review</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="testForm">
+            <input type="hidden" id="testId">
+            <div class="mb-3">
+              <label class="form-label">Student Name *</label>
+              <input type="text" class="form-control" id="formTestName" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Admitted University *</label>
+                <input type="text" class="form-control" id="formTestUni" placeholder="e.g. Oxford, UK" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Course</label>
+                <input type="text" class="form-control" id="formTestCourse" placeholder="e.g. MSc Data Science" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Rating</label>
+                <select class="form-select" id="formTestRating">
+                  <option value="5" selected>5 Stars (★★★★★)</option>
+                  <option value="4">4 Stars (★★★★☆)</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Intake Class</label>
+                <input type="text" class="form-control" id="formTestIntake" value="Class of 2026">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Review Testimonial Text *</label>
+              <textarea class="form-control" id="formTestText" rows="3" required></textarea>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Student Photo URL</label>
+              <input type="url" class="form-control" id="formTestAvatar" value="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Save Review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    function renderTestRow(item) {
+      return `
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <img src="${item.avatar}" class="rounded-circle" style="width: 36px; height: 36px; object-fit: cover;" alt="${item.name}">
+              <div class="fw-bold">${item.name}</div>
+            </div>
+          </td>
+          <td>
+            <div>${item.university}</div>
+            <small class="text-muted">${item.course}</small>
+          </td>
+          <td><span class="text-warning">★★★★★</span></td>
+          <td><small class="text-muted text-truncate d-inline-block" style="max-width: 250px;">${item.text}</small></td>
+          <td><span class="badge bg-secondary-subtle text-secondary">${item.intake || 'Alumnus'}</span></td>
+          <td class="text-end">
+            <button class="table-action-btn" title="Edit" onclick="editTest('${item.id}')"><i class="bi bi-pencil"></i></button>
+            <button class="table-action-btn delete" title="Delete" onclick="AdminCRUD.deleteItem('${item.id}', 'review from ${item.name}')"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+    }
+
+    let testModalInstance;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      testModalInstance = new bootstrap.Modal(document.getElementById('testModal'));
+      AdminCRUD.init('testimonials', renderTestRow);
+
+      document.getElementById('testForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('testId').value;
+        const name = document.getElementById('formTestName').value;
+        const university = document.getElementById('formTestUni').value;
+        const course = document.getElementById('formTestCourse').value;
+        const rating = parseInt(document.getElementById('formTestRating').value, 10);
+        const intake = document.getElementById('formTestIntake').value;
+        const text = document.getElementById('formTestText').value;
+        const avatar = document.getElementById('formTestAvatar').value;
+
+        if (id) {
+          GlobalData.update('testimonials', id, { name, university, course, rating, intake, text, avatar });
+          window.showToast(`Updated review from ${name}`, 'success', 'Review Updated');
+        } else {
+          GlobalData.add('testimonials', { name, university, course, rating, intake, text, avatar });
+          window.showToast(`Added review from ${name}`, 'success', 'Review Added');
+        }
+
+        testModalInstance.hide();
+        AdminCRUD.render();
+      });
+    });
+
+    function openAddTestimonialModal() {
+      document.getElementById('testForm').reset();
+      document.getElementById('testId').value = '';
+      document.getElementById('testModalTitle').textContent = 'Add Student Review';
+      testModalInstance.show();
+    }
+
+    function editTest(id) {
+      const t = GlobalData.getById('testimonials', id);
+      if (!t) return;
+      document.getElementById('testId').value = t.id;
+      document.getElementById('formTestName').value = t.name;
+      document.getElementById('formTestUni').value = t.university;
+      document.getElementById('formTestCourse').value = t.course;
+      document.getElementById('formTestRating').value = t.rating;
+      document.getElementById('formTestIntake').value = t.intake || '';
+      document.getElementById('formTestText').value = t.text;
+      document.getElementById('formTestAvatar').value = t.avatar;
+      document.getElementById('testModalTitle').textContent = `Edit Review: ${t.name}`;
+      testModalInstance.show();
+    }
+  </script>
+</body>
+</html>

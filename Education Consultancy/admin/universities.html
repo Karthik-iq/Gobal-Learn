@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Partner Universities | GlobalPath Admin</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a class="brand-logo" href="index.html">
+          <div class="brand-icon"><i class="bi bi-globe-americas"></i></div>
+          <span>GlobalPath<span class="text-primary">.</span></span>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-menu">
+        <div class="admin-menu-title">Main Dashboard</div>
+        <a href="index.html" class="admin-nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="students.html" class="admin-nav-item"><i class="bi bi-people"></i> Students</a>
+        <a href="universities.html" class="admin-nav-item active"><i class="bi bi-bank"></i> Universities</a>
+        <a href="services.html" class="admin-nav-item"><i class="bi bi-grid-fill"></i> Services</a>
+        <a href="applications.html" class="admin-nav-item"><i class="bi bi-file-earmark-text"></i> Applications</a>
+        <a href="orders.html" class="admin-nav-item"><i class="bi bi-credit-card"></i> Orders & Invoices</a>
+        <a href="messages.html" class="admin-nav-item"><i class="bi bi-envelope"></i> Messages</a>
+
+        <div class="admin-menu-title mt-3">Content Management</div>
+        <a href="blog.html" class="admin-nav-item"><i class="bi bi-newspaper"></i> Blog Posts</a>
+        <a href="testimonials.html" class="admin-nav-item"><i class="bi bi-star"></i> Testimonials</a>
+        <a href="gallery.html" class="admin-nav-item"><i class="bi bi-images"></i> Media Gallery</a>
+        <a href="pricing.html" class="admin-nav-item"><i class="bi bi-tag"></i> Pricing Tiers</a>
+
+        <div class="admin-menu-title mt-3">Configuration</div>
+        <a href="settings.html" class="admin-nav-item"><i class="bi bi-gear"></i> Settings</a>
+        <a href="../index.html" class="admin-nav-item"><i class="bi bi-box-arrow-up-right"></i> View Public Site</a>
+        <a href="../login.html" class="admin-nav-item text-danger"><i class="bi bi-power"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggleBtn"><i class="bi bi-list fs-5"></i></button>
+          <h5 class="mb-0 fw-bold">Partner Universities Directory</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn-control theme-toggle-btn" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="btn-rtl rtl-toggle-btn" onclick="toggleRTL()"><span class="rtl-label">⇄ RTL</span></button>
+          <button class="btn btn-primary btn-sm" onclick="openAddUniModal()">
+            <i class="bi bi-plus-lg me-1"></i> Add University
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <div class="admin-table-card">
+          <div class="admin-table-header">
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <input type="text" id="crudSearchInput" class="form-control form-control-sm" placeholder="Search university, country..." style="width: 260px;">
+              <select id="crudStatusFilter" class="form-select form-select-sm" style="width: 180px;">
+                <option value="all">All Partnerships</option>
+                <option value="Partner Institution">Partner Institution</option>
+                <option value="Featured">Featured</option>
+                <option value="Top STEM Destination">Top STEM Destination</option>
+              </select>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="AdminCRUD.exportCSV()"><i class="bi bi-download me-1"></i> Export CSV</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>University</th>
+                  <th>Country</th>
+                  <th>World Ranking</th>
+                  <th>Acceptance Rate</th>
+                  <th>Avg Tuition</th>
+                  <th>Status</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="crudTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="p-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <small class="text-muted" id="crudTableInfo">Showing 0 to 0 entries</small>
+            <ul class="pagination pagination-sm mb-0" id="crudPagination"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD / EDIT UNIVERSITY MODAL -->
+  <div class="modal fade" id="uniModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-xl rounded-4">
+        <div class="modal-header border-bottom p-4">
+          <h5 class="modal-title fw-bold" id="uniModalTitle">Add University</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="uniForm">
+            <input type="hidden" id="uniId">
+            <div class="mb-3">
+              <label class="form-label">University Name *</label>
+              <input type="text" class="form-control" id="formUniName" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Country *</label>
+                <input type="text" class="form-control" id="formUniCountry" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Ranking *</label>
+                <input type="text" class="form-control" id="formUniRanking" placeholder="e.g. #15 QS World" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Acceptance Rate</label>
+                <input type="text" class="form-control" id="formUniAcceptance" placeholder="e.g. 25%">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Avg Tuition / Year</label>
+                <input type="text" class="form-control" id="formUniTuition" placeholder="e.g. £24,000 / yr">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Partnership Status</label>
+              <select class="form-select" id="formUniStatus">
+                <option value="Partner Institution">Partner Institution</option>
+                <option value="Featured">Featured</option>
+                <option value="Top STEM Destination">Top STEM Destination</option>
+                <option value="Direct Agreement">Direct Agreement</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Campus Image URL</label>
+              <input type="url" class="form-control" id="formUniImage" value="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Save University</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gpToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    function renderUniRow(uni) {
+      return `
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <img src="${uni.image}" class="rounded-3" style="width: 48px; height: 36px; object-fit: cover;" alt="${uni.name}">
+              <div class="fw-bold">${uni.name}</div>
+            </div>
+          </td>
+          <td><span class="badge bg-secondary-subtle text-secondary">${uni.country}</span></td>
+          <td><span class="badge bg-primary-subtle text-primary">${uni.ranking}</span></td>
+          <td>${uni.acceptanceRate || 'N/A'}</td>
+          <td><span class="fw-semibold">${uni.avgTuition || 'Varies'}</span></td>
+          <td><span class="badge-status approved">${uni.status}</span></td>
+          <td class="text-end">
+            <button class="table-action-btn" title="Edit" onclick="editUni('${uni.id}')"><i class="bi bi-pencil"></i></button>
+            <button class="table-action-btn delete" title="Delete" onclick="AdminCRUD.deleteItem('${uni.id}', '${uni.name}')"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+    }
+
+    let uniModalInstance;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      uniModalInstance = new bootstrap.Modal(document.getElementById('uniModal'));
+      AdminCRUD.init('universities', renderUniRow);
+
+      document.getElementById('uniForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('uniId').value;
+        const name = document.getElementById('formUniName').value;
+        const country = document.getElementById('formUniCountry').value;
+        const ranking = document.getElementById('formUniRanking').value;
+        const acceptanceRate = document.getElementById('formUniAcceptance').value;
+        const avgTuition = document.getElementById('formUniTuition').value;
+        const status = document.getElementById('formUniStatus').value;
+        const image = document.getElementById('formUniImage').value;
+
+        if (id) {
+          GlobalData.update('universities', id, { name, country, ranking, acceptanceRate, avgTuition, status, image });
+          window.showToast(`Updated ${name}`, 'success', 'University Updated');
+        } else {
+          GlobalData.add('universities', { name, country, ranking, acceptanceRate, avgTuition, status, image });
+          window.showToast(`Added ${name}`, 'success', 'University Added');
+        }
+
+        uniModalInstance.hide();
+        AdminCRUD.render();
+      });
+    });
+
+    function openAddUniModal() {
+      document.getElementById('uniForm').reset();
+      document.getElementById('uniId').value = '';
+      document.getElementById('uniModalTitle').textContent = 'Add Partner University';
+      uniModalInstance.show();
+    }
+
+    function editUni(id) {
+      const u = GlobalData.getById('universities', id);
+      if (!u) return;
+      document.getElementById('uniId').value = u.id;
+      document.getElementById('formUniName').value = u.name;
+      document.getElementById('formUniCountry').value = u.country;
+      document.getElementById('formUniRanking').value = u.ranking;
+      document.getElementById('formUniAcceptance').value = u.acceptanceRate || '';
+      document.getElementById('formUniTuition').value = u.avgTuition || '';
+      document.getElementById('formUniStatus').value = u.status;
+      document.getElementById('formUniImage').value = u.image;
+      document.getElementById('uniModalTitle').textContent = `Edit: ${u.name}`;
+      uniModalInstance.show();
+    }
+  </script>
+</body>
+</html>
