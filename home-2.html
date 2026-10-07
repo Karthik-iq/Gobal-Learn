@@ -57,8 +57,8 @@
               Home
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door-fill text-primary"></i> Home 1 – General Services</a></li>
-              <li><a class="dropdown-item active" href="home-2.html"><i class="bi bi-airplane-engines-fill text-info"></i> Home 2 – Study Abroad</a></li>
+              <li><a class="dropdown-item" href="index.html">Home 1 – General Services</a></li>
+              <li><a class="dropdown-item active" href="home-2.html">Home 2 – Study Abroad</a></li>
             </ul>
           </li>
 
@@ -161,7 +161,7 @@
           <div class="card p-3 p-md-4 shadow-xl border-0 rounded-4 bg-surface mb-4">
             <form action="services.html" method="GET" class="row g-2 align-items-center">
               <div class="col-md-4">
-                <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-geo-alt text-primary me-2"></i> Target Country</label>
+                <label class="form-label small fw-bold text-muted mb-1 d-inline-flex align-items-center"><i class="bi bi-geo-alt text-primary me-2" style="margin-inline-end: 0.65rem;"></i> Target Country</label>
                 <select class="form-select border-subtle" name="country">
                   <option value="all">All Destinations</option>
                   <option value="UK">United Kingdom</option>
@@ -173,7 +173,7 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-mortarboard text-success me-2"></i> Degree Level</label>
+                <label class="form-label small fw-bold text-muted mb-1 d-inline-flex align-items-center"><i class="bi bi-mortarboard text-success me-2" style="margin-inline-end: 0.65rem;"></i> Degree Level</label>
                 <select class="form-select border-subtle" name="degree">
                   <option value="masters">Master's / Postgraduate</option>
                   <option value="bachelors">Bachelor's / Undergraduate</option>
@@ -1384,12 +1384,12 @@
           <form class="consultation-form">
             <div class="mb-3">
               <label class="form-label">Full Name *</label>
-              <input type="text" class="form-control" name="name" placeholder="e.g. Liam Chen" required>
+              <input type="text" class="form-control" name="name" minlength="2" maxlength="50" pattern="[a-zA-Z\s'\-]{2,50}" oninput="this.value = this.value.replace(/[0-9]/g, '')" title="Name must contain at least 2 letters and no numbers." placeholder="e.g. Liam Chen" required>
             </div>
             <div class="row g-2 mb-3">
               <div class="col-md-6">
                 <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" name="email" placeholder="liam@example.com" required>
+                <input type="email" class="form-control" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address with a domain (e.g. name@example.com)" placeholder="liam@example.com" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone Number *</label>

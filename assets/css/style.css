@@ -1006,42 +1006,55 @@ body[dir="ltr"],
   }
 }
 
-/* Responsive Desktop / Tablet Navbar Alignment (992px to 1199.98px e.g., 1024px) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .navbar .container {
+/* ========================================================
+   UNIVERSAL DESKTOP & TABLET NAVBAR FLEX ALIGNMENT (>= 992px)
+   Prevents cut-off of CTA button and aligns all links cleanly on Edge/Chrome
+   ======================================================== */
+@media (min-width: 992px) {
+  .main-navbar .container {
     max-width: 100% !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: clamp(1rem, 2.5vw, 2.5rem) !important;
+    padding-right: clamp(1rem, 2.5vw, 2.5rem) !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
-  .navbar-nav {
+  .main-navbar .brand-logo {
+    flex-shrink: 0 !important;
+    margin-right: 0.75rem !important;
+  }
+  .main-navbar .navbar-collapse {
+    display: flex !important;
+    flex-grow: 1 !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-width: 0 !important;
+  }
+  .main-navbar .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    gap: 0.15rem !important;
+    gap: clamp(0.1rem, 0.35vw, 0.45rem) !important;
   }
-  .navbar-nav .nav-link {
-    padding: 0.4rem 0.35rem !important;
-    font-size: 0.825rem !important;
+  .main-navbar .navbar-nav .nav-link {
+    padding: 0.45rem clamp(0.35rem, 0.55vw, 0.8rem) !important;
+    font-size: clamp(0.82rem, 0.86vw, 0.925rem) !important;
     white-space: nowrap !important;
   }
-  .navbar-collapse .d-flex.align-items-center.gap-3 {
-    gap: 0.35rem !important;
+  .main-navbar .navbar-collapse > .d-flex:last-child {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    gap: clamp(0.35rem, 0.5vw, 0.75rem) !important;
   }
-  .navbar .btn-sm {
-    padding: 0 0.55rem !important;
-    font-size: 0.78rem !important;
+  .main-navbar .btn-sm {
     white-space: nowrap !important;
-  }
-  .navbar .btn-rtl {
-    padding: 0 0.45rem !important;
-    font-size: 0.75rem !important;
-  }
-  .navbar .brand-logo span {
-    font-size: 1.15rem !important;
-  }
-  .navbar .brand-icon {
-    width: 32px !important;
-    height: 32px !important;
-    font-size: 1rem !important;
+    flex-shrink: 0 !important;
+    padding: 0 clamp(0.55rem, 0.75vw, 1rem) !important;
+    font-size: clamp(0.8rem, 0.85vw, 0.875rem) !important;
   }
 }
 

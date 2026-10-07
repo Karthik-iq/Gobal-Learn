@@ -303,35 +303,174 @@
   }
 
   // --- 7. FORMS INTERACTION & TOAST NOTIFICATION ENGINE ---
-  function initForms() {
-    // Real-time phone number input restriction & error display
-    const phoneInputs = document.querySelectorAll('input[name="phone"], input[type="tel"]');
-    phoneInputs.forEach(input => {
-      let feedback = input.parentElement.querySelector('.phone-feedback');
-      if (!feedback) {
-        feedback = document.createElement('div');
-        feedback.className = 'invalid-feedback phone-feedback';
-        feedback.textContent = 'Only numbers are accepted! Alphabets are not allowed.';
-        input.parentElement.appendChild(feedback);
-      }
 
-      function showNumberOnlyWarning() {
-        input.classList.add('is-invalid');
-        feedback.textContent = 'Only numbers are accepted! Alphabets are not allowed.';
+  // Helper to locate or create a visible feedback message container
+  function getOrCreateFeedback(input, className, defaultText) {
+    if (!input || !input.parentNode) return null;
+    const parentContainer = input.closest('.input-group') || input;
+    const scope = input.closest('form') || input.parentElement;
+    let feedback = scope ? scope.querySelector(`.${className}`) : null;
+    if (!feedback) {
+      feedback = document.createElement('div');
+      feedback.className = `invalid-feedback ${className}`;
+      feedback.textContent = defaultText;
+      if (parentContainer.nextSibling) {
+        parentContainer.parentNode.insertBefore(feedback, parentContainer.nextSibling);
+      } else {
+        parentContainer.parentNode.appendChild(feedback);
+      }
+    }
+    return feedback;
+  }
+
+  // Comprehensive validation helper functions accessible globally
+  window.validateFullName = function (input) {
+    if (!input) return true;
+    const val = input.value.trim();
+    const feedback = getOrCreateFeedback(input, 'name-feedback', 'Please enter a valid name.');
+
+    if (val.length < 2) {
+      input.classList.add('is-invalid');
+      if (feedback) {
+        feedback.textContent = 'Name must be at least 2 characters long (letters only).';
         feedback.style.display = 'block';
-        clearTimeout(input._warnTimer);
-        input._warnTimer = setTimeout(() => {
-          const digits = (input.value.match(/\d/g) || []).length;
-          if (digits >= 7 || input.value.trim().length === 0) {
+      }
+      input.focus();
+      if (window.showToast) {
+        window.showToast('Please enter your full name (minimum 2 letters required).', 'danger', 'Invalid Name');
+      }
+      return false;
+    }
+
+    if (/[0-9]/.test(val)) {
+      input.classList.add('is-invalid');
+      if (feedback) {
+        feedback.textContent = 'Name cannot contain numbers. Only letters are accepted.';
+        feedback.style.display = 'block';
+      }
+      input.focus();
+      if (window.showToast) {
+        window.showToast('Numbers are not accepted in the Name field. Only letters are allowed.', 'danger', 'Invalid Name');
+      }
+      return false;
+    }
+
+    const nameRegex = /^[a-zA-Z\s'\-]{2,50}$/;
+    if (!nameRegex.test(val)) {
+      input.classList.add('is-invalid');
+      if (feedback) {
+        feedback.textContent = 'Please enter a valid name using letters only.';
+        feedback.style.display = 'block';
+      }
+      input.focus();
+      if (window.showToast) {
+        window.showToast('Please enter a valid name containing only letters.', 'danger', 'Invalid Name');
+      }
+      return false;
+    }
+
+    input.classList.remove('is-invalid');
+    if (feedback) feedback.style.display = 'none';
+    return true;
+  };
+
+  window.validateEmailAddress = function (input) {
+    if (!input) return true;
+    const val = input.value.trim();
+    const feedback = getOrCreateFeedback(input, 'email-feedback', 'Please enter a valid email address.');
+
+    // Require RFC-compliant email structure with a domain containing a dot and 2+ char TLD (e.g., .com, .edu, .org)
+    // Strictly rejects invalid formats like 'ice@g', 'test@', 'user@domain'
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!val || !emailRegex.test(val)) {
+      input.classList.add('is-invalid');
+      if (feedback) {
+        feedback.textContent = 'Please enter a valid email address with a domain (e.g. name@example.com).';
+        feedback.style.display = 'block';
+      }
+      input.focus();
+      if (window.showToast) {
+        window.showToast('Please enter a valid email address with a valid domain (e.g. name@example.com).', 'danger', 'Invalid Email');
+      }
+      return false;
+    }
+
+    input.classList.remove('is-invalid');
+    if (feedback) feedback.style.display = 'none';
+    return true;
+  };
+
+  window.validatePhoneNumber = function (input) {
+    if (!input) return true;
+    const val = input.value.trim();
+    const feedback = getOrCreateFeedback(input, 'phone-feedback', 'Only numbers are accepted! Alphabets are not allowed.');
+
+    if (/[a-zA-Z]/.test(val)) {
+      input.classList.add('is-invalid');
+      if (feedback) {
+        feedback.textContent = 'Alphabets are not allowed! Only numbers are accepted.';
+        feedback.style.display = 'block';
+      }
+      input.focus();
+      if (window.showToast) {
+        window.showToast('Phone number cannot contain alphabets. Only numbers are accepted.', 'danger', 'Invalid Phone');
+      }
+      return false;
+    }
+
+    const digits = (val.match(/\d/g) || []).length;
+    if (digits < 7) {
+      input.classList.add('is-invalid');
+      if (feedback) {
+        feedback.textContent = 'Phone number is too short (min 7 digits required).';
+        feedback.style.display = 'block';
+      }
+      input.focus();
+      if (window.showToast) {
+        window.showToast('Please enter a valid phone number with numbers only (min 7 digits).', 'danger', 'Invalid Phone');
+      }
+      return false;
+    }
+
+    const phoneRegex = /^[0-9+\s\-()]{7,20}$/;
+    if (!phoneRegex.test(val)) {
+      input.classList.add('is-invalid');
+      if (feedback) {
+        feedback.textContent = 'Please enter a valid phone number format.';
+        feedback.style.display = 'block';
+      }
+      input.focus();
+      return false;
+    }
+
+    input.classList.remove('is-invalid');
+    if (feedback) feedback.style.display = 'none';
+    return true;
+  };
+
+  function initForms() {
+    // 1. Real-time Name Input Filtering (Rejects numbers, min length feedback)
+    const nameInputs = document.querySelectorAll('input[name="name"], #regName');
+    nameInputs.forEach(input => {
+      const feedback = getOrCreateFeedback(input, 'name-feedback', 'Name cannot contain numbers. Only letters are accepted.');
+
+      function showNumberWarning() {
+        input.classList.add('is-invalid');
+        if (feedback) {
+          feedback.textContent = 'Numbers are not allowed in the Name field! Letters only.';
+          feedback.style.display = 'block';
+        }
+        clearTimeout(input._nameWarnTimer);
+        input._nameWarnTimer = setTimeout(() => {
+          if (!/[0-9]/.test(input.value) && input.value.trim().length >= 2) {
             input.classList.remove('is-invalid');
-            feedback.style.display = 'none';
+            if (feedback) feedback.style.display = 'none';
           }
         }, 2200);
       }
 
-      // Block alphabet keystrokes immediately on keydown
+      // Block digits immediately on keydown
       input.addEventListener('keydown', function (e) {
-        // Allow navigation & editing keys
         if (
           e.key === 'Backspace' ||
           e.key === 'Tab' ||
@@ -349,14 +488,135 @@
           return;
         }
 
-        // Prevent alphabets from being typed into the box
+        if (/[0-9]/.test(e.key)) {
+          e.preventDefault();
+          showNumberWarning();
+        }
+      });
+
+      // Block digits on beforeinput
+      input.addEventListener('beforeinput', function (e) {
+        if (e.data && /[0-9]/.test(e.data)) {
+          e.preventDefault();
+          showNumberWarning();
+        }
+      });
+
+      // Filter paste event so digits are stripped
+      input.addEventListener('paste', function (e) {
+        const pasteData = (e.clipboardData || window.clipboardData)?.getData('text') || '';
+        if (/[0-9]/.test(pasteData)) {
+          e.preventDefault();
+          const cleanData = pasteData.replace(/[0-9]/g, '');
+          const start = this.selectionStart;
+          const end = this.selectionEnd;
+          const currentVal = this.value;
+          this.value = currentVal.substring(0, start) + cleanData + currentVal.substring(end);
+          this.selectionStart = this.selectionEnd = start + cleanData.length;
+          showNumberWarning();
+          this.dispatchEvent(new Event('input'));
+        }
+      });
+
+      // Strip digits on input and check validity
+      input.addEventListener('input', function () {
+        if (/[0-9]/.test(this.value)) {
+          this.value = this.value.replace(/[0-9]/g, '');
+          showNumberWarning();
+        } else if (this.value.trim().length >= 2) {
+          this.classList.remove('is-invalid');
+          if (feedback) feedback.style.display = 'none';
+        }
+      });
+
+      // Validate length on blur
+      input.addEventListener('blur', function () {
+        const val = this.value.trim();
+        if (val.length > 0 && val.length < 2) {
+          this.classList.add('is-invalid');
+          if (feedback) {
+            feedback.textContent = 'Name must be at least 2 characters long.';
+            feedback.style.display = 'block';
+          }
+        }
+      });
+    });
+
+    // 2. Real-time Email Input Checking
+    const emailInputs = document.querySelectorAll('input[name="email"], input[type="email"], #regEmail');
+    emailInputs.forEach(input => {
+      const feedback = getOrCreateFeedback(input, 'email-feedback', 'Please enter a valid email address with a domain (e.g. name@example.com).');
+
+      input.addEventListener('input', function () {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (this.classList.contains('is-invalid') && emailRegex.test(this.value.trim())) {
+          this.classList.remove('is-invalid');
+          if (feedback) feedback.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('blur', function () {
+        const val = this.value.trim();
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (val.length > 0 && !emailRegex.test(val)) {
+          this.classList.add('is-invalid');
+          if (feedback) {
+            feedback.textContent = 'Please enter a valid email address with a domain (e.g. name@example.com).';
+            feedback.style.display = 'block';
+          }
+        } else if (emailRegex.test(val)) {
+          this.classList.remove('is-invalid');
+          if (feedback) feedback.style.display = 'none';
+        }
+      });
+    });
+
+    // 3. Real-time Phone Number Input Restriction & Error Display
+    const phoneInputs = document.querySelectorAll('input[name="phone"], input[type="tel"], #regPhone');
+    phoneInputs.forEach(input => {
+      const feedback = getOrCreateFeedback(input, 'phone-feedback', 'Only numbers are accepted! Alphabets are not allowed.');
+
+      function showNumberOnlyWarning() {
+        input.classList.add('is-invalid');
+        if (feedback) {
+          feedback.textContent = 'Only numbers are accepted! Alphabets are not allowed.';
+          feedback.style.display = 'block';
+        }
+        clearTimeout(input._warnTimer);
+        input._warnTimer = setTimeout(() => {
+          const digits = (input.value.match(/\d/g) || []).length;
+          if (digits >= 7 || input.value.trim().length === 0) {
+            input.classList.remove('is-invalid');
+            if (feedback) feedback.style.display = 'none';
+          }
+        }, 2200);
+      }
+
+      // Block alphabet keystrokes immediately on keydown
+      input.addEventListener('keydown', function (e) {
+        if (
+          e.key === 'Backspace' ||
+          e.key === 'Tab' ||
+          e.key === 'Delete' ||
+          e.key === 'ArrowLeft' ||
+          e.key === 'ArrowRight' ||
+          e.key === 'ArrowUp' ||
+          e.key === 'ArrowDown' ||
+          e.key === 'Enter' ||
+          e.key === 'Home' ||
+          e.key === 'End' ||
+          e.ctrlKey ||
+          e.metaKey
+        ) {
+          return;
+        }
+
         if (/[a-zA-Z]/.test(e.key)) {
           e.preventDefault();
           showNumberOnlyWarning();
           return;
         }
 
-        // Allow numbers 0-9 and standard phone symbols: +, -, (, ), space
         if (!/[0-9+\s\-()]/.test(e.key)) {
           e.preventDefault();
           showNumberOnlyWarning();
@@ -387,7 +647,7 @@
         }
       });
 
-      // Final safety net on input event: strip any alphabets immediately
+      // Strip alphabets immediately on input
       input.addEventListener('input', function () {
         if (/[a-zA-Z]/.test(this.value)) {
           this.value = this.value.replace(/[a-zA-Z]/g, '');
@@ -396,7 +656,7 @@
           const digits = (this.value.match(/\d/g) || []).length;
           if (digits >= 7 || this.value.trim().length === 0) {
             this.classList.remove('is-invalid');
-            feedback.style.display = 'none';
+            if (feedback) feedback.style.display = 'none';
           }
         }
       });
@@ -406,41 +666,38 @@
         const digits = (this.value.match(/\d/g) || []).length;
         if (this.value.trim().length > 0 && digits < 7) {
           this.classList.add('is-invalid');
-          feedback.textContent = 'Phone number is too short (min 7 digits required).';
-          feedback.style.display = 'block';
+          if (feedback) {
+            feedback.textContent = 'Phone number is too short (min 7 digits required).';
+            feedback.style.display = 'block';
+          }
         }
       });
     });
 
-    // Consultation booking modal & inline consultation forms
+    // 4. Consultation Booking Modal & Inline Consultation Forms
     const consultationForms = document.querySelectorAll('.consultation-form');
     consultationForms.forEach(form => {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const name = form.querySelector('[name="name"]')?.value || 'Student';
-        const email = form.querySelector('[name="email"]')?.value || '';
-        const phoneInput = form.querySelector('[name="phone"]');
+        const nameInput = form.querySelector('[name="name"], #regName');
+        const emailInput = form.querySelector('[name="email"], input[type="email"]');
+        const phoneInput = form.querySelector('[name="phone"], input[type="tel"]');
+
+        // Validate Full Name
+        if (!window.validateFullName(nameInput)) return;
+
+        // Validate Email Address (strictly rejects ice@g)
+        if (!window.validateEmailAddress(emailInput)) return;
+
+        // Validate Phone Number (must have 7+ digits, no alphabets)
+        if (!window.validatePhoneNumber(phoneInput)) return;
+
+        const name = nameInput?.value.trim() || 'Student';
+        const email = emailInput?.value.trim() || '';
         const phone = phoneInput?.value.trim() || '';
         const country = form.querySelector('[name="country"]')?.value || 'General Inquiry';
         const service = form.querySelector('[name="service"]')?.value || 'Consultation Request';
         const message = form.querySelector('[name="message"]')?.value || 'Requested Free Consultation session';
-
-        // Phone validation: must not contain alphabets and must have at least 7 digits
-        const digits = (phone.match(/\d/g) || []).length;
-        if (digits < 7 || /[a-zA-Z]/.test(phone)) {
-          if (phoneInput) {
-            phoneInput.classList.add('is-invalid');
-            let feedback = phoneInput.parentElement.querySelector('.phone-feedback');
-            if (feedback) feedback.style.display = 'block';
-            phoneInput.focus();
-          }
-          window.showToast(
-            'Please enter a valid phone number with numbers only (min 7 digits). Alphabets are not accepted.',
-            'danger',
-            'Invalid Phone Number'
-          );
-          return;
-        }
 
         if (typeof GlobalData !== 'undefined') {
           GlobalData.add('messages', {
@@ -471,34 +728,29 @@
       });
     });
 
-    // Contact Us Form
+    // 5. Contact Us Form
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
       contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const name = contactForm.querySelector('[name="name"]')?.value || 'Visitor';
-        const email = contactForm.querySelector('[name="email"]')?.value || '';
+        const nameInput = contactForm.querySelector('[name="name"]');
+        const emailInput = contactForm.querySelector('[name="email"]');
         const phoneInput = contactForm.querySelector('[name="phone"]');
+
+        // Validate Full Name
+        if (!window.validateFullName(nameInput)) return;
+
+        // Validate Email Address (strictly rejects ice@g)
+        if (!window.validateEmailAddress(emailInput)) return;
+
+        // Validate Phone Number (must have 7+ digits, no alphabets)
+        if (!window.validatePhoneNumber(phoneInput)) return;
+
+        const name = nameInput?.value.trim() || 'Visitor';
+        const email = emailInput?.value.trim() || '';
         const phone = phoneInput?.value.trim() || '';
         const subject = contactForm.querySelector('[name="subject"]')?.value || 'General Enquiry';
         const message = contactForm.querySelector('[name="message"]')?.value || '';
-
-        // Phone validation
-        const digits = (phone.match(/\d/g) || []).length;
-        if (digits < 7 || /[a-zA-Z]/.test(phone)) {
-          if (phoneInput) {
-            phoneInput.classList.add('is-invalid');
-            let feedback = phoneInput.parentElement.querySelector('.phone-feedback');
-            if (feedback) feedback.style.display = 'block';
-            phoneInput.focus();
-          }
-          window.showToast(
-            'Please enter a valid phone number with numbers only (min 7 digits). Alphabets are not accepted.',
-            'danger',
-            'Invalid Phone Number'
-          );
-          return;
-        }
 
         if (typeof GlobalData !== 'undefined') {
           GlobalData.add('messages', {
@@ -521,20 +773,20 @@
       });
     }
 
-    // Newsletter Subscriptions
+    // 6. Newsletter Subscriptions
     const newsletterForms = document.querySelectorAll('.newsletter-form');
     newsletterForms.forEach(form => {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         const emailInput = form.querySelector('input[type="email"]');
-        if (emailInput && emailInput.value) {
-          window.showToast(
-            `Thank you for subscribing! Free study guides have been dispatched to ${emailInput.value}.`,
-            'success',
-            'Newsletter Confirmed'
-          );
-          form.reset();
-        }
+        if (!window.validateEmailAddress(emailInput)) return;
+
+        window.showToast(
+          `Thank you for subscribing! Free study guides have been dispatched to ${emailInput.value.trim()}.`,
+          'success',
+          'Newsletter Confirmed'
+        );
+        form.reset();
       });
     });
   }

@@ -38,8 +38,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Home</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door-fill text-primary"></i> Home 1 – General Services</a></li>
-              <li><a class="dropdown-item" href="home-2.html"><i class="bi bi-airplane-engines-fill text-info"></i> Home 2 – Study Abroad</a></li>
+              <li><a class="dropdown-item" href="index.html">Home 1 – General Services</a></li>
+              <li><a class="dropdown-item" href="home-2.html">Home 2 – Study Abroad</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
@@ -201,11 +201,11 @@
               <div class="row g-3 mb-3">
                 <div class="col-md-6">
                   <label class="form-label">Your Full Name *</label>
-                  <input type="text" class="form-control" name="name" placeholder="John Doe" required>
+                  <input type="text" class="form-control" name="name" minlength="2" maxlength="50" pattern="[a-zA-Z\s'\-]{2,50}" oninput="this.value = this.value.replace(/[0-9]/g, '')" title="Name must contain at least 2 letters and no numbers." placeholder="John Doe" required>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Email Address *</label>
-                  <input type="email" class="form-control" name="email" placeholder="john@example.com" required>
+                  <input type="email" class="form-control" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address with a domain (e.g. name@example.com)" placeholder="john@example.com" required>
                 </div>
               </div>
 
@@ -235,17 +235,23 @@
         <!-- Google Maps & Consultation CTA (Right) -->
         <div class="col-lg-5">
           <!-- Interactive Map Card -->
-          <div class="gp-card p-0 overflow-hidden mb-4" style="height: 280px;">
+          <div class="gp-card p-0 overflow-hidden mb-4 position-relative" style="height: 280px; min-height: 280px; background-color: var(--gp-bg-subtle);">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.457876127393!2d-73.98396822346764!3d40.75199693506977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25901cb00908d%3A0xe4a242c75a4dc372!2s452%205th%20Ave%2C%20New%20York%2C%20NY%2010018%2C%20USA!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+              src="https://maps.google.com/maps?q=452+5th+Ave,+New+York,+NY+10018&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed" 
               width="100%" 
               height="100%" 
-              style="border:0;" 
+              style="border:0; min-height: 280px; display: block;" 
               allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
+              loading="eager"
               title="GlobalPath Education New York Office">
             </iframe>
+            <!-- Map Info Bar Overlay -->
+            <div class="position-absolute bottom-0 start-0 end-0 p-2 bg-dark bg-opacity-75 text-white d-flex justify-content-between align-items-center small" style="backdrop-filter: blur(4px);">
+              <span class="text-truncate me-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i> 452 5th Ave, New York, NY 10018</span>
+              <a href="https://maps.google.com/?q=452+5th+Ave,+New+York,+NY+10018" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm text-nowrap py-0 px-2 fs-xs" style="height: 24px;">
+                <i class="bi bi-box-arrow-up-right me-1"></i> Open Map
+              </a>
+            </div>
           </div>
 
           <!-- Direct Consultation Booking Box -->
@@ -345,12 +351,12 @@
           <form class="consultation-form">
             <div class="mb-3">
               <label class="form-label">Full Name *</label>
-              <input type="text" class="form-control" name="name" placeholder="e.g. Liam Chen" required>
+              <input type="text" class="form-control" name="name" minlength="2" maxlength="50" pattern="[a-zA-Z\s'\-]{2,50}" oninput="this.value = this.value.replace(/[0-9]/g, '')" title="Name must contain at least 2 letters and no numbers." placeholder="e.g. Liam Chen" required>
             </div>
             <div class="row g-2 mb-3">
               <div class="col-md-6">
                 <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" name="email" placeholder="liam@example.com" required>
+                <input type="email" class="form-control" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address with a domain (e.g. name@example.com)" placeholder="liam@example.com" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone Number *</label>

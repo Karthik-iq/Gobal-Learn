@@ -35,18 +35,18 @@
               <label class="form-label">Full Name *</label>
               <div class="input-group">
                 <span class="input-group-text bg-surface text-muted"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="regName" placeholder="e.g. Priya Patel" required>
+                <input type="text" class="form-control" id="regName" name="name" minlength="2" maxlength="50" pattern="[a-zA-Z\s'\-]{2,50}" oninput="this.value = this.value.replace(/[0-9]/g, '')" title="Name must contain at least 2 letters and no numbers." placeholder="e.g. Priya Patel" required>
               </div>
             </div>
 
             <div class="row g-3 mb-3">
               <div class="col-md-6">
                 <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" id="regEmail" placeholder="name@example.com" required>
+                <input type="email" class="form-control" id="regEmail" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" placeholder="name@example.com" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone / WhatsApp *</label>
-                <input type="tel" class="form-control" id="regPhone" placeholder="+1 (555) 000-0000" required>
+                <input type="tel" class="form-control" id="regPhone" name="phone" oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')" pattern="[0-9+\s\-()]{7,20}" title="Please enter numbers only (min 7 digits)" placeholder="+1 (555) 000-0000" required>
               </div>
             </div>
 
@@ -115,6 +115,20 @@
   <script>
     document.getElementById('registerForm').addEventListener('submit', (e) => {
       e.preventDefault();
+      const nameInput = document.getElementById('regName');
+      const emailInput = document.getElementById('regEmail');
+      const phoneInput = document.getElementById('regPhone');
+
+      if (window.validateFullName && !window.validateFullName(nameInput)) {
+        return;
+      }
+      if (window.validateEmailAddress && !window.validateEmailAddress(emailInput)) {
+        return;
+      }
+      if (window.validatePhoneNumber && !window.validatePhoneNumber(phoneInput)) {
+        return;
+      }
+
       const p1 = document.getElementById('regPassword').value;
       const p2 = document.getElementById('regConfirmPassword').value;
 
@@ -123,9 +137,9 @@
         return;
       }
 
-      const name = document.getElementById('regName').value;
-      const email = document.getElementById('regEmail').value;
-      const phone = document.getElementById('regPhone').value;
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput.value.trim();
       const country = document.getElementById('regCountry').value;
       const studyLevel = document.getElementById('regLevel').value;
 

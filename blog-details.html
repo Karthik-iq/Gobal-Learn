@@ -38,8 +38,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Home</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door-fill text-primary"></i> Home 1 – General Services</a></li>
-              <li><a class="dropdown-item" href="home-2.html"><i class="bi bi-airplane-engines-fill text-info"></i> Home 2 – Study Abroad</a></li>
+              <li><a class="dropdown-item" href="index.html">Home 1 – General Services</a></li>
+              <li><a class="dropdown-item" href="home-2.html">Home 2 – Study Abroad</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
@@ -183,10 +183,10 @@
             <form id="commentForm">
               <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Your Name *" required>
+                  <input type="text" class="form-control" name="name" minlength="2" maxlength="50" pattern="[a-zA-Z\s'\-]{2,50}" oninput="this.value = this.value.replace(/[0-9]/g, '')" title="Name must contain at least 2 letters and no numbers." placeholder="Your Name *" required>
                 </div>
                 <div class="col-md-6">
-                  <input type="email" class="form-control" placeholder="Your Email *" required>
+                  <input type="email" class="form-control" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address with a domain (e.g. name@example.com)" placeholder="Your Email *" required>
                 </div>
               </div>
               <div class="mb-3">
@@ -326,12 +326,12 @@
           <form class="consultation-form">
             <div class="mb-3">
               <label class="form-label">Full Name *</label>
-              <input type="text" class="form-control" name="name" placeholder="e.g. Liam Chen" required>
+              <input type="text" class="form-control" name="name" minlength="2" maxlength="50" pattern="[a-zA-Z\s'\-]{2,50}" oninput="this.value = this.value.replace(/[0-9]/g, '')" title="Name must contain at least 2 letters and no numbers." placeholder="e.g. Liam Chen" required>
             </div>
             <div class="row g-2 mb-3">
               <div class="col-md-6">
                 <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" name="email" placeholder="liam@example.com" required>
+                <input type="email" class="form-control" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address with a domain (e.g. name@example.com)" placeholder="liam@example.com" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone Number *</label>
