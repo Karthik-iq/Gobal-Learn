@@ -686,6 +686,51 @@ img {
   letter-spacing: 0.05em;
 }
 
+/* Pricing Feature Comparison Table */
+.comparison-card {
+  border-radius: var(--gp-radius-xl) !important;
+}
+.comparison-table {
+  margin-bottom: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 0.95rem 1.25rem !important;
+  vertical-align: middle;
+}
+.comparison-table thead th {
+  font-weight: 700;
+  border-bottom: 2px solid var(--gp-border-color) !important;
+  padding-top: 1.15rem !important;
+  padding-bottom: 1.15rem !important;
+}
+.comparison-table thead th.col-featured {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(29, 78, 216, 0.08) !important;
+  color: var(--gp-primary) !important;
+}
+.comparison-table tbody td.col-featured {
+  background-color: rgba(29, 78, 216, 0.08) !important;
+  color: var(--gp-primary) !important;
+}
+.comparison-table tbody tr:last-child td.col-featured {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.comparison-table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+@media (max-width: 767.98px) {
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem 0.65rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
 /* Gallery & Lightbox */
 .gallery-grid {
   display: grid;
@@ -1067,6 +1112,80 @@ body[dir="ltr"],
     flex-shrink: 0 !important;
     padding: 0 clamp(0.55rem, 0.75vw, 1rem) !important;
     font-size: clamp(0.8rem, 0.85vw, 0.875rem) !important;
+  }
+}
+
+/* Responsive Nav Refinement for 992px - 1199.98px (Specifically 1024px Viewports)
+   Ensures all 8 nav links, controls, and Book Consultation CTA fit comfortably on one row */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .main-navbar .container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  .main-navbar .brand-logo {
+    font-size: 1.15rem !important;
+    margin-right: 0.35rem !important;
+    gap: 0.45rem !important;
+  }
+  .main-navbar .brand-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1rem !important;
+  }
+  .main-navbar .navbar-nav {
+    gap: 0.1rem !important;
+    margin-left: auto !important;
+    margin-right: 0.35rem !important;
+  }
+  .main-navbar .navbar-nav .nav-link {
+    padding: 0.35rem 0.35rem !important;
+    font-size: 0.8rem !important;
+  }
+  .main-navbar .navbar-collapse > .d-flex:last-child {
+    gap: 0.3rem !important;
+  }
+  .main-navbar .navbar-collapse .btn-control {
+    width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 !important;
+    font-size: 0.82rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .main-navbar .navbar-collapse .btn-rtl {
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 0.45rem !important;
+    font-size: 0.75rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .main-navbar .navbar-collapse a.btn-outline-primary {
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 0.55rem !important;
+    font-size: 0.78rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .main-navbar .navbar-collapse .btn-primary {
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 0.65rem !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }
 
