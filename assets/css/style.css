@@ -576,6 +576,10 @@ img {
   color: #ffffff;
   position: relative;
   overflow: hidden;
+  text-align: center;
+}
+.page-header .breadcrumb {
+  justify-content: center;
 }
 .page-header h1,
 .page-header h2,
@@ -593,6 +597,9 @@ img {
 }
 .page-header p.lead {
   color: rgba(255, 255, 255, 0.9) !important;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 780px;
 }
 .page-header::before {
   content: '';
@@ -963,8 +970,13 @@ body[dir="ltr"],
 [dir="ltr"] .navbar-nav {
   text-align: left;
 }
-[dir="ltr"] .page-header {
-  text-align: left;
+[dir="ltr"] .page-header,
+[dir="rtl"] .page-header {
+  text-align: center;
+}
+[dir="ltr"] .page-header .breadcrumb,
+[dir="rtl"] .page-header .breadcrumb {
+  justify-content: center;
 }
 
 [dir="rtl"] {
